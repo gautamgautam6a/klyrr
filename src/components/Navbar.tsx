@@ -1,0 +1,82 @@
+import React, { useState } from 'react'
+
+const Navbar: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false)
+
+  return (
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
+      <div className="container">
+        <div className="flex items-center justify-between h-16">
+          {/* Logo */}
+          <div className="flex-shrink-0">
+            <a href="#" className="flex items-center">
+              <svg width="120" height="60" viewBox="0 0 235 118" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-8 w-auto">
+                <path d="M74.5 81.5L107.379 114.379C108.058 115.058 109.212 114.482 109.076 113.53L108.985 112.897" stroke="#85B6FF" strokeWidth="4.8"/>
+                <path d="M142 82L109.202 114.798C108.663 115.337 107.743 115.099 107.533 114.366L107 112.5" stroke="#85B6FF" strokeWidth="4.8"/>
+                <path d="M81 35L52 6L52 35" stroke="#85B6FF" strokeWidth="4.8"/>
+                <path d="M135 35L162.293 7.70711C162.923 7.07714 164 7.52331 164 8.41421L164 35" stroke="#85B6FF" strokeWidth="4.8"/>
+                <rect x="106" y="81" width="5" height="32" fill="#85B6FF"/>
+                <path d="M3.22 78V38.302H8.096V62.682C10.672 61.072 13.064 59.416 15.64 57.806C25.576 51.32 35.42 44.926 45.402 38.44L45.632 38.302H53.728L51.336 39.866C42.734 45.386 34.454 50.814 25.852 56.38C30.084 59.738 34.27 63.096 38.502 66.454C42.688 69.812 46.782 73.17 51.014 76.482L52.9 78H45.54L45.31 77.816C41.262 74.642 37.26 71.468 33.212 68.202C29.348 65.074 25.576 62.176 21.758 59.048C18.814 60.888 15.962 62.774 13.156 64.66C11.684 65.626 10.258 66.546 8.786 67.512C8.602 67.65 8.326 67.742 8.096 67.926V78H3.22ZM57.3958 38.302H62.2718V73.63H99.8538V78H57.3958V38.302ZM137.626 78V38.302H171.344C177.738 38.302 182.384 43.454 182.384 49.112C182.384 54.77 177.738 59.922 171.344 59.922H162.19C170.516 63.372 178.152 68.708 182.2 76.804L182.798 78H177.784L177.554 77.54C170.884 66.316 155.888 60.658 142.502 59.922V78H137.626ZM142.502 42.672V55.552H171.344C174.978 55.552 177.83 52.516 177.83 49.112C177.83 45.662 174.978 42.626 171.344 42.626C171.206 42.626 171.16 42.672 171.022 42.672H142.502ZM187.849 78V38.302H221.567C227.961 38.302 232.607 43.454 232.607 49.112C232.607 54.77 227.961 59.922 221.567 59.922H212.413C220.739 63.372 228.375 68.708 232.423 76.804L233.021 78H228.007L227.777 77.54C221.107 66.316 206.111 60.658 192.725 59.922V78H187.849ZM192.725 42.672V55.552H221.567C225.201 55.552 228.053 52.516 228.053 49.112C228.053 45.662 225.201 42.626 221.567 42.626C221.429 42.626 221.383 42.672 221.245 42.672H192.725Z" fill="black"/>
+                <path d="M81.9483 38.302H88.5263L88.7563 38.624C89.6303 39.498 90.4123 40.372 91.1943 41.292L108.26 59.968C109.318 58.91 110.238 57.806 111.204 56.702C114.608 52.93 117.966 49.25 121.324 45.616C122.658 44.144 124.038 42.718 125.326 41.292C126.108 40.372 126.844 39.452 127.718 38.578L127.994 38.302H133.974L132.732 39.682C131.95 40.602 131.168 41.476 130.294 42.396L110.56 63.786V78H105.684V63.878L85.6743 42.396C84.8003 41.476 84.0183 40.602 83.1443 39.682L81.9483 38.302Z" fill="#2C5DFF"/>
+              </svg>
+            </a>
+          </div>
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-8">
+            <a href="#engines" className="text-gray-700 hover:text-primary-600 font-medium transition-colors">
+              Engines
+            </a>
+            <a href="#pricing" className="text-gray-700 hover:text-primary-600 font-medium transition-colors">
+              Pricing
+            </a>
+            <a href="#about" className="text-gray-700 hover:text-primary-600 font-medium transition-colors">
+              About
+            </a>
+            <button className="btn-primary text-sm">
+              🚨 Fix My Funnel
+            </button>
+          </div>
+
+          {/* Mobile menu button */}
+          <div className="md:hidden">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-gray-700 hover:text-primary-600 focus:outline-none focus:text-primary-600"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {isOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Navigation */}
+        {isOpen && (
+          <div className="md:hidden">
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-gray-200">
+              <a href="#engines" className="block px-3 py-2 text-gray-700 hover:text-primary-600 font-medium">
+                Engines
+              </a>
+              <a href="#pricing" className="block px-3 py-2 text-gray-700 hover:text-primary-600 font-medium">
+                Pricing
+              </a>
+              <a href="#about" className="block px-3 py-2 text-gray-700 hover:text-primary-600 font-medium">
+                About
+              </a>
+              <button className="w-full mt-4 btn-primary text-sm">
+                🚨 Fix My Funnel
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+    </nav>
+  )
+}
+
+export default Navbar 
