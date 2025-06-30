@@ -148,6 +148,7 @@ const PricingTeaser: React.FC = () => {
                           min={10000}
                           step={10000}
                           className="w-full"
+                          aria-label="Current Monthly Revenue Slider"
                         />
                         <div className="text-center">
                           <span className="text-2xl font-bold font-mono gradient-text">
@@ -170,6 +171,7 @@ const PricingTeaser: React.FC = () => {
                           min={1}
                           step={0.5}
                           className="w-full"
+                          aria-label="Current Demo-to-Close Rate Slider"
                         />
                         <div className="text-center">
                           <span className="text-2xl font-bold font-mono gradient-text">
@@ -192,6 +194,7 @@ const PricingTeaser: React.FC = () => {
                           min={25}
                           step={25}
                           className="w-full"
+                          aria-label="Growth Target Percentage Slider"
                         />
                         <div className="text-center">
                           <span className="text-2xl font-bold font-mono gradient-text">

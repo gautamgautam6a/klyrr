@@ -57,27 +57,30 @@ const Navbar: React.FC = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
-            <button
+            <Button
+              variant="ghost"
               onClick={() => scrollToSection('engines')}
-              className="text-foreground/80 hover:text-foreground font-medium transition-all duration-300 hover:scale-105 relative group"
+              className="text-foreground/80 hover:text-foreground font-medium transition-all duration-300 hover:scale-105 relative group p-0 h-auto bg-transparent hover:bg-transparent"
             >
               Engines
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-blue-600 transition-all duration-300 group-hover:w-full"></span>
-            </button>
-            <button
+            </Button>
+            <Button
+              variant="ghost"
               onClick={() => scrollToSection('pricing')}
-              className="text-foreground/80 hover:text-foreground font-medium transition-all duration-300 hover:scale-105 relative group"
+              className="text-foreground/80 hover:text-foreground font-medium transition-all duration-300 hover:scale-105 relative group p-0 h-auto bg-transparent hover:bg-transparent"
             >
               Pricing
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-blue-600 transition-all duration-300 group-hover:w-full"></span>
-            </button>
-            <button
+            </Button>
+            <Button
+              variant="ghost"
               onClick={() => scrollToSection('about')}
-              className="text-foreground/80 hover:text-foreground font-medium transition-all duration-300 hover:scale-105 relative group"
+              className="text-foreground/80 hover:text-foreground font-medium transition-all duration-300 hover:scale-105 relative group p-0 h-auto bg-transparent hover:bg-transparent"
             >
               About
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-blue-600 transition-all duration-300 group-hover:w-full"></span>
-            </button>
+            </Button>
             <Button className="btn-hero text-white ml-4">
               <span className="relative z-10">Fix My Funnel</span>
             </Button>
@@ -85,9 +88,11 @@ const Navbar: React.FC = () => {
 
           {/* Mobile menu button */}
           <div className="lg:hidden">
-            <button
+            <Button
+              variant="ghost"
+              size="icon"
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 text-foreground hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-lg transition-all duration-300"
+              className="p-2 text-foreground hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-lg transition-all duration-300 h-10 w-10"
               aria-label="Toggle navigation menu"
             >
               <div className="w-6 h-6 relative">
@@ -104,7 +109,7 @@ const Navbar: React.FC = () => {
                   isOpen ? "-rotate-45 translate-y-0" : "translate-y-2"
                 )}></span>
               </div>
-            </button>
+            </Button>
           </div>
         </div>
 
@@ -114,24 +119,27 @@ const Navbar: React.FC = () => {
           isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
         )}>
           <div className="glass-card m-4 p-6 space-y-4 border-2">
-            <button
+            <Button
+              variant="ghost"
               onClick={() => scrollToSection('engines')}
-              className="block w-full text-left px-4 py-3 text-foreground/80 hover:text-foreground hover:bg-blue-50 rounded-lg font-medium transition-all duration-300"
+              className="block w-full text-left justify-start px-4 py-3 text-foreground/80 hover:text-foreground hover:bg-blue-50 rounded-lg font-medium transition-all duration-300 h-auto"
             >
               Engines
-            </button>
-            <button
+            </Button>
+            <Button
+              variant="ghost"
               onClick={() => scrollToSection('pricing')}
-              className="block w-full text-left px-4 py-3 text-foreground/80 hover:text-foreground hover:bg-blue-50 rounded-lg font-medium transition-all duration-300"
+              className="block w-full text-left justify-start px-4 py-3 text-foreground/80 hover:text-foreground hover:bg-blue-50 rounded-lg font-medium transition-all duration-300 h-auto"
             >
               Pricing
-            </button>
-            <button
+            </Button>
+            <Button
+              variant="ghost"
               onClick={() => scrollToSection('about')}
-              className="block w-full text-left px-4 py-3 text-foreground/80 hover:text-foreground hover:bg-blue-50 rounded-lg font-medium transition-all duration-300"
+              className="block w-full text-left justify-start px-4 py-3 text-foreground/80 hover:text-foreground hover:bg-blue-50 rounded-lg font-medium transition-all duration-300 h-auto"
             >
               About
-            </button>
+            </Button>
             <Button className="btn-hero text-white w-full mt-4">
               <span className="relative z-10">Fix My Funnel</span>
             </Button>
