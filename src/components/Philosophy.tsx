@@ -6,7 +6,7 @@ const Philosophy: React.FC = () => {
       <div className="container">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 heading-gradient">
-            🧠 WHY WE BUILT KLYRR — FOUNDER'S PHILOSOPHY
+            Why We Built KLYRR — Founder's Philosophy
           </h2>
 
           <div className="space-y-12">
