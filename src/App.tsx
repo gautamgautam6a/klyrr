@@ -1,27 +1,54 @@
+import { lazy, useEffect } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
-import WhyChoose from './components/WhyChoose'
-import WhatsAtStake from './components/WhatsAtStake'
-import HowItWorks from './components/HowItWorks'
-import GrowthEngines from './components/GrowthEngines'
-import PricingTeaser from './components/PricingTeaser'
-import Philosophy from './components/Philosophy'
-import Footer from './components/Footer'
+import LazySection from './components/LazySection'
+import { preloadCriticalComponents, preloadOnInteraction } from './utils/preloader'
+
+// Lazy load below-the-fold components
+const WhyChoose = lazy(() => import('./components/WhyChoose'))
+const WhatsAtStake = lazy(() => import('./components/WhatsAtStake'))
+const HowItWorks = lazy(() => import('./components/HowItWorks'))
+const GrowthEngines = lazy(() => import('./components/GrowthEngines'))
+const PricingTeaser = lazy(() => import('./components/PricingTeaser'))
+const Philosophy = lazy(() => import('./components/Philosophy'))
+const Footer = lazy(() => import('./components/Footer'))
 
 function App() {
+  useEffect(() => {
+    // Preload critical components after initial render
+    preloadCriticalComponents()
+    
+    // Setup preloading on user interaction
+    preloadOnInteraction()
+  }, [])
+
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
       <main>
         <Hero />
-        <WhyChoose />
-        <WhatsAtStake />
-        <HowItWorks />
-        <GrowthEngines />
-        <PricingTeaser />
-        <Philosophy />
+        <LazySection minHeight="600px">
+          <WhyChoose />
+        </LazySection>
+        <LazySection minHeight="400px">
+          <WhatsAtStake />
+        </LazySection>
+        <LazySection minHeight="500px">
+          <HowItWorks />
+        </LazySection>
+        <LazySection minHeight="800px">
+          <GrowthEngines />
+        </LazySection>
+        <LazySection minHeight="700px">
+          <PricingTeaser />
+        </LazySection>
+        <LazySection minHeight="400px">
+          <Philosophy />
+        </LazySection>
       </main>
-      <Footer />
+      <LazySection minHeight="300px">
+        <Footer />
+      </LazySection>
     </div>
   )
 }
