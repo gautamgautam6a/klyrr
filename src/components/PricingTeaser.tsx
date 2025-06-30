@@ -120,11 +120,11 @@ const PricingTeaser: React.FC = () => {
             </div>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
+          <div className="grid lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-start">
             {/* ROI Calculator */}
             <div className="animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
               <Card className="glass-card border-blue-200/50">
-                <CardContent className="p-8">
+                <CardContent className="p-4 md:p-6 lg:p-8">
                   <div className="text-center mb-8">
                     <h3 className="text-2xl font-bold text-foreground mb-2">
                       ROI Calculator
@@ -134,7 +134,7 @@ const PricingTeaser: React.FC = () => {
                     </p>
                   </div>
 
-                  <div className="space-y-8">
+                  <div className="space-y-6 md:space-y-8">
                     {/* Monthly Revenue Input */}
                     <div>
                       <label className="block text-sm font-semibold text-foreground/80 mb-3">
@@ -220,30 +220,30 @@ const PricingTeaser: React.FC = () => {
 
                   <div className="grid grid-cols-1 gap-6">
                     {/* Key Metrics */}
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
                       <div className="metric-card text-center">
-                        <div className="text-3xl font-bold font-mono text-emerald-600 mb-1">
+                        <div className="text-2xl md:text-3xl font-bold font-mono text-emerald-600 mb-1">
                           {formatCurrency(roiData.additionalRevenue)}
                         </div>
                         <div className="text-sm text-foreground/60">Additional Monthly Revenue</div>
                       </div>
                       <div className="metric-card text-center">
-                        <div className="text-3xl font-bold font-mono text-blue-600 mb-1">
+                        <div className="text-2xl md:text-3xl font-bold font-mono text-blue-600 mb-1">
                           {roiData.roiMultiplier.toFixed(1)}x
                         </div>
                         <div className="text-sm text-foreground/60">ROI Multiplier</div>
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
                       <div className="metric-card text-center">
-                        <div className="text-2xl font-bold font-mono text-amber-600 mb-1">
+                        <div className="text-xl md:text-2xl font-bold font-mono text-amber-600 mb-1">
                           {roiData.paybackMonths.toFixed(1)}
                         </div>
                         <div className="text-sm text-foreground/60">Months to Payback</div>
                       </div>
                       <div className="metric-card text-center">
-                        <div className="text-2xl font-bold font-mono text-purple-600 mb-1">
+                        <div className="text-xl md:text-2xl font-bold font-mono text-purple-600 mb-1">
                           {formatCurrency(roiData.annualImpact)}
                         </div>
                         <div className="text-sm text-foreground/60">Annual Impact</div>
@@ -284,7 +284,7 @@ const PricingTeaser: React.FC = () => {
           </div>
 
           {/* Benefits Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 my-16 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 my-12 md:my-16 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
             {benefits.map((benefit, index) => (
               <Card key={index} className="interactive-card group">
                 <CardContent className="p-6 text-center">

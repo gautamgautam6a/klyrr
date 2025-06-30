@@ -146,12 +146,12 @@ const GrowthEngines: React.FC = () => {
           </div>
 
           {/* Category Filter */}
-          <div className="flex flex-wrap justify-center gap-3 mb-12 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+          <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-8 md:mb-12 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
             {categories.map((category) => (
               <button
                 key={category.id}
                 onClick={() => setSelectedCategory(category.id as any)}
-                className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 flex items-center space-x-2 ${
+                className={`px-4 md:px-6 py-2 md:py-3 rounded-xl font-medium transition-all duration-300 flex items-center space-x-2 text-sm md:text-base ${
                   selectedCategory === category.id
                     ? 'bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-lg scale-105'
                     : 'bg-white/70 hover:bg-white/90 text-foreground/80 hover:text-foreground border border-blue-200/50 hover:border-blue-300'
@@ -166,7 +166,7 @@ const GrowthEngines: React.FC = () => {
           </div>
 
           {/* Engines Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8 mb-12 md:mb-16">
             {filteredEngines.map((engine, index) => (
               <Card 
                 key={engine.id}
@@ -203,7 +203,7 @@ const GrowthEngines: React.FC = () => {
 
                     {/* Expandable Details */}
                     <div className={`overflow-hidden transition-all duration-500 ${
-                      selectedEngine === engine.id ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                      selectedEngine === engine.id ? 'max-h-[500px] md:max-h-96 opacity-100' : 'max-h-0 opacity-0'
                     }`}>
                       <div className="pt-4 border-t border-blue-200/50 space-y-4">
                         <div>
@@ -255,6 +255,115 @@ const GrowthEngines: React.FC = () => {
                 </CardContent>
               </Card>
             ))}
+          </div>
+
+          {/* Interactive Engine Flow Visualization */}
+          <div className="mb-16 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
+            <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
+              {/* Left: Description */}
+              <div>
+                <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+                  Engines Work <span className="gradient-text">Together</span>
+                </h3>
+                <p className="text-lg text-foreground/70 mb-6">
+                  Each engine feeds data and insights to the others, creating compound growth effects.
+                </p>
+                <div className="space-y-4">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+                      <span className="text-blue-600 font-bold text-sm">1</span>
+                    </div>
+                    <span className="text-foreground/80">Attribution Engine identifies what's working</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center">
+                      <span className="text-emerald-600 font-bold text-sm">2</span>
+                    </div>
+                    <span className="text-foreground/80">Conversion Engine optimizes those channels</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center">
+                      <span className="text-purple-600 font-bold text-sm">3</span>
+                    </div>
+                    <span className="text-foreground/80">Scaling Engine amplifies the winners</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center">
+                      <span className="text-orange-600 font-bold text-sm">4</span>
+                    </div>
+                    <span className="text-foreground/80">Growth compounds across all engines</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right: Interactive Flow */}
+              <div className="hidden md:flex items-center justify-center">
+                <div className="relative">
+                  {/* Central Hub */}
+                  <div className="glass-card p-6 rounded-2xl">
+                    <div className="w-32 h-32 bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl flex items-center justify-center relative">
+                      <div className="text-center">
+                        <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center mb-2 mx-auto">
+                          <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                          </svg>
+                        </div>
+                        <span className="text-xs font-bold text-blue-900">GTM OS</span>
+                      </div>
+                      
+                      {/* Pulsing Ring */}
+                      <div className="absolute inset-0 rounded-2xl border-2 border-blue-300 animate-ping opacity-75"></div>
+                    </div>
+                  </div>
+
+                  {/* Orbiting Engine Nodes */}
+                  <div className="absolute -top-8 left-1/2 transform -translate-x-1/2">
+                    <div className="w-16 h-16 bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-xl flex items-center justify-center border-2 border-emerald-200 animate-pulse">
+                      <svg className="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                      </svg>
+                    </div>
+                  </div>
+
+                  <div className="absolute -right-8 top-1/2 transform -translate-y-1/2">
+                    <div className="w-16 h-16 bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl flex items-center justify-center border-2 border-purple-200 animate-pulse" style={{animationDelay: '0.5s'}}>
+                      <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                      </svg>
+                    </div>
+                  </div>
+
+                  <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2">
+                    <div className="w-16 h-16 bg-gradient-to-br from-orange-50 to-orange-100 rounded-xl flex items-center justify-center border-2 border-orange-200 animate-pulse" style={{animationDelay: '1s'}}>
+                      <svg className="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10" />
+                      </svg>
+                    </div>
+                  </div>
+
+                  <div className="absolute -left-8 top-1/2 transform -translate-y-1/2">
+                    <div className="w-16 h-16 bg-gradient-to-br from-amber-50 to-amber-100 rounded-xl flex items-center justify-center border-2 border-amber-200 animate-pulse" style={{animationDelay: '1.5s'}}>
+                      <svg className="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                      </svg>
+                    </div>
+                  </div>
+
+                  {/* Connecting Lines (animated) */}
+                  <svg className="absolute inset-0 w-full h-full" style={{width: '200px', height: '200px', top: '-50px', left: '-50px'}}>
+                    <defs>
+                      <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="#3B82F6" stopOpacity="0.3"/>
+                        <stop offset="100%" stopColor="#3B82F6" stopOpacity="0.1"/>
+                      </linearGradient>
+                    </defs>
+                    <circle cx="100" cy="100" r="60" fill="none" stroke="url(#lineGradient)" strokeWidth="2" strokeDasharray="5,5" className="animate-spin" style={{animationDuration: '20s'}}/>
+                    <circle cx="100" cy="100" r="80" fill="none" stroke="url(#lineGradient)" strokeWidth="1" strokeDasharray="3,3" className="animate-spin" style={{animationDuration: '30s', animationDirection: 'reverse'}}/>
+                  </svg>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Process Overview */}

@@ -56,7 +56,7 @@ const Hero: React.FC = () => {
       </div>
 
       <div className="container relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center min-h-[80vh]">
+        <div className="grid lg:grid-cols-2 gap-8 md:gap-12 xl:gap-16 items-center min-h-[80vh]">
           {/* Left Column - Content */}
           <div className="space-y-8 text-center lg:text-left">
             {/* Badge */}
@@ -73,12 +73,12 @@ const Hero: React.FC = () => {
             <div className="space-y-4 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
               <h1 className="hero-text text-balance">
                 What If Your Growth Has Already{' '}
-                <span className="inline-block min-w-[200px] text-left">
+                <span className="inline-block min-w-[160px] md:min-w-[200px] text-left">
                   <span className="gradient-text">{typedText}</span>
                   <span className="w-0.5 h-[0.8em] bg-blue-600 ml-1 inline-block animate-pulse"></span>
                 </span>
               </h1>
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground/80 text-balance">
+              <h2 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-foreground/80 text-balance">
                 — And You're the Last to Know?
               </h2>
             </div>
@@ -94,7 +94,7 @@ const Hero: React.FC = () => {
                 <span className="gradient-text">KLYRR installs modular GTM systems</span> that replace duct-taped growth with predictable pipeline, conversion, and expansion — in days, not quarters.
               </p>
               
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm md:text-base">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 text-sm md:text-base">
                 <div className="flex items-center space-x-3 group">
                   <div className="icon-modern group-hover:scale-110">
                     <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -140,7 +140,7 @@ const Hero: React.FC = () => {
           </div>
 
           {/* Right Column - Visual */}
-          <div className="hidden lg:flex items-center justify-center animate-scale-in" style={{ animationDelay: '1s' }}>
+          <div className="hidden md:flex items-center justify-center animate-scale-in" style={{ animationDelay: '1s' }}>
             <div className="relative">
               {/* Main Dashboard Preview */}
               <div className="glass-card p-8 max-w-md">

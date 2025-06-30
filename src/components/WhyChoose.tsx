@@ -172,50 +172,113 @@ const WhyChoose: React.FC = () => {
             </p>
           </div>
 
-          {/* Problem Statement */}
-          <div className="mb-16 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-            <Card className="glass-card border-red-200/50">
-              <CardContent className="p-8">
-                <div className="flex items-start space-x-4 mb-6">
-                  <div className="icon-modern bg-gradient-to-br from-red-50 to-red-100">
-                    <svg className="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.5 0L4.314 16.5c-.77.833.192 2.5 1.732 2.5z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-bold text-foreground mb-2">
-                      Most teams tolerate chaos longer than they admit:
-                    </h3>
-                  </div>
-                </div>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {painPoints.map((point, index) => (
-                    <div 
-                      key={index}
-                      className="flex items-center space-x-3 p-3 rounded-lg hover:bg-red-50 transition-colors duration-300 group"
-                      style={{ animationDelay: `${index * 0.1}s` }}
-                    >
-                      <div className="icon-modern bg-gradient-to-br from-red-50 to-red-100 group-hover:scale-110">
-                        {point.icon}
-                      </div>
-                      <span className="font-medium text-foreground/80">{point.text}</span>
+          {/* Before/After Comparison with Visual */}
+          <div className="grid lg:grid-cols-2 gap-8 md:gap-12 mb-16 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+            {/* Problem Statement */}
+            <div>
+              <Card className="glass-card border-red-200/50 h-full">
+                <CardContent className="p-6 md:p-8">
+                  <div className="flex items-start space-x-4 mb-6">
+                    <div className="icon-modern bg-gradient-to-br from-red-50 to-red-100">
+                      <svg className="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.5 0L4.314 16.5c-.77.833.192 2.5 1.732 2.5z" />
+                      </svg>
                     </div>
-                  ))}
+                    <div>
+                      <h3 className="text-xl md:text-2xl font-bold text-foreground mb-2">
+                        Before KLYRR: Most teams tolerate chaos longer than they admit
+                      </h3>
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-3">
+                    {painPoints.map((point, index) => (
+                      <div 
+                        key={index}
+                        className="flex items-center space-x-3 p-3 rounded-lg hover:bg-red-50 transition-colors duration-300 group"
+                        style={{ animationDelay: `${index * 0.1}s` }}
+                      >
+                        <div className="icon-modern bg-gradient-to-br from-red-50 to-red-100 group-hover:scale-110">
+                          {point.icon}
+                        </div>
+                        <span className="font-medium text-foreground/80 text-sm md:text-base">{point.text}</span>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Interactive Visual Dashboard */}
+            <div className="hidden md:flex items-center justify-center">
+              <div className="relative">
+                {/* Broken Dashboard Visualization */}
+                <div className="glass-card p-6 md:p-8 max-w-sm">
+                  <div className="space-y-4">
+                    {/* Header */}
+                    <div className="flex items-center justify-between">
+                      <h4 className="font-bold text-foreground">Current GTM State</h4>
+                      <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
+                    </div>
+                    
+                    {/* Broken Metrics */}
+                    <div className="space-y-3">
+                      <div className="flex justify-between items-center p-2 bg-red-50 rounded border border-red-200">
+                        <span className="text-sm text-red-700">Pipeline</span>
+                        <span className="text-sm font-mono text-red-600">↓ 32%</span>
+                      </div>
+                      <div className="flex justify-between items-center p-2 bg-red-50 rounded border border-red-200">
+                        <span className="text-sm text-red-700">Conversion</span>
+                        <span className="text-sm font-mono text-red-600">2.1%</span>
+                      </div>
+                      <div className="flex justify-between items-center p-2 bg-red-50 rounded border border-red-200">
+                        <span className="text-sm text-red-700">CAC Payback</span>
+                        <span className="text-sm font-mono text-red-600">18mo</span>
+                      </div>
+                      <div className="flex justify-between items-center p-2 bg-red-50 rounded border border-red-200">
+                        <span className="text-sm text-red-700">Attribution</span>
+                        <span className="text-sm font-mono text-red-600">Unknown</span>
+                      </div>
+                    </div>
+
+                    {/* Warning Alerts */}
+                    <div className="space-y-2 mt-4">
+                      <div className="flex items-center space-x-2 text-xs text-red-600 bg-red-50 p-2 rounded">
+                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                        </svg>
+                        <span>Data silos detected</span>
+                      </div>
+                      <div className="flex items-center space-x-2 text-xs text-red-600 bg-red-50 p-2 rounded">
+                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                        </svg>
+                        <span>Revenue leaks active</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </CardContent>
-            </Card>
+
+                {/* Floating Warning Icons */}
+                <div className="absolute -top-2 -right-2 w-8 h-8 bg-red-500 rounded-full flex items-center justify-center text-white text-xs font-bold animate-bounce">
+                  !
+                </div>
+                <div className="absolute -bottom-2 -left-2 w-6 h-6 bg-amber-500 rounded-full flex items-center justify-center text-white text-xs animate-pulse">
+                  ?
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Metrics Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-16 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
             {metrics.map((metric, index) => (
               <Card key={index} className="metric-card group">
                 <CardContent className="p-6 text-center">
                   <div className="icon-modern mx-auto mb-4 group-hover:scale-110 group-hover:shadow-lg">
                     {metric.icon}
                   </div>
-                  <div className={`text-4xl md:text-5xl font-bold mb-2 font-mono ${metric.color}`}>
+                  <div className={`text-3xl md:text-4xl lg:text-5xl font-bold mb-2 font-mono ${metric.color}`}>
                     {metric.prefix}{index === 0 ? animatedNumbers.sqls : 
                      index === 1 ? animatedNumbers.conversion : 
                      index === 2 ? animatedNumbers.revenue : 
@@ -241,7 +304,7 @@ const WhyChoose: React.FC = () => {
                 </div>
                 
                 <div className="relative z-10">
-                  <blockquote className="text-2xl lg:text-3xl text-foreground/90 mb-8 leading-relaxed text-center">
+                  <blockquote className="text-lg md:text-xl lg:text-2xl xl:text-3xl text-foreground/90 mb-6 md:mb-8 leading-relaxed text-center">
                     "{testimonials[currentTestimonial].quote}"
                   </blockquote>
                   
