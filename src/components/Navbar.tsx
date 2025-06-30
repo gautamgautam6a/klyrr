@@ -1,4 +1,8 @@
 import React, { useState, useEffect } from 'react'
+import { StagewiseToolbar } from '@stagewise/toolbar-react';
+import { ReactPlugin } from '@stagewise-plugins/react';
+
+
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 

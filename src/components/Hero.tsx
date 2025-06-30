@@ -56,7 +56,7 @@ const Hero: React.FC = () => {
       </div>
 
       <div className="container relative z-10">
-        <div className="grid lg:grid-cols-2 gap-8 md:gap-12 xl:gap-16 items-center min-h-[80vh]">
+        <div className="grid lg:grid-cols-2 gap-8 md:gap-12 xl:gap-16 items-center min-h-[80vh] mt-[100px]">
           {/* Left Column - Content */}
           <div className="space-y-8 text-center lg:text-left">
             {/* Badge */}
@@ -78,7 +78,7 @@ const Hero: React.FC = () => {
                   <span className="w-0.5 h-[0.8em] bg-blue-600 ml-1 inline-block animate-pulse"></span>
                 </span>
               </h1>
-              <h2 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-foreground/80 text-balance">
+              <h2 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-red-600 text-balance">
                 — And You're the Last to Know?
               </h2>
             </div>
@@ -228,8 +228,16 @@ const Hero: React.FC = () => {
             aria-label="Scroll to next section"
           >
             <span className="text-xs text-foreground/60 font-medium tracking-wider uppercase">Scroll</span>
-            <div className="w-6 h-10 border-2 border-blue-300 rounded-full flex justify-center group-hover:border-blue-500 transition-colors duration-300">
-              <div className="w-1 h-3 bg-blue-400 rounded-full mt-2 animate-bounce group-hover:bg-blue-600 transition-colors duration-300"></div>
+            <div className="w-8 h-8 flex items-center justify-center">
+              <svg
+                className="w-6 h-6 text-red-600 animate-bounce"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2.5}
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
             </div>
           </button>
         </div>

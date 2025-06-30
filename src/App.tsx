@@ -7,22 +7,27 @@ import GrowthEngines from './components/GrowthEngines'
 import PricingTeaser from './components/PricingTeaser'
 import Philosophy from './components/Philosophy'
 import Footer from './components/Footer'
+import { StagewiseToolbar } from '@stagewise/toolbar-react';
+import { ReactPlugin } from '@stagewise-plugins/react';
 
 function App() {
   return (
-    <div className="min-h-screen bg-white">
-      <Navbar />
-      <main>
-        <Hero />
-        <WhyChoose />
-        <WhatsAtStake />
-        <HowItWorks />
-        <GrowthEngines />
-        <PricingTeaser />
-        <Philosophy />
-      </main>
-      <Footer />
-    </div>
+    <>
+      <StagewiseToolbar config={{ plugins: [ReactPlugin] }} />
+      <div className="min-h-screen bg-white">
+        <Navbar />
+        <main>
+          <Hero />
+          <WhyChoose />
+          <WhatsAtStake />
+          <HowItWorks />
+          <GrowthEngines />
+          <PricingTeaser />
+          <Philosophy />
+        </main>
+        <Footer />
+      </div>
+    </>
   )
 }
 
