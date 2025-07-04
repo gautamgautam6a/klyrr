@@ -3,6 +3,8 @@ import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import LazySection from './components/LazySection'
 import { preloadCriticalComponents, preloadOnInteraction } from './utils/preloader'
+import { StagewiseToolbar } from '@stagewise/toolbar-react'
+import { ReactPlugin } from '@stagewise-plugins/react'
 
 // Lazy load below-the-fold components
 const WhyChoose = lazy(() => import('./components/WhyChoose'))
@@ -23,52 +25,36 @@ function App() {
   }, [])
 
   return (
-<<<<<<< HEAD
     <>
       <StagewiseToolbar config={{ plugins: [ReactPlugin] }} />
       <div className="min-h-screen bg-white">
         <Navbar />
         <main>
           <Hero />
-          <WhyChoose />
-          <WhatsAtStake />
-          <HowItWorks />
-          <GrowthEngines />
-          <PricingTeaser />
-          <Philosophy />
+          <LazySection minHeight="600px">
+            <WhyChoose />
+          </LazySection>
+          <LazySection minHeight="400px">
+            <WhatsAtStake />
+          </LazySection>
+          <LazySection minHeight="500px">
+            <HowItWorks />
+          </LazySection>
+          <LazySection minHeight="800px">
+            <GrowthEngines />
+          </LazySection>
+          <LazySection minHeight="700px">
+            <PricingTeaser />
+          </LazySection>
+          <LazySection minHeight="400px">
+            <Philosophy />
+          </LazySection>
         </main>
-        <Footer />
+        <LazySection minHeight="300px">
+          <Footer />
+        </LazySection>
       </div>
     </>
-=======
-    <div className="min-h-screen bg-white">
-      <Navbar />
-      <main>
-        <Hero />
-        <LazySection minHeight="600px">
-          <WhyChoose />
-        </LazySection>
-        <LazySection minHeight="400px">
-          <WhatsAtStake />
-        </LazySection>
-        <LazySection minHeight="500px">
-          <HowItWorks />
-        </LazySection>
-        <LazySection minHeight="800px">
-          <GrowthEngines />
-        </LazySection>
-        <LazySection minHeight="700px">
-          <PricingTeaser />
-        </LazySection>
-        <LazySection minHeight="400px">
-          <Philosophy />
-        </LazySection>
-      </main>
-      <LazySection minHeight="300px">
-        <Footer />
-      </LazySection>
-    </div>
->>>>>>> 307b85c2d99ec5550e19d0732b13ee8996e39e4b
   )
 }
 
