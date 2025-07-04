@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { StagewiseToolbar } from '@stagewise/toolbar-react';
 import { ReactPlugin } from '@stagewise-plugins/react';
+import { Link } from 'react-router-dom'
 
 
 import { Button } from '@/components/ui/button'
@@ -10,32 +11,38 @@ const engines = [
   {
     title: 'Zero to Pipeline Engine',
     icon: <span role="img" aria-label="Pipeline" className="text-blue-600 text-2xl">🚀</span>,
-    desc: 'Drive pipeline with precision targeting and automation.'
+    desc: 'Drive pipeline with precision targeting and automation.',
+    route: '/engine/zero-to-pipeline',
   },
   {
     title: 'Conversion Killshot Engine',
     icon: <span role="img" aria-label="Conversion" className="text-emerald-600 text-2xl">🎯</span>,
-    desc: 'Turn demos into deals with conversion-optimized flows.'
+    desc: 'Turn demos into deals with conversion-optimized flows.',
+    route: '/engine/conversion-killshot',
   },
   {
     title: 'Inbound Magnet Engine',
-    icon: <span role="img" aria-label="Magnet" className="text-purple-600 text-2xl">🧲</span>,
-    desc: 'Attract and capture high-intent inbound leads.'
-  },
-  {
-    title: 'Founder Signal Engine',
-    icon: <span role="img" aria-label="Signal" className="text-cyan-600 text-2xl">📡</span>,
-    desc: 'Accelerate trust and close rates with founder-led signals.'
-  },
-  {
-    title: 'Land & Expand Engine',
-    icon: <span role="img" aria-label="Expand" className="text-violet-600 text-2xl">🌱</span>,
-    desc: 'Grow existing accounts with expansion playbooks.'
+    icon: <span role="img" aria-label="Inbound" className="text-purple-600 text-2xl">🧲</span>,
+    desc: 'Attract high-intent leads with inbound content and offers.',
+    route: '/engine/inbound-magnet',
   },
   {
     title: 'Sales Onboarding & Transition System',
     icon: <span role="img" aria-label="Onboarding" className="text-orange-600 text-2xl">🧑‍💼</span>,
-    desc: 'Seamlessly onboard and transition sales teams for scale.'
+    desc: 'Seamlessly onboard and transition sales teams for scale.',
+    route: '/engine/abm-fastlane',
+  },
+  {
+    title: 'Founder Signal Engine',
+    icon: <span role="img" aria-label="Founder" className="text-cyan-600 text-2xl">📡</span>,
+    desc: 'Boost founder-led sales with personal brand and trust.',
+    route: '/engine/founder-signal',
+  },
+  {
+    title: 'Land & Expand Engine',
+    icon: <span role="img" aria-label="LandExpand" className="text-violet-600 text-2xl">🌱</span>,
+    desc: 'Expand accounts and reduce churn with post-sale systems.',
+    route: '/engine/land-expand',
   },
 ]
 
@@ -63,7 +70,7 @@ function MegaMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
     <div
       ref={menuRef}
       className={cn(
-        'absolute left-1/2 top-full z-40 w-[95vw] max-w-3xl -translate-x-1/2 mt-4 rounded-2xl shadow-2xl glass-card border border-blue-100 p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 animate-fade-in-up transition-all duration-300',
+        'absolute right-0 top-full z-40 w-[95vw] max-w-3xl mt-4 rounded-2xl shadow-2xl glass-card border border-blue-100 p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 animate-fade-in-up transition-all duration-300',
         // Height and scroll
         'min-h-[300px] h-[50vh] max-h-[90vh] overflow-y-auto',
         'sm:min-h-[250px] sm:h-[60vh]',
@@ -83,10 +90,11 @@ function MegaMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
         }}></div>
       </div>
       {engines.map((engine, idx) => (
-        <a
+        <Link
           key={engine.title}
-          href="#"
+          to={engine.route}
           className="group flex flex-col items-start gap-2 p-4 rounded-xl transition-all duration-200 bg-white/70 hover:bg-blue-50 focus:bg-blue-100 shadow hover:shadow-lg outline-none cursor-pointer"
+          onClick={onClose}
           tabIndex={0}
           role="menuitem"
         >
@@ -101,7 +109,7 @@ function MegaMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
           <span className="text-sm text-foreground/70 group-hover:text-blue-700 transition-colors">
             {engine.desc}
           </span>
-        </a>
+        </Link>
       ))}
     </div>
   )
