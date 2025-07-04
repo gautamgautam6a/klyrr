@@ -154,7 +154,7 @@ const GrowthEngines: React.FC = () => {
                 className={`px-4 md:px-6 py-2 md:py-3 rounded-xl font-medium transition-all duration-300 flex items-center space-x-2 text-sm md:text-base ${
                   selectedCategory === category.id
                     ? 'bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-lg scale-105'
-                    : 'bg-white/70 hover:bg-white/90 text-foreground/80 hover:text-foreground border border-blue-200/50 hover:border-blue-300'
+                    : 'bg-white/70 hover:bg-white/90 text-blue-700 hover:text-foreground border border-blue-200/50 hover:border-blue-300'
                 }`}
               >
                 <span>{category.label}</span>

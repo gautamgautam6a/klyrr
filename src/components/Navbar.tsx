@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { StagewiseToolbar } from '@stagewise/toolbar-react';
 import { ReactPlugin } from '@stagewise-plugins/react';
 
@@ -6,8 +6,111 @@ import { ReactPlugin } from '@stagewise-plugins/react';
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 
+const engines = [
+  {
+    title: 'Zero to Pipeline Engine',
+    icon: <span role="img" aria-label="Pipeline" className="text-blue-600 text-2xl">🚀</span>,
+    desc: 'Drive pipeline with precision targeting and automation.'
+  },
+  {
+    title: 'Conversion Killshot Engine',
+    icon: <span role="img" aria-label="Conversion" className="text-emerald-600 text-2xl">🎯</span>,
+    desc: 'Turn demos into deals with conversion-optimized flows.'
+  },
+  {
+    title: 'Inbound Magnet Engine',
+    icon: <span role="img" aria-label="Magnet" className="text-purple-600 text-2xl">🧲</span>,
+    desc: 'Attract and capture high-intent inbound leads.'
+  },
+  {
+    title: 'Founder Signal Engine',
+    icon: <span role="img" aria-label="Signal" className="text-cyan-600 text-2xl">📡</span>,
+    desc: 'Accelerate trust and close rates with founder-led signals.'
+  },
+  {
+    title: 'Land & Expand Engine',
+    icon: <span role="img" aria-label="Expand" className="text-violet-600 text-2xl">🌱</span>,
+    desc: 'Grow existing accounts with expansion playbooks.'
+  },
+  {
+    title: 'Sales Onboarding & Transition System',
+    icon: <span role="img" aria-label="Onboarding" className="text-orange-600 text-2xl">🧑‍💼</span>,
+    desc: 'Seamlessly onboard and transition sales teams for scale.'
+  },
+]
+
+function MegaMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
+  const menuRef = useRef<HTMLDivElement>(null)
+
+  // Close on escape
+  React.useEffect(() => {
+    if (!open) return
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose()
+    }
+    window.addEventListener('keydown', handler)
+    return () => window.removeEventListener('keydown', handler)
+  }, [open, onClose])
+
+  // Trap focus
+  React.useEffect(() => {
+    if (!open || !menuRef.current) return
+    const first = menuRef.current.querySelector('a,button,div[tabindex]') as HTMLElement | null
+    if (first) first.focus()
+  }, [open])
+
+  return (
+    <div
+      ref={menuRef}
+      className={cn(
+        'absolute left-1/2 top-full z-40 w-[95vw] max-w-3xl -translate-x-1/2 mt-4 rounded-2xl shadow-2xl glass-card border border-blue-100 p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 animate-fade-in-up transition-all duration-300',
+        // Height and scroll
+        'min-h-[300px] h-[50vh] max-h-[90vh] overflow-y-auto',
+        'sm:min-h-[250px] sm:h-[60vh]',
+        open ? 'opacity-100 pointer-events-auto scale-100' : 'opacity-0 pointer-events-none scale-95'
+      )}
+      tabIndex={-1}
+      onMouseLeave={onClose}
+      style={{ minWidth: 320 }}
+      role="menu"
+      aria-label="Product Engines Menu"
+    >
+      {/* Subtle background pattern */}
+      <div className="absolute inset-0 opacity-5 pointer-events-none -z-10">
+        <div className="w-full h-full" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.1'%3E%3Cpath d='M30 30h30v30H30V30zm15 15h15v15H45V45z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          backgroundSize: '60px 60px'
+        }}></div>
+      </div>
+      {engines.map((engine, idx) => (
+        <a
+          key={engine.title}
+          href="#"
+          className="group flex flex-col items-start gap-2 p-4 rounded-xl transition-all duration-200 bg-white/70 hover:bg-blue-50 focus:bg-blue-100 shadow hover:shadow-lg outline-none cursor-pointer"
+          tabIndex={0}
+          role="menuitem"
+        >
+          <div className="flex items-center gap-3">
+            <span className="transition-transform duration-300 group-hover:scale-125 group-hover:rotate-6">
+              {engine.icon}
+            </span>
+            <span className="font-bold text-blue-900 text-base md:text-lg">
+              {engine.title}
+            </span>
+          </div>
+          <span className="text-sm text-foreground/70 group-hover:text-blue-700 transition-colors">
+            {engine.desc}
+          </span>
+        </a>
+      ))}
+    </div>
+  )
+}
+
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
+  const menuTimeout = useRef<NodeJS.Timeout | null>(null)
   const [isScrolled, setIsScrolled] = useState(false)
 
   useEffect(() => {
@@ -25,6 +128,21 @@ const Navbar: React.FC = () => {
       element.scrollIntoView({ behavior: 'smooth' })
       setIsOpen(false)
     }
+  }
+
+  // Desktop hover handlers
+  const handleMenuEnter = () => {
+    if (menuTimeout.current) clearTimeout(menuTimeout.current)
+    setMenuOpen(true)
+  }
+  const handleMenuLeave = () => {
+    menuTimeout.current = setTimeout(() => setMenuOpen(false), 120)
+  }
+
+  // Mobile tap handler
+  const handleMenuClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault()
+    setMenuOpen((v) => !v)
   }
 
   return (
@@ -81,6 +199,25 @@ const Navbar: React.FC = () => {
               About
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-blue-600 transition-all duration-300 group-hover:w-full"></span>
             </Button>
+            <div
+              className="relative"
+              onMouseEnter={handleMenuEnter}
+              onMouseLeave={handleMenuLeave}
+            >
+              <Button
+                variant="ghost"
+                className="text-foreground/80 hover:text-foreground font-medium transition-all duration-300 hover:scale-105 relative group p-0 h-auto bg-transparent hover:bg-transparent"
+                aria-haspopup="true"
+                aria-expanded={menuOpen}
+                aria-controls="product-megamenu"
+                onClick={handleMenuClick}
+                tabIndex={0}
+              >
+                Product
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-blue-600 transition-all duration-300 group-hover:w-full"></span>
+              </Button>
+              <MegaMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
+            </div>
             <Button className="btn-hero text-white ml-4">
               <span className="relative z-10">Fix My Funnel</span>
             </Button>
@@ -140,6 +277,14 @@ const Navbar: React.FC = () => {
             >
               About
             </Button>
+            <a href="/product" className="block">
+              <Button
+                variant="ghost"
+                className="block w-full text-left justify-start px-4 py-3 text-foreground/80 hover:text-foreground hover:bg-blue-50 rounded-lg font-medium transition-all duration-300 h-auto"
+              >
+                Product
+              </Button>
+            </a>
             <Button className="btn-hero text-white w-full mt-4">
               <span className="relative z-10">Fix My Funnel</span>
             </Button>
