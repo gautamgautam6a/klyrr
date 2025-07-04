@@ -78,7 +78,7 @@ const Hero: React.FC = () => {
                   <span className="w-0.5 h-[0.8em] bg-blue-600 ml-1 inline-block animate-pulse"></span>
                 </span>
               </h1>
-              <h2 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-red-600 text-balance">
+              <h2 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-blue-600 text-balance">
                 — And You're the Last to Know?
               </h2>
             </div>
