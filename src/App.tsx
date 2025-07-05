@@ -1,7 +1,18 @@
-import React from 'react'
+import React, { lazy, Suspense } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
+import LazySection from './components/LazySection'
+
+
+
+// Lazy load below-the-fold components
+const WhyChoose = lazy(() => import('./components/WhyChoose'))
+const WhatsAtStake = lazy(() => import('./components/WhatsAtStake'))
+const HowItWorks = lazy(() => import('./components/HowItWorks'))
+const PricingTeaser = lazy(() => import('./components/PricingTeaser'))
+const Philosophy = lazy(() => import('./components/Philosophy'))
+const Footer = lazy(() => import('./components/Footer'))
 import GrowthEngines from './components/GrowthEngines'
 import ProductPage from './components/ProductPage'
 import ZeroToPipeline from './components/engines/ZeroToPipeline'
@@ -19,8 +30,29 @@ function App() {
         <Route path="/" element={
           <>
             <Hero />
+            <Suspense fallback={<div>Loading...</div>}>
+              <LazySection>
+                <WhyChoose />
+              </LazySection>
+              <LazySection>
+                <WhatsAtStake />
+              </LazySection>
+              <LazySection>
+                <HowItWorks />
+              </LazySection>
+            </Suspense>
             <GrowthEngines />
-            {/* Add other home page sections here if needed */}
+            <Suspense fallback={<div>Loading...</div>}>
+              <LazySection>
+                <PricingTeaser />
+              </LazySection>
+              <LazySection>
+                <Philosophy />
+              </LazySection>
+              <LazySection>
+                <Footer />
+              </LazySection>
+            </Suspense>
           </>
         } />
         <Route path="/product" element={<ProductPage />} />
