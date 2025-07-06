@@ -183,30 +183,27 @@ const Navbar: React.FC = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
-            <Button
-              variant="ghost"
+            <button
               onClick={() => scrollToSection('engines')}
-              className="text-foreground/80 hover:text-foreground font-medium transition-all duration-300 hover:scale-105 relative group p-0 h-auto bg-transparent hover:bg-transparent"
+              className="text-foreground/80 hover:text-foreground font-medium transition-all duration-300 hover:scale-105 relative group"
             >
               Engines
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-blue-600 transition-all duration-300 group-hover:w-full"></span>
-            </Button>
-            <Button
-              variant="ghost"
+            </button>
+            <button
               onClick={() => scrollToSection('pricing')}
-              className="text-foreground/80 hover:text-foreground font-medium transition-all duration-300 hover:scale-105 relative group p-0 h-auto bg-transparent hover:bg-transparent"
+              className="text-foreground/80 hover:text-foreground font-medium transition-all duration-300 hover:scale-105 relative group"
             >
               Pricing
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-blue-600 transition-all duration-300 group-hover:w-full"></span>
-            </Button>
-            <Button
-              variant="ghost"
+            </button>
+            <button
               onClick={() => scrollToSection('about')}
-              className="text-foreground/80 hover:text-foreground font-medium transition-all duration-300 hover:scale-105 relative group p-0 h-auto bg-transparent hover:bg-transparent"
+              className="text-foreground/80 hover:text-foreground font-medium transition-all duration-300 hover:scale-105 relative group"
             >
               About
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-blue-600 transition-all duration-300 group-hover:w-full"></span>
-            </Button>
+            </button>
             <div
               className="relative"
               onMouseEnter={handleMenuEnter}
@@ -233,11 +230,9 @@ const Navbar: React.FC = () => {
 
           {/* Mobile menu button */}
           <div className="lg:hidden">
-            <Button
-              variant="ghost"
-              size="icon"
+            <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 text-foreground hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-lg transition-all duration-300 h-10 w-10"
+              className="p-2 text-foreground hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-lg transition-all duration-300"
               aria-label="Toggle navigation menu"
             >
               <div className="w-6 h-6 relative">
@@ -254,7 +249,7 @@ const Navbar: React.FC = () => {
                   isOpen ? "-rotate-45 translate-y-0" : "translate-y-2"
                 )}></span>
               </div>
-            </Button>
+            </button>
           </div>
         </div>
 
@@ -264,27 +259,24 @@ const Navbar: React.FC = () => {
           isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
         )}>
           <div className="glass-card m-4 p-6 space-y-4 border-2">
-            <Button
-              variant="ghost"
+            <button
               onClick={() => scrollToSection('engines')}
-              className="block w-full text-left justify-start px-4 py-3 text-foreground/80 hover:text-foreground hover:bg-blue-50 rounded-lg font-medium transition-all duration-300 h-auto"
+              className="block w-full text-left px-4 py-3 text-foreground/80 hover:text-foreground hover:bg-blue-50 rounded-lg font-medium transition-all duration-300"
             >
               Engines
-            </Button>
-            <Button
-              variant="ghost"
+            </button>
+            <button
               onClick={() => scrollToSection('pricing')}
-              className="block w-full text-left justify-start px-4 py-3 text-foreground/80 hover:text-foreground hover:bg-blue-50 rounded-lg font-medium transition-all duration-300 h-auto"
+              className="block w-full text-left px-4 py-3 text-foreground/80 hover:text-foreground hover:bg-blue-50 rounded-lg font-medium transition-all duration-300"
             >
               Pricing
-            </Button>
-            <Button
-              variant="ghost"
+            </button>
+            <button
               onClick={() => scrollToSection('about')}
-              className="block w-full text-left justify-start px-4 py-3 text-foreground/80 hover:text-foreground hover:bg-blue-50 rounded-lg font-medium transition-all duration-300 h-auto"
+              className="block w-full text-left px-4 py-3 text-foreground/80 hover:text-foreground hover:bg-blue-50 rounded-lg font-medium transition-all duration-300"
             >
               About
-            </Button>
+            </button>
             <a href="/product" className="block">
               <Button
                 variant="ghost"

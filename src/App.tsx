@@ -2,7 +2,7 @@ import React, { lazy, Suspense } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
-import LazySection from './components/LazySection'
+
 
 
 
@@ -25,33 +25,21 @@ import LandExpand from './components/engines/LandExpand'
 function App() {
   return (
     <Router>
-      <Navbar />
+      <Navbar />q
       <Routes>
         <Route path="/" element={
           <>
             <Hero />
             <Suspense fallback={<div>Loading...</div>}>
-              <LazySection>
-                <WhyChoose />
-              </LazySection>
-              <LazySection>
-                <WhatsAtStake />
-              </LazySection>
-              <LazySection>
-                <HowItWorks />
-              </LazySection>
+              <WhyChoose />
+              <WhatsAtStake />
+              <HowItWorks />
             </Suspense>
             <GrowthEngines />
             <Suspense fallback={<div>Loading...</div>}>
-              <LazySection>
-                <PricingTeaser />
-              </LazySection>
-              <LazySection>
-                <Philosophy />
-              </LazySection>
-              <LazySection>
-                <Footer />
-              </LazySection>
+              <PricingTeaser />
+              <Philosophy />
+              <Footer />
             </Suspense>
           </>
         } />

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { Card, CardContent } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Slider } from '@/components/ui/slider'
 
@@ -104,9 +103,6 @@ const PricingTeaser: React.FC = () => {
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-16 animate-fade-in-up">
-            <Badge className="mb-4 px-4 py-2 bg-gradient-to-r from-blue-50 to-blue-100 border-blue-200 text-blue-700 border">
-              Pricing & ROI
-            </Badge>
             <h2 className="gradient-text text-balance mb-6">
               What Does KLYRR Cost? — Pricing Teaser
             </h2>
@@ -148,7 +144,6 @@ const PricingTeaser: React.FC = () => {
                           min={10000}
                           step={10000}
                           className="w-full"
-                          aria-label="Current Monthly Revenue Slider"
                         />
                         <div className="text-center">
                           <span className="text-2xl font-bold font-mono gradient-text">
@@ -171,7 +166,6 @@ const PricingTeaser: React.FC = () => {
                           min={1}
                           step={0.5}
                           className="w-full"
-                          aria-label="Current Demo-to-Close Rate Slider"
                         />
                         <div className="text-center">
                           <span className="text-2xl font-bold font-mono gradient-text">
@@ -194,7 +188,6 @@ const PricingTeaser: React.FC = () => {
                           min={25}
                           step={25}
                           className="w-full"
-                          aria-label="Growth Target Percentage Slider"
                         />
                         <div className="text-center">
                           <span className="text-2xl font-bold font-mono gradient-text">

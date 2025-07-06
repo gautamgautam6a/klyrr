@@ -150,7 +150,7 @@ const GrowthEngines: React.FC = () => {
             {categories.map((category) => (
               <button
                 key={category.id}
-                onClick={() => setSelectedCategory(category.id as 'pipeline' | 'conversion' | 'expansion' | 'all')}
+                onClick={() => setSelectedCategory(category.id as any)}
                 className={`px-4 md:px-6 py-2 md:py-3 rounded-xl font-medium transition-all duration-300 flex items-center space-x-2 text-sm md:text-base ${
                   selectedCategory === category.id
                     ? 'bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-lg scale-105'

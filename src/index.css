@@ -232,7 +232,6 @@
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%);
     border: 1px solid rgba(255, 255, 255, 0.3);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
-    will-change: transform, box-shadow;
   }
   
   .metric-card:hover {
@@ -245,7 +244,6 @@
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 100%);
     border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
-    will-change: transform, box-shadow;
   }
   
   .interactive-card:hover {
@@ -258,7 +256,6 @@
     @apply relative inline-flex items-center justify-center w-12 h-12 rounded-xl transition-all duration-300;
     background: linear-gradient(135deg, hsl(var(--blue-600) / 0.1) 0%, hsl(var(--blue-500) / 0.15) 100%);
     box-shadow: 0 4px 12px hsl(var(--blue-600) / 0.1);
-    will-change: transform, box-shadow;
   }
   
   .icon-modern:hover {
