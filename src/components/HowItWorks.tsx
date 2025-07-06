@@ -58,8 +58,8 @@ const HowItWorks: React.FC = () => {
 
   return (
     <section className="py-20 lg:py-32 bg-gradient-to-b from-white to-gray-50/50">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
+      <div className="container mx-auto">
+        <div className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 p-6 md:p-12 max-w-7xl mx-auto border-2 border-blue-200">
           {/* Header */}
           <div className="text-center mb-16 lg:mb-20">
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">

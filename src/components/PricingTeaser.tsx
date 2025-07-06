@@ -105,8 +105,8 @@ const PricingTeaser: React.FC = () => {
 
   return (
     <section id="pricing" className="section-padding bg-gray-50">
-      <div className="container relative z-10">
-        <div className="max-w-6xl mx-auto">
+      <div className="container mx-auto">
+        <div className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 p-6 md:p-12 max-w-7xl mx-auto border-2 border-blue-200">
           {/* Section Header */}
           <div className="text-center mb-16">
             <HeaderSection>
