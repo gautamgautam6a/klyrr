@@ -17,7 +17,6 @@ import WhyChoose from './components/WhyChoose'
 import Philosophy from './components/Philosophy'
 import HowItWorks from './components/HowItWorks'
 import PricingTeaser from './components/PricingTeaser'
-import LazySection from './components/LazySection'
 
 function App() {
   return (

@@ -67,7 +67,7 @@ function MegaMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
     <div
       ref={menuRef}
       className={cn(
-        'absolute right-0 top-full z-40 w-[95vw] max-w-3xl mt-4 rounded-2xl shadow-2xl glass-card border border-blue-100 p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 animate-fade-in-up transition-all duration-300',
+        'absolute right-0 top-full z-40 w-[95vw] max-w-3xl mt-4 rounded-2xl shadow-md glass-card border-2 border-blue-200 p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 animate-fade-in-up transition-all duration-300',
         // Height and scroll
         'min-h-[300px] h-[50vh] max-h-[90vh] overflow-y-auto',
         'sm:min-h-[250px] sm:h-[60vh]',
@@ -260,7 +260,7 @@ const Navbar: React.FC = () => {
           "lg:hidden overflow-hidden transition-all duration-300 ease-in-out",
           isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
         )}>
-          <div className="glass-card m-4 p-6 space-y-4 border-2">
+          <div className="glass-card m-4 p-6 space-y-4 border-2 border-blue-200 rounded-2xl shadow-md">
             <Button
               variant="ghost"
               onClick={() => scrollToSection('engines')}

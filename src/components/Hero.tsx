@@ -88,7 +88,7 @@ const Hero: React.FC = () => {
             </p>
 
             {/* Value Props */}
-            <div className="glass-card p-6 lg:p-8 animate-scale-in rounded-2xl border-2 border-blue-200" style={{ animationDelay: '0.6s' }}>
+            <div className="glass-card p-6 lg:p-8 animate-scale-in rounded-2xl border-2 border-blue-200 shadow-md" style={{ animationDelay: '0.6s' }}>
               <p className="text-lg md:text-xl text-foreground/80 mb-6 font-semibold">
                 <span className="gradient-text">KLYRR installs modular GTM systems</span> that replace duct-taped growth with predictable pipeline, conversion, and expansion — in days, not quarters.
               </p>
@@ -142,7 +142,7 @@ const Hero: React.FC = () => {
           <div className="hidden md:flex items-center justify-center animate-scale-in" style={{ animationDelay: '1s' }}>
             <div className="relative">
               {/* Main Dashboard Preview */}
-              <div className="glass-card p-8 max-w-md rounded-2xl border-2 border-blue-200">
+              <div className="glass-card p-8 max-w-md rounded-2xl border-2 border-blue-200 shadow-md">
                 <div className="space-y-6">
                   {/* Header */}
                   <div className="flex items-center justify-between">

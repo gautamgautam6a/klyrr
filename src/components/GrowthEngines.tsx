@@ -15,6 +15,12 @@ interface Engine {
   timeline: string
 }
 
+// Shared header component for consistent headers
+type HeaderSectionProps = { children: React.ReactNode; className?: string };
+const HeaderSection = ({ children, className = '' }: HeaderSectionProps) => (
+  <h2 className={`text-4xl md:text-5xl font-extrabold text-blue-600 mb-6 text-center heading-gradient ${className}`}>{children}</h2>
+);
+
 const GrowthEngines: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<'pipeline' | 'conversion' | 'expansion' | 'all'>('all')
   const [selectedEngine, setSelectedEngine] = useState<string | null>(null)
@@ -132,9 +138,9 @@ const GrowthEngines: React.FC = () => {
             <Badge className="mb-4 px-4 py-2 bg-blue-600 text-white border-0 shadow-lg glow-badge">
               Product Offering
             </Badge>
-            <h2 className="gradient-text text-balance mb-6">
-              The 6 KLYRR Growth Engines
-            </h2>
+            <HeaderSection>
+              Growth Engines
+            </HeaderSection>
             <div className="space-y-4 max-w-4xl mx-auto">
               <p className="text-xl text-foreground/70 text-balance">
                 Your GTM isn't broken everywhere — just at the choke points.
@@ -178,7 +184,7 @@ const GrowthEngines: React.FC = () => {
               >
                 <CardContent className="p-8">
                   {/* Icon container */}
-                  <div className={`relative w-14 h-14 rounded-2xl bg-white/40 backdrop-blur-md border border-blue-100 flex items-center justify-center mb-6 text-blue-700 transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg group-hover:shadow-2xl group-hover:glow-engine`}>
+                  <div className="glass-card relative w-14 h-14 rounded-2xl bg-white/80 border-2 border-blue-200 flex items-center justify-center mb-6 text-blue-700 transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-md">
                     {React.cloneElement(engine.icon as React.ReactElement, { className: 'w-10 h-10 text-blue-700 drop-shadow' })}
                   </div>
                   {/* Content */}
@@ -255,7 +261,7 @@ const GrowthEngines: React.FC = () => {
 
           {/* Interactive Engine Flow Visualization */}
           <div className="mb-16 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
-            <div className="glass-card rounded-2xl border-2 border-blue-200 p-8 lg:p-12 transition-all duration-300 hover:shadow-xl hover:scale-[1.02]">
+            <div className="glass-card rounded-2xl border-2 border-blue-200 p-8 lg:p-12 shadow-md transition-all duration-300 hover:shadow-xl hover:scale-[1.02]">
               <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
                 {/* Left: Description */}
                 <div>

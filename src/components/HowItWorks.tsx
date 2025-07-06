@@ -84,7 +84,7 @@ const HowItWorks: React.FC = () => {
                 )}
                 
                 {/* Step Card */}
-                <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-xl hover:border-primary-200 transition-all duration-300 h-full">
+                <div className="glass-card bg-white/80 rounded-2xl p-6 shadow-md border-2 border-blue-200 hover:shadow-xl hover:border-blue-300 transition-all duration-300 h-full">
                   <div className="text-center">
                     {/* Step Number */}
                     <div className="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center mx-auto mb-4 text-primary-600 font-bold text-lg">

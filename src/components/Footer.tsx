@@ -1,5 +1,4 @@
 import React from 'react'
-import { Button } from '@/components/ui/button'
 
 const Footer: React.FC = () => (
   <footer className="w-full bg-white border-t border-gray-200 py-8 mt-16">

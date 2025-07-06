@@ -157,8 +157,8 @@ const WhyChoose: React.FC = () => {
 
   return (
     <section id="why-choose" className="section-padding gradient-section">
-      <div className="container relative z-10">
-        <div className="max-w-6xl mx-auto">
+      <div className="container mx-auto">
+        <div className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 p-6 md:p-12 max-w-7xl mx-auto border-2 border-blue-200">
           {/* Section Header */}
           <div className="text-center mb-16 animate-fade-in-up">
             <Badge className="mb-4 px-4 py-2 bg-gradient-to-r from-blue-50 to-blue-100 border-blue-200 text-blue-700 border">
@@ -213,7 +213,7 @@ const WhyChoose: React.FC = () => {
             <div className="hidden md:flex items-center justify-center">
               <div className="relative">
                 {/* Broken Dashboard Visualization */}
-                <div className="glass-card p-6 md:p-8 max-w-sm">
+                <div className="glass-card p-6 md:p-8 max-w-sm border-2 border-red-200 rounded-2xl">
                   <div className="space-y-4">
                     {/* Header */}
                     <div className="flex items-center justify-between">
@@ -243,17 +243,21 @@ const WhyChoose: React.FC = () => {
 
                     {/* Warning Alerts */}
                     <div className="space-y-2 mt-4">
-                      <div className="flex items-center space-x-2 text-xs text-red-600 bg-red-50 p-2 rounded">
+                      <div className="bg-red-100 rounded p-1">
+                        <div className="flex items-center space-x-2 text-xs text-red-600 bg-red-50 p-2 rounded border border-red-200">
                         <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
                         </svg>
                         <span>Data silos detected</span>
                       </div>
-                      <div className="flex items-center space-x-2 text-xs text-red-600 bg-red-50 p-2 rounded">
+                      </div>
+                      <div className="bg-red-100 rounded p-1">
+                        <div className="flex items-center space-x-2 text-xs text-red-600 bg-red-50 p-2 rounded border border-red-200">
                         <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
                         </svg>
                         <span>Revenue leaks active</span>
+                        </div>
                       </div>
                     </div>
                   </div>

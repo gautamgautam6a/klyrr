@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { Card, CardContent } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Slider } from '@/components/ui/slider'
+
+// Shared header component for consistent headers
+type HeaderSectionProps = { children: React.ReactNode; className?: string };
+const HeaderSection = ({ children, className = '' }: HeaderSectionProps) => (
+  <h2 className={`text-4xl md:text-5xl font-extrabold text-blue-600 mb-6 text-center heading-gradient ${className}`}>{children}</h2>
+);
 
 const PricingTeaser: React.FC = () => {
   const [monthlyRevenue, setMonthlyRevenue] = useState([100000])
@@ -104,9 +109,9 @@ const PricingTeaser: React.FC = () => {
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-extrabold text-blue-600 mb-6">
+            <HeaderSection>
               What Does KLYRR Cost? — Pricing Teaser
-            </h2>
+            </HeaderSection>
             <div className="space-y-4 max-w-4xl mx-auto">
               <p className="text-2xl font-bold text-black">
                 You're not buying hours.
@@ -120,7 +125,7 @@ const PricingTeaser: React.FC = () => {
           <div className="grid lg:grid-cols-2 gap-8 items-start h-full flex-col">
             {/* ROI Calculator */}
             <div className="flex-1 h-full">
-              <div className="bg-white border border-gray-200 rounded-2xl shadow-sm p-8 ring-2 ring-blue-200 h-full">
+              <div className="glass-card bg-white/80 border-2 border-blue-200 rounded-2xl shadow-md p-8 h-full transition-all duration-300 hover:shadow-xl hover:scale-[1.02]">
                 <div className="text-center mb-8">
                   <h3 className="text-2xl font-bold text-black mb-2">
                     ROI Calculator
@@ -196,7 +201,7 @@ const PricingTeaser: React.FC = () => {
 
             {/* Results Display */}
             <div className="flex-1 h-full">
-              <div className="bg-white border border-gray-200 rounded-2xl shadow-sm p-8 ring-2 ring-blue-200 h-full">
+              <div className="glass-card bg-white/80 border-2 border-blue-200 rounded-2xl shadow-md p-8 h-full transition-all duration-300 hover:shadow-xl hover:scale-[1.02]">
                 <div className="text-center mb-8">
                   <h3 className="text-2xl font-bold text-black mb-2">
                     Your Projected Results
@@ -250,7 +255,7 @@ const PricingTeaser: React.FC = () => {
                     </div>
                   </div>
                 </div>
-                <div className="text-xs text-gray-400 text-center bg-blue-50 p-3 rounded-lg">
+                <div className="text-xs text-gray-400 text-center bg-blue-50 p-3 rounded-2xl border-2 border-blue-200">
                   *Results based on typical KLYRR client outcomes. Actual results may vary.
                 </div>
               </div>
@@ -260,7 +265,7 @@ const PricingTeaser: React.FC = () => {
           {/* Benefits Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 my-12 md:my-16 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
             {benefits.map((benefit, index) => (
-              <Card key={index} className="interactive-card group">
+              <Card key={index} className="rounded-2xl border-2 border-blue-200 bg-card text-card-foreground shadow interactive-card group">
                 <CardContent className="p-6 text-center">
                   <div className="icon-modern mx-auto mb-4 group-hover:scale-110 group-hover:shadow-lg">
                     {benefit.icon}

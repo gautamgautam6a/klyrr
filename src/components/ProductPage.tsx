@@ -9,6 +9,12 @@ const engineTiers = [
   { tier: 'Revenue Engine', outcome: 'Fully autonomous pipeline machine', who: 'SaaS teams offloading GTM to scale fast' },
 ]
 
+// Shared header component for consistent headers
+type HeaderSectionProps = { children: React.ReactNode; className?: string };
+const HeaderSection = ({ children, className = '' }: HeaderSectionProps) => (
+  <h2 className={`text-4xl md:text-5xl font-extrabold text-blue-600 mb-6 text-center heading-gradient ${className}`}>{children}</h2>
+);
+
 const ProductPage: React.FC = () => (
   <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden gradient-hero">
     {/* Background Elements */}
@@ -26,12 +32,15 @@ const ProductPage: React.FC = () => (
     <div className="container relative z-10 max-w-5xl mx-auto">
       {/* Hero Section */}
       <div className="pt-32 pb-16 text-center animate-fade-in-up">
-        <Badge className="px-4 py-2 text-sm font-medium bg-gradient-to-r from-blue-50 to-blue-100 border-blue-200 text-blue-700 border mb-6">
+        <Badge className="px-4 py-2 text-sm font-medium bg-blue-50 border-2 border-blue-200 text-blue-700 rounded-2xl mb-6">
           Zero-to-Pipeline Engine
         </Badge>
-        <h1 className="hero-text text-balance mb-4">
-          You Don’t Need More Leads. You Need Pipeline That Converts.
-        </h1>
+        <HeaderSection>
+          You Don't Need More Leads. You Need Pipeline That Converts.
+        </HeaderSection>
+        <HeaderSection className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-blue-600 text-balance mb-6">
+          The Zero-to-Pipeline Engine
+        </HeaderSection>
         <h2 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-blue-600 text-balance mb-6">
           You're not short on activity — you're short on systems that deliver results.
         </h2>
@@ -50,14 +59,14 @@ const ProductPage: React.FC = () => (
       {/* Problem Section */}
       <div className="mb-16 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
         <h3 className="text-2xl md:text-3xl font-bold text-red-600 mb-4 text-center">❌ The Problem You're Tolerating</h3>
-        <h4 className="text-xl font-semibold text-center mb-2">You think it’s a volume issue. It’s a system failure.</h4>
+        <h4 className="text-xl font-semibold text-center mb-2">You think it's a volume issue. It's a system failure.</h4>
         <div className="max-w-2xl mx-auto mb-4">
           <ul className="list-disc list-inside text-lg text-foreground/80 space-y-2 text-left">
             <li>SDRs burn out chasing the wrong ICPs</li>
             <li>Founders are still doing manual follow-ups</li>
-            <li>Sequences sound “smart,” but get ghosted</li>
-            <li>Agencies pitch “awareness,” not conversions</li>
-            <li>You’re leaking time, trust, and cash — daily</li>
+            <li>Sequences sound "smart," but get ghosted</li>
+            <li>Agencies pitch "awareness," not conversions</li>
+            <li>You're leaking time, trust, and cash — daily</li>
           </ul>
         </div>
         <blockquote className="italic text-center text-foreground/70 max-w-2xl mx-auto border-l-4 border-blue-500 pl-4 py-2">
@@ -69,31 +78,31 @@ const ProductPage: React.FC = () => (
         <h3 className="text-2xl md:text-3xl font-bold text-blue-600 mb-4 text-center">✅ What the Zero-to-Pipeline Engine Actually Does</h3>
         <h4 className="text-xl font-semibold text-center mb-6">A GTM Growth Stack — Installed, Not Consulted</h4>
         <p className="text-center text-lg text-foreground/70 mb-8 max-w-2xl mx-auto">
-          We don’t sell outreach. We install the system that delivers results across cold, warm, and inbound.
+          We don't sell outreach. We install the system that delivers results across cold, warm, and inbound.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-6">
           <Card className="interactive-card group"><CardContent className="p-6"><div className="font-bold text-lg mb-2 flex items-center gap-2">🎯 ICP Mapping + Data Enrichment</div><div className="text-foreground/70">→ Built with Clay, Apollo, Groq — 100% precision targeting</div></CardContent></Card>
           <Card className="interactive-card group"><CardContent className="p-6"><div className="font-bold text-lg mb-2 flex items-center gap-2">📬 Cold Outreach System</div><div className="text-foreground/70">→ Persona-specific email & LinkedIn flows that create urgency, not annoyance</div></CardContent></Card>
           <Card className="interactive-card group"><CardContent className="p-6"><div className="font-bold text-lg mb-2 flex items-center gap-2">🧠 Reply Intelligence Bot</div><div className="text-foreground/70">→ AI replies instantly to objections, FAQs, and CTAs — so no lead goes cold</div></CardContent></Card>
           <Card className="interactive-card group"><CardContent className="p-6"><div className="font-bold text-lg mb-2 flex items-center gap-2">📈 Inbound Amplification</div><div className="text-foreground/70">→ CRO-tuned landing pages + proof-rich content built to convert silent lurkers</div></CardContent></Card>
-          <Card className="interactive-card group"><CardContent className="p-6"><div className="font-bold text-lg mb-2 flex items-center gap-2">🧪 Weekly Signal-Based Optimization</div><div className="text-foreground/70">→ Every reply type, every bounce, every “not now” feeds back into smarter ops</div></CardContent></Card>
+          <Card className="interactive-card group"><CardContent className="p-6"><div className="font-bold text-lg mb-2 flex items-center gap-2">🧪 Weekly Signal-Based Optimization</div><div className="text-foreground/70">→ Every reply type, every bounce, every "not now" feeds back into smarter ops</div></CardContent></Card>
         </div>
       </div>
       {/* Engine Intensity Table */}
       <div className="mb-16 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
         <h3 className="text-2xl md:text-3xl font-bold text-blue-600 mb-4 text-center">🧩 Choose Your Engine Intensity</h3>
         <div className="overflow-x-auto">
-          <table className="min-w-full border border-blue-200 rounded-xl overflow-hidden">
+          <table className="min-w-full border-2 border-blue-200 rounded-2xl overflow-hidden shadow-md">
             <thead>
-              <tr className="bg-blue-50">
+              <tr className="bg-blue-50 border-b border-blue-200">
                 <th className="px-6 py-3 text-left text-xs font-medium text-blue-700 uppercase tracking-wider">Tier</th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-blue-700 uppercase tracking-wider">Outcome</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-blue-700 uppercase tracking-wider">Who It’s For</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-blue-700 uppercase tracking-wider">Who It's For</th>
               </tr>
             </thead>
             <tbody>
               {engineTiers.map((row, idx) => (
-                <tr key={idx} className="border-t border-blue-100 bg-white hover:bg-blue-50 transition-colors">
+                <tr key={idx} className="border-t border-blue-200 bg-white/80 hover:bg-blue-50 transition-colors">
                   <td className="px-6 py-4 font-semibold text-blue-700">{row.tier}</td>
                   <td className="px-6 py-4 text-foreground/80">{row.outcome}</td>
                   <td className="px-6 py-4 text-foreground/70">{row.who}</td>
@@ -103,21 +112,21 @@ const ProductPage: React.FC = () => (
           </table>
         </div>
         <blockquote className="italic text-center text-foreground/70 max-w-2xl mx-auto border-l-4 border-blue-500 pl-4 py-2 mt-6">
-          💡 This isn’t deliverables. It’s designed outcomes.<br/>
+          💡 This isn't deliverables. It's designed outcomes.<br/>
           Remove one layer — and you remove compound results.
         </blockquote>
       </div>
       {/* Who It's For Section */}
       <div className="mb-16 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
-        <h3 className="text-2xl md:text-3xl font-bold text-blue-600 mb-4 text-center">🎯 Who It’s For</h3>
+        <h3 className="text-2xl md:text-3xl font-bold text-blue-600 mb-4 text-center">🎯 Who It's For</h3>
         <ul className="list-disc list-inside text-lg text-foreground/80 space-y-2 max-w-2xl mx-auto text-left mb-4">
-          <li>You’ve wasted months on SDRs, agencies, or internal hacks</li>
+          <li>You've wasted months on SDRs, agencies, or internal hacks</li>
           <li>You're sending 100s of emails and getting silence</li>
-          <li>You’re still jumping on cold calls just to keep the funnel alive</li>
-          <li>You <em>feel</em> like you’re working hard — but growth isn’t compounding</li>
+          <li>You're still jumping on cold calls just to keep the funnel alive</li>
+          <li>You <em>feel</em> like you're working hard — but growth isn't compounding</li>
         </ul>
         <blockquote className="italic text-center text-foreground/70 max-w-2xl mx-auto border-l-4 border-blue-500 pl-4 py-2">
-          It’s not you. It’s the system you haven’t installed yet.
+          It's not you. It's the system you haven't installed yet.
         </blockquote>
       </div>
       {/* Real Results Section */}
@@ -125,7 +134,7 @@ const ProductPage: React.FC = () => (
         <h3 className="text-2xl md:text-3xl font-bold text-blue-600 mb-4 text-center">📊 Real Results</h3>
         <ul className="list-disc list-inside text-lg text-foreground/80 space-y-2 max-w-2xl mx-auto text-left mb-4">
           <li>📈 31 demos in 30 days from just 1 sequence</li>
-          <li>💰 $82K pipeline from “non-buyers” reactivated by AI</li>
+          <li>�� $82K pipeline from "non-buyers" reactivated by AI</li>
           <li>💡 3.4x close rate increase after removing founder from calls</li>
           <li>🔁 44% reply rate using pain-first, pattern-breaker messaging</li>
         </ul>
@@ -142,11 +151,11 @@ const ProductPage: React.FC = () => (
       {/* Final CTA Section */}
       <div className="text-center animate-fade-in-up mb-24" style={{ animationDelay: '0.8s' }}>
         <h3 className="text-2xl font-bold text-foreground mb-4">
-          How many more weeks will you spend guessing why cold leads don’t convert?
+          How many more weeks will you spend guessing why cold leads don't convert?
         </h3>
         <p className="text-foreground/70 mb-8">
-          You don’t need another tool. You need a system.<br/>
-          This one installs in weeks, runs on signal — and doesn’t break.
+          You don't need another tool. You need a system.<br/>
+          This one installs in weeks, runs on signal — and doesn't break.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button className="btn-hero text-white px-8 py-4 text-lg group">

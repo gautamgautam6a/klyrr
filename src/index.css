@@ -183,9 +183,7 @@
   
   /* Enhanced Typography */
   .gradient-text {
-    @apply bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 bg-clip-text text-transparent;
-    background-size: 200% auto;
-    animation: gradient-shift 4s ease-in-out infinite;
+    @apply text-blue-600;
   }
   
   .hero-text {
