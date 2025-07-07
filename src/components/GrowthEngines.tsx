@@ -30,7 +30,7 @@ const GrowthEngines: React.FC = () => {
       id: 'zero-pipeline',
       icon: (
         <svg width={64} height={64} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
         </svg>
       ),
       color: "from-blue-500 to-indigo-600",
@@ -45,7 +45,7 @@ const GrowthEngines: React.FC = () => {
       id: 'conversion-killshot',
       icon: (
         <svg width={64} height={64} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
       ),
       color: "from-emerald-500 to-teal-600",
@@ -60,7 +60,7 @@ const GrowthEngines: React.FC = () => {
       id: 'inbound-magnet',
       icon: (
         <svg width={64} height={64} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
         </svg>
       ),
       color: "from-purple-500 to-pink-600",
@@ -75,7 +75,7 @@ const GrowthEngines: React.FC = () => {
       id: 'abm-fastlane',
       icon: (
         <svg width={64} height={64} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
         </svg>
       ),
       color: "from-orange-500 to-red-600",
@@ -90,7 +90,7 @@ const GrowthEngines: React.FC = () => {
       id: 'founder-signal',
       icon: (
         <svg width={64} height={64} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
         </svg>
       ),
       color: "from-cyan-500 to-blue-600",
@@ -105,7 +105,7 @@ const GrowthEngines: React.FC = () => {
       id: 'land-expand',
       icon: (
         <svg width={64} height={64} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
         </svg>
       ),
       color: "from-violet-500 to-purple-600",
@@ -130,12 +130,12 @@ const GrowthEngines: React.FC = () => {
     : engines.filter(engine => engine.category === selectedCategory)
 
   return (
-    <section id="engines" className="section-padding gradient-section">
-      <div className="container relative z-10">
+    <section id="engines" className="section-padding section-spacing gradient-section animate-fade-in-up">
+      <div className="container relative z-10 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
         <div className="max-w-7xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-16 animate-fade-in-up">
-            <Badge className="mb-4 px-4 py-2 bg-blue-600 text-white border-0 shadow-lg glow-badge">
+          <div className="text-center mb-8 lg:mb-10 animate-fade-in-up">
+            <Badge className="inline-flex items-center rounded-md text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-0 bg-blue-600 text-white shadow-lg glow-badge px-4 py-2 mb-4">
               Product Offering
             </Badge>
             <HeaderSection>
@@ -152,7 +152,7 @@ const GrowthEngines: React.FC = () => {
           </div>
 
           {/* Category Filter */}
-          <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-8 md:mb-12 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+          <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-6 md:mb-8 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
             {categories.map((category) => (
               <button
                 key={category.id}
@@ -172,7 +172,7 @@ const GrowthEngines: React.FC = () => {
           </div>
 
           {/* Engines Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8 mb-12 md:mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-6 mb-8 md:mb-10">
             {filteredEngines.map((engine, index) => (
               <Card 
                 key={engine.id}
@@ -195,7 +195,7 @@ const GrowthEngines: React.FC = () => {
                     <div className="flex items-start space-x-3 mb-4">
                       <div className="flex-shrink-0 mt-1">
                         <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                         </svg>
                       </div>
                       <p className="text-foreground/80 font-semibold group-hover:text-foreground transition-colors duration-300 leading-relaxed">
@@ -261,7 +261,7 @@ const GrowthEngines: React.FC = () => {
 
           {/* Interactive Engine Flow Visualization */}
           <div className="mb-16 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
-            <div className="glass-card rounded-2xl border-2 border-blue-200 p-8 lg:p-12 shadow-md transition-all duration-300 hover:shadow-xl hover:scale-[1.02]">
+            <div className="glass-card rounded-2xl border-2 border-blue-200 p-8 lg:p-12 shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-[1.02]">
               <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
                 {/* Left: Description */}
                 <div>
@@ -303,7 +303,7 @@ const GrowthEngines: React.FC = () => {
                 <div className="hidden md:flex items-center justify-center">
                   <div className="relative">
                     {/* Central Hub */}
-                    <div className="glass-card p-6 rounded-2xl">
+                    <div className="glass-card p-6 rounded-2xl transition-all duration-300 hover:shadow-xl hover:scale-[1.02]">
                       <div className="w-32 h-32 bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl flex items-center justify-center relative">
                         <div className="text-center">
                           <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center mb-2 mx-auto">
@@ -321,7 +321,7 @@ const GrowthEngines: React.FC = () => {
 
                     {/* Orbiting Engine Nodes */}
                     <div className="absolute -top-8 left-1/2 transform -translate-x-1/2">
-                      <div className="w-16 h-16 bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-xl flex items-center justify-center border-2 border-emerald-200 animate-pulse">
+                      <div className="w-16 h-16 bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-xl flex items-center justify-center border-2 border-emerald-200 animate-pulse transition-all duration-300 hover:shadow-xl hover:scale-[1.02]">
                         <svg className="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                         </svg>
@@ -329,7 +329,7 @@ const GrowthEngines: React.FC = () => {
                     </div>
 
                     <div className="absolute -right-8 top-1/2 transform -translate-y-1/2">
-                      <div className="w-16 h-16 bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl flex items-center justify-center border-2 border-purple-200 animate-pulse" style={{animationDelay: '0.5s'}}>
+                      <div className="w-16 h-16 bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl flex items-center justify-center border-2 border-purple-200 animate-pulse transition-all duration-300 hover:shadow-xl hover:scale-[1.02]" style={{animationDelay: '0.5s'}}>
                         <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                         </svg>
@@ -337,7 +337,7 @@ const GrowthEngines: React.FC = () => {
                     </div>
 
                     <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2">
-                      <div className="w-16 h-16 bg-gradient-to-br from-orange-50 to-orange-100 rounded-xl flex items-center justify-center border-2 border-orange-200 animate-pulse" style={{animationDelay: '1s'}}>
+                      <div className="w-16 h-16 bg-gradient-to-br from-orange-50 to-orange-100 rounded-xl flex items-center justify-center border-2 border-orange-200 animate-pulse transition-all duration-300 hover:shadow-xl hover:scale-[1.02]" style={{animationDelay: '1s'}}>
                         <svg className="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10" />
                         </svg>
@@ -345,7 +345,7 @@ const GrowthEngines: React.FC = () => {
                     </div>
 
                     <div className="absolute -left-8 top-1/2 transform -translate-y-1/2">
-                      <div className="w-16 h-16 bg-gradient-to-br from-amber-50 to-amber-100 rounded-xl flex items-center justify-center border-2 border-amber-200 animate-pulse" style={{animationDelay: '1.5s'}}>
+                      <div className="w-16 h-16 bg-gradient-to-br from-amber-50 to-amber-100 rounded-xl flex items-center justify-center border-2 border-amber-200 animate-pulse transition-all duration-300 hover:shadow-xl hover:scale-[1.02]" style={{animationDelay: '1.5s'}}>
                         <svg className="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />

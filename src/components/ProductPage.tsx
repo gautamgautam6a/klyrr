@@ -32,26 +32,26 @@ const ProductPage: React.FC = () => (
     <div className="container relative z-10 max-w-5xl mx-auto">
       {/* Hero Section */}
       <div className="pt-32 pb-16 text-center animate-fade-in-up">
-        <Badge className="px-4 py-2 text-sm font-medium bg-blue-50 border-2 border-blue-200 text-blue-700 rounded-2xl mb-6">
+        <Badge className="inline-flex items-center rounded-md text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-0 bg-blue-600 text-white shadow-lg glow-badge px-4 py-2 mb-6">
           Zero-to-Pipeline Engine
         </Badge>
         <HeaderSection>
           You Don't Need More Leads. You Need Pipeline That Converts.
         </HeaderSection>
-        <HeaderSection className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-blue-600 text-balance mb-6">
-          The Zero-to-Pipeline Engine
-        </HeaderSection>
         <h2 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-blue-600 text-balance mb-6">
-          You're not short on activity — you're short on systems that deliver results.
+          The Zero-to-Pipeline Engine
         </h2>
+        <h3 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-blue-600 text-balance mb-6">
+          You're not short on activity — you're short on systems that deliver results.
+        </h3>
         <p className="text-xl md:text-2xl text-foreground/70 max-w-2xl mx-auto text-balance mb-8">
           KLYRR installs a zero-to-pipeline engine that books 15–20 qualified demos in 30–45 days. No fluff. No freelancers. No guessing.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-          <Button className="btn-hero text-white px-8 py-4 text-lg group">
+          <Button className="inline-flex items-center justify-center gap-2 h-9 px-8 py-4 text-base rounded-md bg-blue-600 hover:bg-blue-700 text-white shadow-lg hover:shadow-xl transition-all duration-300 font-medium group">
             <span className="relative z-10">🧠 Book Free Funnel Diagnosis</span>
           </Button>
-          <Button className="px-8 py-4 text-lg group bg-white/50 backdrop-blur-sm hover:bg-white/70 border-2 border-blue-200 hover:border-blue-300">
+          <Button className="inline-flex items-center justify-center gap-2 h-9 px-8 py-4 text-base rounded-md bg-white/50 backdrop-blur-sm hover:bg-white/70 border-2 border-blue-200 hover:border-blue-300 transition-all duration-300 font-medium group">
             <span className="relative z-10">📩 See Real Campaigns</span>
           </Button>
         </div>
@@ -158,10 +158,10 @@ const ProductPage: React.FC = () => (
           This one installs in weeks, runs on signal — and doesn't break.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button className="btn-hero text-white px-8 py-4 text-lg group">
+          <Button className="inline-flex items-center justify-center gap-2 h-9 px-8 py-4 text-base rounded-md bg-blue-600 hover:bg-blue-700 text-white shadow-lg hover:shadow-xl transition-all duration-300 font-medium group">
             <span className="relative z-10">🧠 Book Your Diagnosis</span>
           </Button>
-          <Button className="px-8 py-4 text-lg group bg-white/50 backdrop-blur-sm hover:bg-white/70 border-2 border-blue-200 hover:border-blue-300">
+          <Button className="inline-flex items-center justify-center gap-2 h-9 px-8 py-4 text-base rounded-md bg-white/50 backdrop-blur-sm hover:bg-white/70 border-2 border-blue-200 hover:border-blue-300 transition-all duration-300 font-medium group">
             <span className="relative z-10">📩 Ask for a Campaign Breakdown</span>
           </Button>
         </div>

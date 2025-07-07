@@ -35,7 +35,7 @@ const Hero: React.FC = () => {
   }
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden gradient-hero">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden gradient-hero animate-fade-in-up">
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Floating geometric shapes */}
@@ -55,12 +55,12 @@ const Hero: React.FC = () => {
       </div>
 
       <div className="container relative z-10">
-        <div className="grid lg:grid-cols-2 gap-8 md:gap-12 xl:gap-16 items-center min-h-[80vh] mt-[100px]">
+        <div className="grid lg:grid-cols-2 gap-8 md:gap-12 xl:gap-16 items-center min-h-[80vh] mt-[100px] animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
           {/* Left Column - Content */}
           <div className="space-y-8 text-center lg:text-left">
             {/* Badge */}
             <div className="inline-flex animate-fade-in-up">
-              <Badge className="px-4 py-2 text-sm font-medium bg-blue-600 text-white shadow-lg glow-badge">
+              <Badge className="inline-flex items-center rounded-md text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-0 bg-blue-600 text-white shadow-lg glow-badge px-4 py-2">
                 <span className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
                   Modular GTM Systems for SaaS Growth
@@ -69,7 +69,7 @@ const Hero: React.FC = () => {
             </div>
 
             {/* Main Headline */}
-            <div className="space-y-4 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+            <div className="space-y-4 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
               <h1 className="hero-text text-balance">
                 What If Your Growth Has Already{' '}
                 <span className="inline-block min-w-[160px] md:min-w-[200px] text-left">
@@ -83,12 +83,12 @@ const Hero: React.FC = () => {
             </div>
 
             {/* Subheadline */}
-            <p className="text-xl md:text-2xl text-foreground/70 max-w-2xl text-balance animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+            <p className="text-xl md:text-2xl text-foreground/70 max-w-2xl text-balance animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
               Leads look fine. Metrics look "okay." But deals keep slipping, buyers ghost, and your CAC quietly climbs.
             </p>
 
             {/* Value Props */}
-            <div className="glass-card p-6 lg:p-8 animate-scale-in rounded-2xl border-2 border-blue-200 shadow-md" style={{ animationDelay: '0.6s' }}>
+            <div className="glass-card p-6 lg:p-8 animate-scale-in rounded-2xl border-2 border-blue-200 shadow-md" style={{ animationDelay: '0.8s' }}>
               <p className="text-lg md:text-xl text-foreground/80 mb-6 font-semibold">
                 <span className="gradient-text">KLYRR installs modular GTM systems</span> that replace duct-taped growth with predictable pipeline, conversion, and expansion — in days, not quarters.
               </p>
@@ -97,7 +97,7 @@ const Hero: React.FC = () => {
                 <div className="flex items-center space-x-3 group">
                   <div className="icon-modern group-hover:scale-110">
                     <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
                   <span className="font-medium text-foreground/80">Built for SaaS Founders</span>
@@ -105,7 +105,7 @@ const Hero: React.FC = () => {
                 <div className="flex items-center space-x-3 group">
                   <div className="icon-modern group-hover:scale-110">
                     <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
                   </div>
                   <span className="font-medium text-foreground/80">Installs in days — no hires, no retainers</span>
@@ -113,7 +113,7 @@ const Hero: React.FC = () => {
                 <div className="flex items-center space-x-3 group md:col-span-1">
                   <div className="icon-modern group-hover:scale-110">
                     <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
                     </svg>
                   </div>
                   <span className="font-medium text-foreground/80">Powered by Clay, Apollo, Groq & KLYRR's GTM OS</span>
@@ -122,14 +122,14 @@ const Hero: React.FC = () => {
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in-up" style={{ animationDelay: '0.8s' }}>
-              <Button className="btn-hero text-white px-8 py-4 text-lg group" onClick={() => scrollToSection('engines')}>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in-up" style={{ animationDelay: '1s' }}>
+              <Button className="inline-flex items-center justify-center gap-2 h-9 px-8 py-4 text-base rounded-md bg-blue-600 hover:bg-blue-700 text-white shadow-lg hover:shadow-xl transition-all duration-300 font-medium group" onClick={() => scrollToSection('engines')}>
                 <span className="relative z-10">Fix My Funnel Now</span>
                 <svg className="w-5 h-5 ml-2 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
               </Button>
-              <Button className="px-8 py-4 text-lg group bg-white/50 backdrop-blur-sm hover:bg-white/70 border-2 border-blue-200 hover:border-blue-300" onClick={() => scrollToSection('pricing')}>
+              <Button className="inline-flex items-center justify-center gap-2 h-9 px-8 py-4 text-base rounded-md bg-white/50 backdrop-blur-sm hover:bg-white/70 border-2 border-blue-200 hover:border-blue-300 transition-all duration-300 font-medium group" onClick={() => scrollToSection('pricing')}>
                 <svg className="w-5 h-5 mr-2 transition-transform duration-200 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
@@ -139,7 +139,7 @@ const Hero: React.FC = () => {
           </div>
 
           {/* Right Column - Visual */}
-          <div className="hidden md:flex items-center justify-center animate-scale-in" style={{ animationDelay: '1s' }}>
+          <div className="hidden md:flex items-center justify-center animate-scale-in ml-8 lg:ml-12" style={{ animationDelay: '1.2s' }}>
             <div className="relative">
               {/* Main Dashboard Preview */}
               <div className="glass-card p-8 max-w-md rounded-2xl border-2 border-blue-200 shadow-md">

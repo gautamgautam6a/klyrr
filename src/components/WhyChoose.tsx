@@ -43,7 +43,7 @@ const WhyChoose: React.FC = () => {
       label: 'SQLs booked in 90 days',
       icon: (
         <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
         </svg>
       ),
       color: 'text-blue-600'
@@ -54,7 +54,7 @@ const WhyChoose: React.FC = () => {
       label: 'increase in demo-to-close rate',
       icon: (
         <svg className="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
         </svg>
       ),
       color: 'text-emerald-600'
@@ -66,7 +66,7 @@ const WhyChoose: React.FC = () => {
       label: 'in revenue recovered',
       icon: (
         <svg className="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
         </svg>
       ),
       color: 'text-amber-600'
@@ -77,7 +77,7 @@ const WhyChoose: React.FC = () => {
       label: 'clients crossed $1M ARR in under 120 days',
       icon: (
         <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
         </svg>
       ),
       color: 'text-purple-600'
@@ -88,7 +88,7 @@ const WhyChoose: React.FC = () => {
     {
       icon: (
         <svg className="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
         </svg>
       ),
       text: "SDRs chasing the wrong ICPs"
@@ -96,7 +96,7 @@ const WhyChoose: React.FC = () => {
     {
       icon: (
         <svg className="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
       ),
       text: "Founders stuck in sales calls"
@@ -104,7 +104,7 @@ const WhyChoose: React.FC = () => {
     {
       icon: (
         <svg className="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
         </svg>
       ),
       text: "Demos that go nowhere"
@@ -112,7 +112,7 @@ const WhyChoose: React.FC = () => {
     {
       icon: (
         <svg className="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
         </svg>
       ),
       text: "Channels you keep funding \"just in case\""
@@ -156,16 +156,16 @@ const WhyChoose: React.FC = () => {
   }, [])
 
   return (
-    <section id="why-choose" className="section-padding gradient-section">
+    <section id="why-choose" className="section-padding section-spacing gradient-section animate-fade-in-up mb-20">
       <div className="container mx-auto">
-        <div className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 p-6 md:p-12 max-w-7xl mx-auto border-2 border-blue-200">
+        <div className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 p-6 md:p-8 lg:p-10 max-w-7xl mx-auto border-2 border-blue-200 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
           {/* Section Header */}
-          <div className="text-center mb-16 animate-fade-in-up">
-            <Badge className="mb-4 px-4 py-2 bg-gradient-to-r from-blue-50 to-blue-100 border-blue-200 text-blue-700 border">
+          <div className="text-center mb-8 lg:mb-10 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+            <Badge className="inline-flex items-center rounded-md text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-0 bg-blue-600 text-white shadow-lg glow-badge px-4 py-2 mb-4">
               Social Proof & Results
             </Badge>
-            <h2 className="gradient-text text-balance mb-6">
-              Why Choose KLYRR — Proof + Trust
+            <h2 className="text-4xl md:text-5xl font-extrabold text-blue-600 mb-6 text-center">
+              Why Choose KLYRR — <span className="text-blue-600">Proof + Trust</span>
             </h2>
             <p className="text-xl text-foreground/70 max-w-3xl mx-auto text-balance">
               You don't need another agency. You need an operating system for growth — one that's already compounding for teams like yours.
@@ -173,7 +173,7 @@ const WhyChoose: React.FC = () => {
           </div>
 
           {/* Before/After Comparison with Visual */}
-          <div className="grid lg:grid-cols-2 gap-8 md:gap-12 mb-16 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+          <div className="grid lg:grid-cols-2 gap-6 md:gap-8 mb-10 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
             {/* Problem Statement */}
             <div>
               <Card className="glass-card border-red-200/50 h-full">
@@ -275,9 +275,9 @@ const WhyChoose: React.FC = () => {
           </div>
 
           {/* Metrics Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-16 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-16 animate-fade-in-up" style={{ animationDelay: '0.8s' }}>
             {metrics.map((metric, index) => (
-              <Card key={index} className="metric-card group">
+              <Card key={index} className="metric-card group border-2 border-blue-200 rounded-xl bg-card text-card-foreground shadow">
                 <CardContent className="p-6 text-center">
                   <div className="icon-modern mx-auto mb-4 group-hover:scale-110 group-hover:shadow-lg">
                     {metric.icon}
@@ -297,7 +297,7 @@ const WhyChoose: React.FC = () => {
           </div>
 
           {/* Testimonial Carousel */}
-          <div className="mb-16 animate-scale-in" style={{ animationDelay: '0.6s' }}>
+          <div className="mb-16 animate-scale-in" style={{ animationDelay: '1s' }}>
             <Card className="glass-card border-blue-200/50 relative overflow-hidden">
               <CardContent className="p-8 lg:p-12">
                 {/* Quote icon */}
@@ -347,7 +347,7 @@ const WhyChoose: React.FC = () => {
           </div>
 
           {/* Trust Indicators */}
-          <div className="text-center mb-16 animate-fade-in-up" style={{ animationDelay: '0.8s' }}>
+          <div className="text-center mb-16 animate-fade-in-up" style={{ animationDelay: '1.2s' }}>
             <div className="inline-flex flex-wrap items-center gap-8 justify-center">
               <div className="flex items-center space-x-2 text-foreground/60">
                 <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -371,7 +371,7 @@ const WhyChoose: React.FC = () => {
           </div>
 
           {/* CTA */}
-          <div className="text-center animate-fade-in-up" style={{ animationDelay: '1s' }}>
+          <div className="text-center animate-fade-in-up" style={{ animationDelay: '1.4s' }}>
             <Button className="btn-hero text-white px-8 py-4 text-lg group">
               <svg className="w-5 h-5 mr-2 transition-transform duration-200 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />

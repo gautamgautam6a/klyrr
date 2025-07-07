@@ -12,7 +12,8 @@ import LandExpand from './components/engines/LandExpand'
 import { StagewiseToolbar } from '@stagewise/toolbar-react'
 import { ReactPlugin } from '@stagewise-plugins/react'
 import Footer from './components/Footer'
-import WhatsAtStake from './components/WhatsAtStake'
+import CTA from './components/CTA'
+
 import WhyChoose from './components/WhyChoose'
 import Philosophy from './components/Philosophy'
 import HowItWorks from './components/HowItWorks'
@@ -29,11 +30,11 @@ function App() {
             <>
               <Hero />
               <GrowthEngines />
-              <WhatsAtStake />
               <WhyChoose />
               <Philosophy />
               <HowItWorks />
               <PricingTeaser />
+              <CTA />
             </>
           } />
           <Route path="/product" element={<ProductPage />} />
