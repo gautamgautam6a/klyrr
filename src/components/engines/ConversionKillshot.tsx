@@ -33,15 +33,11 @@ const ConversionKillshot: React.FC = () => {
       <div className="container relative z-10 max-w-5xl mx-auto">
         {/* Hero Section */}
         <div className="pt-32 pb-16 text-center animate-fade-in-up">
-          <Badge className="px-4 py-2 text-sm font-medium bg-gradient-to-r from-red-50 to-red-100 border-red-200 text-red-700 border mb-6">
+          <Badge className="inline-flex items-center rounded-md text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-0 bg-emerald-600 text-white shadow-lg glow-badge px-4 py-2 mb-6">
             Conversion Killshot Engine
           </Badge>
-          <h1 className="hero-text text-balance mb-4">
-            {loading ? (
-              <span className="shimmer">Your Demos Aren't Bad. They're Quietly Killing Your Close Rate.</span>
-            ) : (
-              <span>Your Demos Aren't Bad. They're Quietly Killing Your Close Rate.</span>
-            )}
+          <h1 className="text-4xl md:text-5xl font-extrabold text-emerald-600 mb-6 text-center heading-gradient text-balance mb-4">
+            Your Demos Aren't Bad. They're Quietly Killing Your Close Rate.
           </h1>
           <h2 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-emerald-600 text-balance mb-6">
             KLYRR's Conversion Killshot Engine turns broken demos into high-converting sales machines — powered by real buyer psychology, AI training loops, and repeatable pitch systems.

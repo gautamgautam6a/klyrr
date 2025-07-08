@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Button } from '@/components/ui/button'
 import { Slider } from '@/components/ui/slider'
 import { Badge } from '@/components/ui/badge'
+import { Users, UserPlus, Clock, FileText, CheckCircle } from 'lucide-react'
 
 // Shared header component for consistent headers
 type HeaderSectionProps = { children: React.ReactNode; className?: string };
@@ -24,36 +25,28 @@ const PricingTeaser: React.FC = () => {
   const benefits = [
     {
       icon: (
-        <svg className="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-        </svg>
+        <Users className="w-7 h-7 text-blue-500" />
       ),
       title: "One-time engine installs",
       description: "No recurring fees"
     },
     {
       icon: (
-        <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
+        <Clock className="w-7 h-7 text-blue-500" />
       ),
       title: "30–90 day payback periods",
       description: "Fast ROI"
     },
     {
       icon: (
-        <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-        </svg>
+        <FileText className="w-7 h-7 text-purple-500" />
       ),
       title: "Transparent, scope-based pricing",
       description: "No hidden costs"
     },
     {
       icon: (
-        <svg className="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
-        </svg>
+        <UserPlus className="w-7 h-7 text-orange-500" />
       ),
       title: "2 referrals = 1 free engine tune-up",
       description: "Referral rewards"
@@ -103,7 +96,7 @@ const PricingTeaser: React.FC = () => {
   }
 
   return (
-    <section id="pricing" className="section-padding section-spacing bg-gradient-to-b from-white to-gray-50/50 mb-20">
+    <section id="pricing" className="section-padding section-spacing gradient-section animate-fade-in-up pt-0 pb-0">
       <div className="container mx-auto">
         <div className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 p-6 md:p-8 lg:p-10 max-w-7xl mx-auto border-2 border-blue-200">
           {/* Section Header */}
@@ -237,14 +230,14 @@ const PricingTeaser: React.FC = () => {
               <div className="bg-white rounded-2xl border-2 border-blue-200 shadow-md p-8 transition-all duration-300 hover:shadow-xl">
                 <h3 className="text-2xl font-bold text-gray-900 mb-6">Why Choose KLYRR</h3>
                 <div className="grid sm:grid-cols-2 gap-6">
-                  {benefits.map((benefit, index) => (
-                    <div key={index} className="flex items-start gap-4 p-4 rounded-xl bg-blue-50 hover:bg-blue-100 transition-colors duration-300">
-                      <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-white flex items-center justify-center shadow-sm">
+                  {benefits.map((benefit, idx) => (
+                    <div key={idx} className="flex items-start gap-4 p-4 rounded-xl bg-blue-50 hover:bg-blue-100 transition-colors duration-300 group">
+                      <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-white flex items-center justify-center shadow-sm border border-blue-200 transition-colors duration-300 group-hover:text-blue-600 text-blue-300">
                         {benefit.icon}
                       </div>
-                      <div className="flex-1">
-                        <h4 className="font-semibold text-gray-900 mb-1">{benefit.title}</h4>
-                        <p className="text-sm text-gray-600">{benefit.description}</p>
+                      <div>
+                        <div className="font-bold text-lg text-foreground mb-1 group-hover:text-blue-600 transition-colors duration-300">{benefit.title}</div>
+                        <div className="text-foreground/60 text-sm">{benefit.description}</div>
                       </div>
                     </div>
                   ))}

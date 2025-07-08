@@ -1,3 +1,4 @@
+import React, { useState, createContext, useContext } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
@@ -10,7 +11,7 @@ import SalesOnboarding from './components/engines/SalesOnboarding'
 import FounderSignal from './components/engines/FounderSignal'
 import LandExpand from './components/engines/LandExpand'
 import { StagewiseToolbar } from '@stagewise/toolbar-react'
-import { ReactPlugin } from '@stagewise-plugins/react'
+import ReactPlugin from '@stagewise-plugins/react'
 import Footer from './components/Footer'
 import CTA from './components/CTA'
 
@@ -18,10 +19,19 @@ import WhyChoose from './components/WhyChoose'
 import Philosophy from './components/Philosophy'
 import HowItWorks from './components/HowItWorks'
 import PricingTeaser from './components/PricingTeaser'
+import FunnelFormModal from './components/FunnelFormModal'
 
-function App() {
+// Create a context to allow any component to open the modal
+export const FunnelModalContext = createContext({ openModal: () => {} });
+export const useFunnelModal = () => useContext(FunnelModalContext);
+
+const App: React.FC = () => {
+  const [modalOpen, setModalOpen] = useState(false);
+  const openModal = () => setModalOpen(true);
+  const closeModal = () => setModalOpen(false);
+
   return (
-    <>
+    <FunnelModalContext.Provider value={{ openModal }}>
       <StagewiseToolbar config={{ plugins: [ReactPlugin] }} />
       <Router>
         <Navbar />
@@ -47,7 +57,8 @@ function App() {
         </Routes>
         <Footer />
       </Router>
-    </>
+      <FunnelFormModal isOpen={modalOpen} onClose={closeModal} />
+    </FunnelModalContext.Provider>
   )
 }
 

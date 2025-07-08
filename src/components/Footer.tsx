@@ -53,7 +53,7 @@ const Footer: React.FC = () => {
   }
 
   return (
-    <footer className="bg-white border-t border-gray-200 animate-fade-in-up">
+    <footer className="bg-blue-50 border-t border-blue-200 animate-fade-in-up">
       <div className="container mx-auto px-4 py-12 md:py-16 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
           {/* Logo and Description */}
@@ -73,7 +73,7 @@ const Footer: React.FC = () => {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-gray-400 hover:text-gray-500 transition-colors duration-200"
+                  className="text-blue-300 hover:text-blue-600 transition-colors duration-200"
                 >
                   <span className="sr-only">{item.name}</span>
                   {item.icon}
@@ -139,7 +139,7 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Newsletter */}
-        <div className="border-t border-gray-200 pt-8 mb-8">
+        <div className="border-t border-blue-200 pt-8 mb-8">
           <div className="max-w-md">
             <h3 className="text-sm font-semibold text-gray-900 tracking-wider uppercase mb-4">
               Subscribe to our newsletter
@@ -168,7 +168,7 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+        <div className="border-t border-blue-200 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <div className="text-gray-500 text-sm">
             &copy; {new Date().getFullYear()} KLYRR. All rights reserved.
           </div>

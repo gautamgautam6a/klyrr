@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
+import { BarChart2, TrendingUp, DollarSign, Award, AlertTriangle, UserX, Ban, CheckCircle, FileText, Clock, Gift } from 'lucide-react'
 
 const WhyChoose: React.FC = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0)
@@ -41,22 +42,14 @@ const WhyChoose: React.FC = () => {
       value: 150,
       suffix: '+',
       label: 'SQLs booked in 90 days',
-      icon: (
-        <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-        </svg>
-      ),
+      icon: <BarChart2 size={28} strokeWidth={1.5} className="text-blue-600" />,
       color: 'text-blue-600'
     },
     {
       value: 2.7,
       suffix: 'x',
       label: 'increase in demo-to-close rate',
-      icon: (
-        <svg className="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-        </svg>
-      ),
+      icon: <TrendingUp size={28} strokeWidth={1.5} className="text-emerald-600" />,
       color: 'text-emerald-600'
     },
     {
@@ -64,58 +57,61 @@ const WhyChoose: React.FC = () => {
       suffix: 'K',
       prefix: '$',
       label: 'in revenue recovered',
-      icon: (
-        <svg className="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
-        </svg>
-      ),
+      icon: <DollarSign size={28} strokeWidth={1.5} className="text-amber-600" />,
       color: 'text-amber-600'
     },
     {
       value: 3,
       suffix: '',
       label: 'clients crossed $1M ARR in under 120 days',
-      icon: (
-        <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-        </svg>
-      ),
+      icon: <Award size={28} strokeWidth={1.5} className="text-purple-600" />,
       color: 'text-purple-600'
     }
   ]
 
   const painPoints = [
     {
-      icon: (
-        <svg className="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      ),
+      icon: <AlertTriangle size={22} strokeWidth={1.5} className="text-red-600" />,
       text: "SDRs chasing the wrong ICPs"
     },
     {
-      icon: (
-        <svg className="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-      ),
+      icon: <UserX size={22} strokeWidth={1.5} className="text-red-600" />,
       text: "Founders stuck in sales calls"
     },
     {
-      icon: (
-        <svg className="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-        </svg>
-      ),
+      icon: <Ban size={22} strokeWidth={1.5} className="text-red-600" />,
       text: "Demos that go nowhere"
     },
     {
-      icon: (
-        <svg className="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
-        </svg>
-      ),
+      icon: <DollarSign size={22} strokeWidth={1.5} className="text-red-600" />,
       text: "Channels you keep funding \"just in case\""
+    }
+  ]
+
+  const features = [
+    {
+      icon: <CheckCircle size={28} strokeWidth={1.5} className="text-emerald-600" />,
+      title: 'One-time engine installs',
+      description: 'No recurring fees',
+      color: 'bg-white/80 border-2 border-blue-200 text-emerald-600'
+    },
+    {
+      icon: <Clock size={28} strokeWidth={1.5} className="text-blue-600" />,
+      title: '30–90 day payback periods',
+      description: 'Fast ROI',
+      color: 'bg-white/80 border-2 border-blue-200 text-blue-600'
+    },
+    {
+      icon: <FileText size={28} strokeWidth={1.5} className="text-purple-600" />,
+      title: 'Transparent, scope-based pricing',
+      description: 'No hidden costs',
+      color: 'bg-white/80 border-2 border-blue-200 text-purple-600'
+    },
+    {
+      icon: <Gift size={28} strokeWidth={1.5} className="text-orange-500" />,
+      title: '2 referrals = 1 free engine tune-up',
+      description: 'Referral rewards',
+      color: 'bg-white/80 border-2 border-blue-200 text-orange-500'
     }
   ]
 
@@ -156,7 +152,7 @@ const WhyChoose: React.FC = () => {
   }, [])
 
   return (
-    <section id="why-choose" className="section-padding section-spacing gradient-section animate-fade-in-up mb-20">
+    <section id="why-choose" className="section-padding section-spacing gradient-section animate-fade-in-up mb-20 pt-0">
       <div className="container mx-auto">
         <div className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 p-6 md:p-8 lg:p-10 max-w-7xl mx-auto border-2 border-blue-200 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
           {/* Section Header */}
@@ -164,11 +160,11 @@ const WhyChoose: React.FC = () => {
             <Badge className="inline-flex items-center rounded-md text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-0 bg-blue-600 text-white shadow-lg glow-badge px-4 py-2 mb-4">
               Social Proof & Results
             </Badge>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-blue-600 mb-6 text-center">
-              Why Choose KLYRR — <span className="text-blue-600">Proof + Trust</span>
+            <h2 className="text-4xl md:text-5xl font-extrabold mb-6 text-center">
+              <span className="text-black">Why Choose KLYRR -</span> <span className="text-blue-600">Proof + Trust</span>
             </h2>
             <p className="text-xl text-foreground/70 max-w-3xl mx-auto text-balance">
-              You don't need another agency. You need an operating system for growth — one that's already compounding for teams like yours.
+              You don't need another agency. You need an operating system for growth, one that's already compounding for teams like yours.
             </p>
           </div>
 
@@ -176,17 +172,12 @@ const WhyChoose: React.FC = () => {
           <div className="grid lg:grid-cols-2 gap-6 md:gap-8 mb-10 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
             {/* Problem Statement */}
             <div>
-              <Card className="glass-card border-red-200/50 h-full">
+              <Card className="glass-card border-red-200/50 h-full bg-red-50 hover:bg-red-100 transition-colors duration-300">
                 <CardContent className="p-6 md:p-8">
-                  <div className="flex items-start space-x-4 mb-6">
-                    <div className="icon-modern bg-gradient-to-br from-red-50 to-red-100">
-                      <svg className="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.5 0L4.314 16.5c-.77.833.192 2.5 1.732 2.5z" />
-                      </svg>
-                    </div>
+                  <div className="flex items-start mb-6">
                     <div>
                       <h3 className="text-xl md:text-2xl font-bold text-foreground mb-2">
-                        Before KLYRR: Most teams tolerate chaos longer than they admit
+                        <span className="text-blue-600">Before KLYRR:</span> Most teams tolerate chaos longer than they admit
                       </h3>
                     </div>
                   </div>
@@ -198,7 +189,7 @@ const WhyChoose: React.FC = () => {
                         className="flex items-center space-x-3 p-3 rounded-lg hover:bg-red-50 transition-colors duration-300 group"
                         style={{ animationDelay: `${index * 0.1}s` }}
                       >
-                        <div className="icon-modern bg-gradient-to-br from-red-50 to-red-100 group-hover:scale-110">
+                        <div className="icon-modern glass-card relative w-10 h-10 rounded-xl bg-white/80 border-2 border-red-200 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md">
                           {point.icon}
                         </div>
                         <span className="font-medium text-foreground/80 text-sm md:text-base">{point.text}</span>
@@ -213,7 +204,7 @@ const WhyChoose: React.FC = () => {
             <div className="hidden md:flex items-center justify-center">
               <div className="relative">
                 {/* Broken Dashboard Visualization */}
-                <div className="glass-card p-6 md:p-8 max-w-sm border-2 border-red-200 rounded-2xl">
+                <div className="glass-card p-6 md:p-8 max-w-sm border-2 border-red-200 rounded-2xl bg-red-50 hover:bg-red-100 transition-colors duration-300 hover:shadow-xl hover:scale-105">
                   <div className="space-y-4">
                     {/* Header */}
                     <div className="flex items-center justify-between">
@@ -279,8 +270,8 @@ const WhyChoose: React.FC = () => {
             {metrics.map((metric, index) => (
               <Card key={index} className="metric-card group border-2 border-blue-200 rounded-xl bg-card text-card-foreground shadow">
                 <CardContent className="p-6 text-center">
-                  <div className="icon-modern mx-auto mb-4 group-hover:scale-110 group-hover:shadow-lg">
-                    {metric.icon}
+                  <div className="icon-modern glass-card relative w-16 h-16 mx-auto mb-4 rounded-2xl bg-white/80 border-2 border-blue-200 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md">
+                    <div className={metric.color}>{metric.icon}</div>
                   </div>
                   <div className={`text-3xl md:text-4xl lg:text-5xl font-bold mb-2 font-mono ${metric.color}`}>
                     {metric.prefix}{index === 0 ? animatedNumbers.sqls : 
@@ -298,11 +289,11 @@ const WhyChoose: React.FC = () => {
 
           {/* Testimonial Carousel */}
           <div className="mb-16 animate-scale-in" style={{ animationDelay: '1s' }}>
-            <Card className="glass-card border-blue-200/50 relative overflow-hidden">
-              <CardContent className="p-8 lg:p-12">
+            <Card className="glass-card border-2 border-blue-200 rounded-3xl bg-gradient-to-br from-blue-50/80 to-white/60 relative overflow-hidden backdrop-blur-md transition-all duration-300 hover:scale-[1.03] hover:border-blue-400 hover:bg-white/80 hover:shadow-xl group">
+              <CardContent className="p-10 lg:p-16 rounded-3xl">
                 {/* Quote icon */}
-                <div className="absolute top-6 left-6 opacity-20">
-                  <svg className="w-16 h-16 text-blue-600" fill="currentColor" viewBox="0 0 32 32">
+                <div className="absolute top-8 left-8 opacity-30">
+                  <svg className="w-24 h-24 text-blue-400 drop-shadow-lg" fill="currentColor" viewBox="0 0 32 32">
                     <path d="M10 8c-3.3 0-6 2.7-6 6v10h10V14h-4c0-2.2 1.8-4 4-4V8zM22 8c-3.3 0-6 2.7-6 6v10h10V14h-4c0-2.2 1.8-4 4-4V8z"/>
                   </svg>
                 </div>
@@ -346,28 +337,19 @@ const WhyChoose: React.FC = () => {
             </Card>
           </div>
 
-          {/* Trust Indicators */}
-          <div className="text-center mb-16 animate-fade-in-up" style={{ animationDelay: '1.2s' }}>
-            <div className="inline-flex flex-wrap items-center gap-8 justify-center">
-              <div className="flex items-center space-x-2 text-foreground/60">
-                <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m5.25-7.5a4.5 4.5 0 00-7.5 0v6.75H8.25A2.25 2.25 0 006 14.25v3.75a2.25 2.25 0 002.25 2.25h5.25v2.25a4.5 4.5 0 009 0v-2.25h5.25a2.25 2.25 0 002.25-2.25v-3.75a2.25 2.25 0 00-2.25-2.25h-5.25V6.75z" />
-                </svg>
-                <span className="font-medium">GDPR Compliant</span>
+          {/* Feature Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+            {features.map((feature, idx) => (
+              <div key={idx} className="flex items-center p-6 rounded-xl bg-blue-50/40 border border-blue-200 shadow group transition-all duration-300 hover:bg-white hover:border-blue-400 hover:shadow-xl hover:scale-[1.03]">
+                <div className={`icon-modern glass-card w-12 h-12 flex items-center justify-center rounded-xl shadow-md mr-4 transition-colors duration-300 ${feature.color} group-hover:text-blue-600`}>
+                  {feature.icon}
+                </div>
+                <div>
+                  <div className="font-bold text-lg text-foreground mb-1 group-hover:text-blue-600 transition-colors duration-300">{feature.title}</div>
+                  <div className="text-foreground/60 text-sm">{feature.description}</div>
+                </div>
               </div>
-              <div className="flex items-center space-x-2 text-foreground/60">
-                <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m5.25-7.5a4.5 4.5 0 00-7.5 0v6.75H8.25A2.25 2.25 0 006 14.25v3.75a2.25 2.25 0 002.25 2.25h5.25v2.25a4.5 4.5 0 009 0v-2.25h5.25a2.25 2.25 0 002.25-2.25v-3.75a2.25 2.25 0 00-2.25-2.25h-5.25V6.75z" />
-                </svg>
-                <span className="font-medium">SOC 2 Certified</span>
-              </div>
-              <div className="flex items-center space-x-2 text-foreground/60">
-                <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
-                <span className="font-medium">50+ SaaS Companies</span>
-              </div>
-            </div>
+            ))}
           </div>
 
           {/* CTA */}

@@ -4,7 +4,7 @@ import { Badge } from '@/components/ui/badge'
 
 const CTA: React.FC = () => {
   return (
-    <section className="section-padding section-spacing bg-gradient-to-b from-white to-gray-50/50 animate-fade-in-up mb-20">
+    <section className="section-padding section-spacing bg-gradient-to-b from-white to-gray-50/50 animate-fade-in-up mb-20 pt-0 pb-0">
       <div className="container mx-auto animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
         <div className="relative overflow-hidden bg-blue-600 rounded-2xl shadow-xl p-8 md:p-12 lg:p-16 group transition-all duration-300 hover:shadow-2xl hover:scale-[1.02]">
           {/* Content */}

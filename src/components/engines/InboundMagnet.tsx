@@ -50,11 +50,11 @@ const InboundMagnet: React.FC = () => (
     <div className="container relative z-10 max-w-5xl mx-auto">
       {/* Hero Section */}
       <div className="pt-32 pb-16 text-center animate-fade-in-up">
-        <Badge className="px-4 py-2 text-sm font-medium bg-gradient-to-r from-purple-50 to-pink-100 border-pink-200 text-pink-700 border mb-6">
+        <Badge className="inline-flex items-center rounded-md text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-0 bg-purple-600 text-white shadow-lg glow-badge px-4 py-2 mb-6">
           Inbound Magnet Engine
         </Badge>
-        <h1 className="hero-text text-balance mb-4">
-          Most Inbound Funnels Leak. You Just Don’t See It.
+        <h1 className="text-4xl md:text-5xl font-extrabold text-purple-600 mb-6 text-center heading-gradient text-balance mb-4">
+          Most Inbound Funnels Leak. You Just Don't See It.
         </h1>
         <h2 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-purple-600 text-balance mb-6">
           KLYRR installs a compounding inbound engine that captures, qualifies, and converts high-intent traffic — turning visitors into meetings, not just leads.
@@ -70,14 +70,14 @@ const InboundMagnet: React.FC = () => (
       </div>
       {/* Problem Section */}
       <div className="mb-16 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-        <h3 className="text-2xl md:text-3xl font-bold text-pink-600 mb-4 text-center">❌ The Problem You’re Tolerating</h3>
+        <h3 className="text-2xl md:text-3xl font-bold text-pink-600 mb-4 text-center">❌ The Problem You're Tolerating</h3>
         <div className="max-w-2xl mx-auto mb-4">
           <ul className="list-disc list-inside text-lg text-foreground/80 space-y-2 text-left">
             <li>Visitors bounce without booking</li>
             <li>Demo signups drop off post-form</li>
             <li>You nurture no one — unless they beg</li>
             <li>Attribution? Still a black box</li>
-            <li>Your LinkedIn, newsletter, and blog aren’t sending the right signals</li>
+            <li>Your LinkedIn, newsletter, and blog aren't sending the right signals</li>
           </ul>
         </div>
         <blockquote className="italic text-center text-foreground/70 max-w-2xl mx-auto border-l-4 border-purple-500 pl-4 py-2">
@@ -87,9 +87,9 @@ const InboundMagnet: React.FC = () => (
       {/* What the Engine Does Section */}
       <div className="mb-16 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
         <h3 className="text-2xl md:text-3xl font-bold text-purple-600 mb-4 text-center">✅ What the Inbound Magnet Engine Actually Does</h3>
-        <h4 className="text-xl font-semibold text-center mb-6">This Isn’t “Lead Gen.” It’s Revenue Infrastructure.</h4>
+        <h4 className="text-xl font-semibold text-center mb-6">This Isn't "Lead Gen." It's Revenue Infrastructure.</h4>
         <p className="text-center text-lg text-foreground/70 mb-8 max-w-2xl mx-auto">
-          We don’t create fluff. We build <span className="font-bold">personalized, AI-enhanced inbound systems</span> that capture high-intent visitors, nurture them intelligently, and move them into meetings.
+          We don't create fluff. We build <span className="font-bold">personalized, AI-enhanced inbound systems</span> that capture high-intent visitors, nurture them intelligently, and move them into meetings.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-6">
           {inboundFeatures.map((feature, idx) => (
@@ -118,7 +118,7 @@ const InboundMagnet: React.FC = () => (
               <tr className="bg-purple-50">
                 <th className="px-6 py-3 text-left text-xs font-medium text-purple-700 uppercase tracking-wider">Tier</th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-purple-700 uppercase tracking-wider">Outcome</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-purple-700 uppercase tracking-wider">Who It’s For</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-purple-700 uppercase tracking-wider">Who It's For</th>
               </tr>
             </thead>
             <tbody>
@@ -140,14 +140,14 @@ const InboundMagnet: React.FC = () => (
       <div className="mb-16 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
         <h3 className="text-2xl md:text-3xl font-bold text-purple-600 mb-4 text-center">🎯 Who This Is For</h3>
         <ul className="list-disc list-inside text-lg text-foreground/80 space-y-2 max-w-2xl mx-auto text-left mb-4">
-          <li>Your traffic’s okay, but demo volume is low</li>
+          <li>Your traffic's okay, but demo volume is low</li>
           <li>Cold leads go nowhere — and stay cold</li>
-          <li>You can’t track what content converts or why</li>
-          <li>Your nurture system is “send a newsletter sometimes”</li>
-          <li>Your site isn’t tailored to ICP behavior or signals</li>
+          <li>You can't track what content converts or why</li>
+          <li>Your nurture system is "send a newsletter sometimes"</li>
+          <li>Your site isn't tailored to ICP behavior or signals</li>
         </ul>
         <blockquote className="italic text-center text-foreground/70 max-w-2xl mx-auto border-l-4 border-purple-500 pl-4 py-2">
-          If your inbound funnel isn’t engineered, it’s just noise.
+          If your inbound funnel isn't engineered, it's just noise.
         </blockquote>
       </div>
       {/* Real Results Section */}

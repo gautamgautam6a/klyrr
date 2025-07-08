@@ -1,6 +1,7 @@
 import React from 'react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
+import { Search, Puzzle, ClipboardCheck, Repeat, TrendingUp } from 'lucide-react'
 
 const HowItWorks: React.FC = () => {
   const steps = [
@@ -8,57 +9,36 @@ const HowItWorks: React.FC = () => {
       number: 1,
       title: "Diagnose What's Actually Broken",
       description: "Funnel leaks, ICP misfires, message-market gaps",
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-        </svg>
-      )
+      icon: <Search size={28} strokeWidth={2.2} className="text-blue-500" />
     },
     {
       number: 2,
       title: "Match the Right Growth Engine",
       description: "6 pre-built, plug-and-play systems built for SaaS",
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-        </svg>
-      )
+      icon: <Puzzle size={28} strokeWidth={2.2} className="text-purple-500" />
     },
     {
       number: 3,
       title: "Install Copy, Workflows & Automations",
       description: "No retainers, no fluff — just working infrastructure",
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-        </svg>
-      )
+      icon: <ClipboardCheck size={28} strokeWidth={2.2} className="text-emerald-500" />
     },
     {
       number: 4,
       title: "Run Weekly Signal-Based Sprints",
       description: "No guesswork. Just compounding insights",
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-        </svg>
-      )
+      icon: <Repeat size={28} strokeWidth={2.2} className="text-orange-500" />
     },
     {
       number: 5,
       title: "Scale What's Proven",
       description: "Attribution-ready. Team-agnostic. Repeatable.",
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-        </svg>
-      )
+      icon: <TrendingUp size={28} strokeWidth={2.2} className="text-blue-500" />
     }
   ]
 
   return (
-    <section className="section-padding section-spacing bg-gradient-to-b from-white to-gray-50/50 animate-fade-in-up mb-20">
+    <section id="how-it-works" className="section-padding section-spacing gradient-section animate-fade-in-up pt-0 pb-0">
       <div className="container mx-auto animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
         <div className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 p-6 md:p-8 lg:p-10 max-w-7xl mx-auto border-2 border-blue-200">
           {/* Header */}
@@ -88,25 +68,16 @@ const HowItWorks: React.FC = () => {
                 )}
                 
                 {/* Step Card */}
-                <div className="glass-card bg-white/80 rounded-2xl p-6 shadow-md border-2 border-blue-200 hover:shadow-xl hover:border-blue-300 transition-all duration-300 h-full">
-                  <div className="text-center">
-                    {/* Step Number */}
-                    <div className="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center mx-auto mb-4 text-primary-600 font-bold text-lg">
-                      {step.number}
+                <div className="glass-card bg-white/80 rounded-2xl p-6 shadow-md border-2 border-blue-200 hover:shadow-xl hover:border-blue-300 transition-all duration-300 h-full group">
+                  <div className="flex flex-col items-center mb-4">
+                    <span className="text-xs font-bold text-blue-500 tracking-widest mb-2">{`0${step.number}`}</span>
+                    <div className="w-16 h-16 rounded-xl bg-white border border-blue-200 flex items-center justify-center shadow group-hover:border-blue-400 group-hover:bg-blue-50 transition-all duration-300">
+                      {step.icon}
                     </div>
-                    
-                    {/* Icon */}
-                    <div className="text-primary-600 mb-4 flex justify-center">{step.icon}</div>
-                    
-                    {/* Title */}
-                    <h3 className="text-lg font-semibold text-gray-900 mb-3 leading-tight">
-                      {step.title}
-                    </h3>
-                    
-                    {/* Description */}
-                    <p className="text-sm text-gray-600 leading-relaxed">
-                      {step.description}
-                    </p>
+                  </div>
+                  <div className="text-center">
+                    <h3 className="text-lg font-bold text-black mb-1 mt-2">{step.title}</h3>
+                    <p className="text-gray-600 text-sm">{step.description}</p>
                   </div>
                 </div>
               </div>

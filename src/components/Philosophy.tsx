@@ -60,52 +60,8 @@ const Philosophy: React.FC = () => {
     }
   ];
 
-  // Animation variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.3,
-        delayChildren: 0.2
-      }
-    }
-  };
-
-  const nodeVariants = {
-    hidden: { 
-      scale: 0,
-      rotate: -180,
-      opacity: 0
-    },
-    visible: { 
-      scale: 1,
-      rotate: 0,
-      opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 200,
-        damping: 15,
-        duration: 0.8
-      }
-    }
-  };
-
-  const pulseVariants = {
-    animate: {
-      scale: [1, 1.5, 1],
-      opacity: [0.3, 0.8, 0.3],
-      transition: {
-        duration: 2,
-        repeat: Infinity,
-        repeatType: "loop" as const,
-        ease: "easeInOut"
-      }
-    }
-  };
-
   return (
-    <section id="about" className="section-padding section-spacing relative overflow-hidden bg-gradient-to-br from-slate-50 to-blue-50">
+    <section id="about" className="section-padding section-spacing relative overflow-hidden bg-gradient-to-br from-slate-50 to-blue-50 mb-12 pt-0 pb-0">
       {/* Enhanced Background Elements */}
       <div className="absolute inset-0 -z-10">
         <motion.div 
@@ -186,6 +142,7 @@ const Philosophy: React.FC = () => {
           <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            className="mt-8"
           >
             <Badge className="border-transparent hover:bg-primary/80 inline-flex items-center rounded-md text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-0 bg-blue-600 text-white shadow-lg glow-badge px-4 py-2 mb-4">
               Our Story
@@ -220,18 +177,17 @@ const Philosophy: React.FC = () => {
         {/* Enhanced Interactive Timeline */}
         <motion.div 
           className="relative max-w-6xl mx-auto mb-16 min-h-[800px]"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.3 }}
         >
           {/* Animated Timeline Line */}
           <motion.div 
             className="absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-blue-200 via-blue-400 to-blue-600 rounded-full z-0"
             initial={{ height: 0 }}
             whileInView={{ height: "100%" }}
-            viewport={{ once: true }}
-            transition={{ duration: 2, ease: "easeInOut" }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
           />
           
           {timelineEvents.map((event, index) => (
@@ -239,144 +195,126 @@ const Philosophy: React.FC = () => {
               key={index}
               initial={{ 
                 opacity: 0,
-                x: index % 2 === 0 ? -100 : 100,
-                y: 50,
-                rotateY: 90
+                y: 30
               }}
               whileInView={{ 
                 opacity: 1,
-                x: 0,
-                y: 0,
-                rotateY: 0
+                y: 0
               }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "-50px" }}
               transition={{
-                type: "spring",
-                stiffness: 100,
-                damping: 15,
-                duration: 1.2,
-                delay: index * 0.2
+                duration: 0.6,
+                delay: index * 0.1,
+                ease: "easeOut"
               }}
               className={`relative flex items-center mb-12 ${
                 index % 2 === 0 ? 'flex-row-reverse' : 'flex-row'
               }`}
             >
-                              {/* Enhanced Timeline Node */}
-                <div className="absolute left-1/2 transform -translate-x-1/2 z-20">
-                  {/* Light Blue Background Circle */}
-                  <div className="absolute inset-0 w-20 h-20 bg-blue-100 rounded-full -translate-x-2 -translate-y-2 z-10"></div>
-                  <motion.div
-                    variants={nodeVariants}
-                    whileHover={{ 
-                      scale: 1.3, 
-                      rotate: 360,
-                      boxShadow: "0 0 30px rgba(99, 102, 241, 0.5)"
-                    }}
-                    className={`w-16 h-16 rounded-full bg-gradient-to-r ${event.color} shadow-lg flex items-center justify-center cursor-pointer relative z-20`}
-                    onMouseEnter={() => setActiveTimeline(index)}
-                    onMouseLeave={() => setActiveTimeline(null)}
-                  >
+              {/* Timeline Node */}
+              <div className="absolute left-1/2 transform -translate-x-1/2 z-20">
+                <motion.div
+                  whileHover={{ 
+                    scale: 1.1,
+                    transition: { duration: 0.2 }
+                  }}
+                  className={`w-16 h-16 rounded-full bg-gradient-to-r ${event.color} shadow-lg flex items-center justify-center cursor-pointer relative z-20`}
+                  onMouseEnter={() => setActiveTimeline(index)}
+                  onMouseLeave={() => setActiveTimeline(null)}
+                >
                   <motion.span 
                     className="text-2xl"
                     animate={{
-                      rotate: activeTimeline === index ? [0, 360] : 0,
-                      scale: activeTimeline === index ? [1, 1.2, 1] : 1
+                      scale: activeTimeline === index ? 1.1 : 1
                     }}
-                    transition={{ duration: 0.5 }}
+                    transition={{ duration: 0.2 }}
                   >
                     {event.icon}
                   </motion.span>
                   
-                  {/* Pulse Effect */}
+                  {/* Subtle Pulse Effect */}
                   <motion.div
-                    variants={pulseVariants}
-                    animate="animate"
-                    className={`absolute inset-0 rounded-full bg-gradient-to-r ${event.color} -z-10`}
+                    className={`absolute inset-0 rounded-full bg-gradient-to-r ${event.color} opacity-30`}
+                    animate={{
+                      scale: activeTimeline === index ? [1, 1.3, 1] : 1,
+                      opacity: activeTimeline === index ? [0.3, 0.1, 0.3] : 0.3
+                    }}
+                    transition={{ 
+                      duration: 2,
+                      repeat: activeTimeline === index ? Infinity : 0,
+                      ease: "easeInOut"
+                    }}
                   />
                 </motion.div>
 
-                {/* Particle Effects */}
+                {/* Simplified Particle Effects */}
                 <AnimatePresence>
                   {activeTimeline === index && (
-                    <div className="absolute inset-0">
-                      {event.particles.map((particle, pIndex) => (
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="absolute inset-0"
+                    >
+                      {event.particles.slice(0, 3).map((particle, pIndex) => (
                         <motion.div
                           key={pIndex}
                           initial={{ opacity: 0, scale: 0 }}
                           animate={{ 
                             opacity: [0, 1, 0],
                             scale: [0, 1, 0],
-                            x: [0, (pIndex - 1) * 30],
-                            y: [0, -20 - pIndex * 10]
+                            x: [0, (pIndex - 1) * 25],
+                            y: [0, -15 - pIndex * 8]
                           }}
-                          exit={{ opacity: 0, scale: 0 }}
                           transition={{ 
-                            duration: 2,
+                            duration: 1.5,
                             repeat: Infinity,
                             repeatType: "loop",
-                            delay: pIndex * 0.3
+                            delay: pIndex * 0.2
                           }}
-                          className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-lg pointer-events-none"
+                          className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-sm pointer-events-none"
                         >
                           {particle}
                         </motion.div>
                       ))}
-                    </div>
+                    </motion.div>
                   )}
                 </AnimatePresence>
               </div>
 
-              {/* Enhanced Content Card */}
+              {/* Content Card */}
               <div className={`w-5/12 ${index % 2 === 0 ? 'pr-8' : 'pl-8'} relative z-10`}>
                 <motion.div
                   whileHover={{ 
-                    scale: 1.05, 
-                    y: -10,
-                    rotateY: 5,
-                    boxShadow: "0 25px 50px rgba(0, 0, 0, 0.15)"
+                    y: -5,
+                    transition: { duration: 0.3, ease: "easeOut" }
                   }}
-                  className={`bg-blue-50 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 p-6 border-2 relative overflow-hidden ${
+                  className={`bg-blue-50 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 border-2 relative overflow-hidden ${
                     activeTimeline === index ? 'border-blue-300' : 'border-blue-200'
                   }`}
                 >
-                  {/* Card Background Animation */}
+                  {/* Subtle Card Background Animation */}
                   <motion.div
-                    className={`absolute inset-0 bg-gradient-to-r from-blue-200 to-blue-300 opacity-0`}
+                    className="absolute inset-0 bg-gradient-to-r from-blue-100 to-blue-200"
                     animate={{
-                      opacity: activeTimeline === index ? 0.3 : 0
+                      opacity: activeTimeline === index ? 0.2 : 0
                     }}
                     transition={{ duration: 0.3 }}
                   />
                   
                   <div className="relative z-10">
                     <div className="flex items-center mb-3">
-                      <motion.div
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                      >
-                        <Badge variant="outline" className={`mr-3 bg-white text-blue-900 border-2 border-blue-500`}>
-                          {event.year}
-                        </Badge>
-                      </motion.div>
-                                          <motion.h3 
-                      className="text-2xl font-bold text-blue-900"
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.5, delay: 0.2 }}
-                    >
-                      {event.title}
-                    </motion.h3>
+                      <Badge variant="outline" className="mr-3 bg-white text-blue-900 border-2 border-blue-500">
+                        {event.year}
+                      </Badge>
+                      <h3 className="text-2xl font-bold text-blue-900">
+                        {event.title}
+                      </h3>
                     </div>
-                    <motion.p 
-                      className="text-blue-700 leading-relaxed"
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.5, delay: 0.4 }}
-                    >
+                    <p className="text-blue-700 leading-relaxed">
                       {event.description}
-                    </motion.p>
+                    </p>
                   </div>
                 </motion.div>
               </div>

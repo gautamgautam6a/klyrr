@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
+import { ClipboardCheck, Layout, Zap, BarChart2 } from 'lucide-react'
 
 interface Engine {
   id: string
@@ -130,8 +131,8 @@ const GrowthEngines: React.FC = () => {
     : engines.filter(engine => engine.category === selectedCategory)
 
   return (
-    <section id="engines" className="section-padding section-spacing gradient-section animate-fade-in-up">
-      <div className="container relative z-10 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+    <section id="engines" className="section-padding section-spacing gradient-section animate-fade-in-up pb-0">
+      <div className="container relative z-10 animate-fade-in-up pt-0 pb-0" style={{ animationDelay: '0.2s' }}>
         <div className="max-w-7xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-8 lg:mb-10 animate-fade-in-up">
@@ -143,10 +144,10 @@ const GrowthEngines: React.FC = () => {
             </HeaderSection>
             <div className="space-y-4 max-w-4xl mx-auto">
               <p className="text-xl text-foreground/70 text-balance">
-                Your GTM isn't broken everywhere — just at the choke points.
+                Your GTM isn't broken everywhere, just at the choke points.
               </p>
               <p className="text-xl font-semibold text-foreground text-balance">
-                Each of our engines fixes a specific failure point — and turns it into a compounding asset:
+                Each of our engines fixes a specific failure point, and turns it into a compounding asset:
               </p>
             </div>
           </div>
@@ -159,7 +160,7 @@ const GrowthEngines: React.FC = () => {
                 onClick={() => setSelectedCategory(category.id as 'pipeline' | 'conversion' | 'expansion' | 'all')}
                 className={`px-4 md:px-6 py-2 md:py-3 rounded-xl font-medium transition-all duration-300 flex items-center space-x-2 text-sm md:text-base focus:ring-2 focus:ring-blue-500 focus:outline-none ${
                   selectedCategory === category.id
-                    ? 'bg-gradient-to-r from-blue-600 to-blue-500 text-blue-700 shadow-lg scale-105 drop-shadow-[0_1px_2px_rgba(0,0,0,0.25)] shadow-[0_0_16px_0_rgba(59,130,246,0.15)]'
+                    ? 'bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-lg scale-105 drop-shadow-[0_1px_2px_rgba(0,0,0,0.25)] shadow-[0_0_16px_0_rgba(59,130,246,0.15)]'
                     : 'bg-white/70 hover:bg-white/90 text-blue-700 hover:text-foreground border border-blue-200/50 hover:border-blue-300'
                 }`}
               >
@@ -185,7 +186,17 @@ const GrowthEngines: React.FC = () => {
                 <CardContent className="p-8">
                   {/* Icon container */}
                   <div className="glass-card relative w-14 h-14 rounded-2xl bg-white/80 border-2 border-blue-200 flex items-center justify-center mb-6 text-blue-700 transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-md">
-                    {React.cloneElement(engine.icon as React.ReactElement, { className: 'w-10 h-10 text-blue-700 drop-shadow' })}
+                    {React.cloneElement(engine.icon as React.ReactElement, {
+                      className: `w-10 h-10 drop-shadow ${
+                        engine.id === 'zero-pipeline' ? 'text-blue-600' :
+                        engine.id === 'conversion-killshot' ? 'text-emerald-600' :
+                        engine.id === 'inbound-magnet' ? 'text-purple-600' :
+                        engine.id === 'abm-fastlane' ? 'text-orange-600' :
+                        engine.id === 'founder-signal' ? 'text-cyan-600' :
+                        engine.id === 'land-expand' ? 'text-violet-600' :
+                        'text-blue-700'
+                      }`
+                    })}
                   </div>
                   {/* Content */}
                   <div className="relative z-10">
@@ -389,48 +400,30 @@ const GrowthEngines: React.FC = () => {
                       step: "01",
                       title: "Diagnose",
                       description: "Identify specific choke points",
-                      icon: (
-                        <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-                        </svg>
-                      )
+                      icon: <ClipboardCheck size={40} strokeWidth={1.5} className="text-blue-600" />
                     },
                     {
                       step: "02",
                       title: "Design",
                       description: "Custom engine configuration",
-                      icon: (
-                        <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z" />
-                        </svg>
-                      )
+                      icon: <Layout size={40} strokeWidth={1.5} className="text-purple-600" />
                     },
                     {
                       step: "03",
                       title: "Deploy",
                       description: "Install workflows & automations",
-                      icon: (
-                        <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                        </svg>
-                      )
+                      icon: <Zap size={40} strokeWidth={1.5} className="text-orange-600" />
                     },
                     {
                       step: "04",
                       title: "Drive",
                       description: "Monitor & optimize results",
-                      icon: (
-                        <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                        </svg>
-                      )
+                      icon: <BarChart2 size={40} strokeWidth={1.5} className="text-emerald-600" />
                     }
                   ].map((phase, index) => (
                     <div key={index} className="text-center group">
-                      <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-blue-200">
-                        <div className="text-blue-600">
-                          {phase.icon}
-                        </div>
+                      <div className="glass-card relative w-16 h-16 mx-auto mb-4 rounded-2xl bg-white/80 border-2 border-blue-200 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md">
+                        <div className={phase.icon.props.className}>{phase.icon}</div>
                       </div>
                       <div className="text-sm font-mono text-blue-600 font-bold mb-2">{phase.step}</div>
                       <h4 className="font-bold text-foreground mb-2">{phase.title}</h4>
@@ -444,7 +437,7 @@ const GrowthEngines: React.FC = () => {
 
           {/* CTA */}
           <div className="flex flex-col items-center justify-center text-center animate-fade-in-up mt-12">
-            <div className="glass-card rounded-2xl border-2 border-blue-200 shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-[1.02] w-full mb-8 p-8 lg:p-12">
+            <div className="glass-card rounded-2xl border-2 border-blue-200 shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-[1.02] w-full mb-4 p-8 lg:p-12">
               <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
                 Ready to Install Your <span className="gradient-text">First Engine?</span>
               </h3>
