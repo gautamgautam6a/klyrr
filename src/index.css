@@ -440,6 +440,14 @@
   animation: badgeGlow 2.5s ease-in-out infinite;
 }
 
+.scrollbar-hide {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE 10+ */
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome/Safari/Webkit */
+}
+
 .slider-blue .rc-slider-rail {
   background-color: #2563eb !important;
   height: 4px;

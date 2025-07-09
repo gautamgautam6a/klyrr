@@ -1,8 +1,12 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useFunnelModal } from '../App'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 
 const CTA: React.FC = () => {
+  const navigate = useNavigate();
+  const { openModal } = useFunnelModal();
   return (
     <section className="section-padding section-spacing bg-gradient-to-b from-white to-gray-50/50 animate-fade-in-up mb-20 pt-0 pb-0">
       <div className="container mx-auto animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
@@ -22,14 +26,14 @@ const CTA: React.FC = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-              <Button className="w-full sm:w-auto bg-white hover:bg-blue-50 text-blue-600 px-8 py-6 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group">
+              <Button className="w-full sm:w-auto bg-white hover:bg-blue-50 text-blue-600 px-8 py-6 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group" onClick={openModal}>
                 Schedule Demo
                 <svg className="w-5 h-5 ml-2 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
               </Button>
               
-              <Button variant="outline" className="w-full sm:w-auto bg-white/10 hover:bg-white/20 border-2 border-white text-white px-8 py-6 text-lg font-semibold rounded-xl transition-all duration-300">
+              <Button variant="outline" className="w-full sm:w-auto bg-white/10 hover:bg-white/20 border-2 border-white text-white px-8 py-6 text-lg font-semibold rounded-xl transition-all duration-300" onClick={() => navigate('/pricing')}>
                 View Pricing
               </Button>
             </div>

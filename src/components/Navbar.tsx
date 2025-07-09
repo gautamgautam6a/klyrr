@@ -98,11 +98,11 @@ function MegaMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
             <span className="transition-transform duration-300 group-hover:scale-125 group-hover:rotate-6">
               {engine.icon}
             </span>
-            <span className="font-bold text-gray-900 text-base md:text-lg">
+            <span className="font-bold text-gray-900 text-sm md:text-base">
               {engine.title}
             </span>
           </div>
-          <span className="text-sm text-gray-600 group-hover:text-blue-700 transition-colors">
+          <span className="text-xs md:text-sm text-gray-600 group-hover:text-blue-700 transition-colors">
             {engine.desc}
           </span>
         </Link>
@@ -114,9 +114,23 @@ function MegaMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [mobileProductOpen, setMobileProductOpen] = useState(false)
   const menuTimeout = useRef<NodeJS.Timeout | null>(null)
   const [isScrolled, setIsScrolled] = useState(false)
   const { openModal } = useFunnelModal()
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+
+  // Lock body scroll when mobile nav or product menu is open
+  useEffect(() => {
+    if (isOpen || mobileProductOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen, mobileProductOpen]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -132,6 +146,7 @@ const Navbar: React.FC = () => {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' })
       setIsOpen(false)
+      setMobileProductOpen(false)
     }
   }
 
@@ -150,64 +165,57 @@ const Navbar: React.FC = () => {
     setMenuOpen((v) => !v)
   }
 
+  const handleMobileClose = () => {
+    setIsOpen(false)
+    setMobileProductOpen(false)
+  }
+
+  const handleMenuButtonClick = () => {
+    setIsOpen((prev) => !prev);
+    // Always blur after click (open or close)
+    setTimeout(() => menuButtonRef.current?.blur(), 0);
+  };
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 w-full">
-      <div className="flex justify-center items-center py-4 px-4 sm:px-6 lg:px-8">
+      <div className="flex justify-center items-center py-2 sm:py-4 px-4 sm:px-6 lg:px-8">
       <div className={cn(
           "w-full max-w-7xl mx-auto bg-white rounded-md transition-all duration-300 px-4 sm:px-8",
           isScrolled ? "shadow-lg" : "shadow-md"
       )}>
-        <div className="flex items-center justify-between h-16 lg:h-20">
+        <div className="flex items-center justify-between h-14 sm:h-16 lg:h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link to="/" className="flex items-center group">
               <div className="relative">
-                  <svg 
-                    width="140" 
-                    height="50" 
-                    viewBox="0 0 235 118" 
-                    fill="none" 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    className="h-6 sm:h-8 lg:h-10 w-auto transition-transform duration-300 group-hover:scale-105"
-                  >
-                    <path d="M74.5 81.5L107.379 114.379C108.058 115.058 109.212 114.482 109.076 113.53L108.985 112.897" stroke="#3b82f6" strokeWidth="4.8"/>
-                    <path d="M142 82L109.202 114.798C108.663 115.337 107.743 115.099 107.533 114.366L107 112.5" stroke="#3b82f6" strokeWidth="4.8"/>
-                    <path d="M81 35L52 6L52 35" stroke="#3b82f6" strokeWidth="4.8"/>
-                    <path d="M135 35L162.293 7.70711C162.923 7.07714 164 7.52331 164 8.41421L164 35" stroke="#3b82f6" strokeWidth="4.8"/>
-                    <rect x="106" y="81" width="5" height="32" fill="#3b82f6"/>
-                    <path d="M3.22 78V38.302H8.096V62.682C10.672 61.072 13.064 59.416 15.64 57.806C25.576 51.32 35.42 44.926 45.402 38.44L45.632 38.302H53.728L51.336 39.866C42.734 45.386 34.454 50.814 25.852 56.38C30.084 59.738 34.27 63.096 38.502 66.454C42.688 69.812 46.782 73.17 51.014 76.482L52.9 78H45.54L45.31 77.816C41.262 74.642 37.26 71.468 33.212 68.202C29.348 65.074 25.576 62.176 21.758 59.048C18.814 60.888 15.962 62.774 13.156 64.66C11.684 65.626 10.258 66.546 8.786 67.512C8.602 67.65 8.326 67.742 8.096 67.926V78H3.22ZM57.3958 38.302H62.2718V73.63H99.8538V78H57.3958V38.302ZM137.626 78V38.302H171.344C177.738 38.302 182.384 43.454 182.384 49.112C182.384 54.77 177.738 59.922 171.344 59.922H162.19C170.516 63.372 178.152 68.708 182.2 76.804L182.798 78H177.784L177.554 77.54C170.884 66.316 155.888 60.658 142.502 59.922V78H137.626ZM142.502 42.672V55.552H171.344C174.978 55.552 177.83 52.516 177.83 49.112C177.83 45.662 174.978 42.626 171.344 42.626C171.206 42.626 171.16 42.672 171.022 42.672H142.502ZM187.849 78V38.302H221.567C227.961 38.302 232.607 43.454 232.607 49.112C232.607 54.77 227.961 59.922 221.567 59.922H212.413C220.739 63.372 228.375 68.708 232.423 76.804L233.021 78H228.007L227.777 77.54C221.107 66.316 206.111 60.658 192.725 59.922V78H187.849ZM192.725 42.672V55.552H221.567C225.201 55.552 228.053 52.516 228.053 49.112C228.053 45.662 225.201 42.626 221.567 42.626C221.429 42.626 221.383 42.672 221.245 42.672H192.725Z" fill="#374151"/>
-                    <path d="M81.9483 38.302H88.5263L88.7563 38.624C89.6303 39.498 90.4123 40.372 91.1943 41.292L108.26 59.968C109.318 58.91 110.238 57.806 111.204 56.702C114.608 52.93 117.966 49.25 121.324 45.616C122.658 44.144 124.038 42.718 125.326 41.292C126.108 40.372 126.844 39.452 127.718 38.578L127.994 38.302H133.974L132.732 39.682C131.95 40.602 131.168 41.476 130.294 42.396L110.56 63.786V78H105.684V63.878L85.6743 42.396C84.8003 41.476 84.0183 40.602 83.1443 39.682L81.9483 38.302Z" fill="#2563eb"/>
-                </svg>
+                <img src="/assets/mainlogo.svg" alt="KLYRR logo" className="h-10 w-auto transition-transform duration-300 group-hover:scale-105" />
               </div>
             </Link>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center justify-center space-x-8">
-            <Button
-              variant="ghost"
-              onClick={() => scrollToSection('engines')}
-              className="text-gray-900 hover:text-blue-600 font-medium transition-all duration-300 hover:scale-105 relative group p-0 h-auto bg-transparent hover:bg-transparent"
+            <Link
+              to="/#growthengines"
+              className="text-gray-900 hover:text-blue-600 font-medium text-base transition-all duration-300 hover:scale-105 relative group p-0 h-auto bg-transparent hover:bg-transparent"
             >
               Engines
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-blue-600 transition-all duration-300 group-hover:w-full"></span>
-            </Button>
-            <Button
-              variant="ghost"
-              onClick={() => scrollToSection('pricing')}
-              className="text-gray-900 hover:text-blue-600 font-medium transition-all duration-300 hover:scale-105 relative group p-0 h-auto bg-transparent hover:bg-transparent"
+            </Link>
+            <Link
+              to="/pricing"
+              className="text-gray-900 hover:text-blue-600 font-medium text-base transition-all duration-300 hover:scale-105 relative group p-0 h-auto bg-transparent hover:bg-transparent"
             >
               Pricing
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-blue-600 transition-all duration-300 group-hover:w-full"></span>
-            </Button>
-            <Button
-              variant="ghost"
-              onClick={() => scrollToSection('about')}
-              className="text-gray-900 hover:text-blue-600 font-medium transition-all duration-300 hover:scale-105 relative group p-0 h-auto bg-transparent hover:bg-transparent"
+            </Link>
+            <Link
+              to="/about"
+              className="text-gray-900 hover:text-blue-600 font-medium text-base transition-all duration-300 hover:scale-105 relative group p-0 h-auto bg-transparent hover:bg-transparent px-2 py-1 rounded-md"
             >
               About
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-blue-600 transition-all duration-300 group-hover:w-full"></span>
-            </Button>
+            </Link>
             <div
               className="relative"
               onMouseEnter={handleMenuEnter}
@@ -215,7 +223,7 @@ const Navbar: React.FC = () => {
             >
               <Button
                 variant="ghost"
-                className="text-gray-900 hover:text-blue-600 font-medium transition-all duration-300 hover:scale-105 relative group p-0 h-auto bg-transparent hover:bg-transparent"
+                className="text-gray-900 hover:text-blue-600 font-medium text-base transition-all duration-300 hover:scale-105 relative group p-0 h-auto bg-transparent hover:bg-transparent"
                 aria-haspopup="true"
                 aria-expanded={menuOpen}
                 aria-controls="product-megamenu"
@@ -227,20 +235,18 @@ const Navbar: React.FC = () => {
               </Button>
               {menuOpen && <MegaMenu open={menuOpen} onClose={() => setMenuOpen(false)} />}
             </div>
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-2 rounded-md transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl ml-4" onClick={openModal}>
+              <Button className="bg-blue-600 hover:bg-blue-700 text-white font-medium text-base px-6 py-2 rounded-md transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl ml-4" onClick={openModal}>
               <span className="relative z-10">Fix My Funnel</span>
             </Button>
           </div>
 
-            {/* Mobile CTA and Menu */}
-            <div className="lg:hidden flex items-center gap-3">
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded-md transition-all duration-300 hover:scale-105 shadow-lg text-sm" onClick={openModal}>
-                <span className="relative z-10">Fix My Funnel</span>
-              </Button>
+            {/* Mobile Menu Button */}
+            <div className="lg:hidden flex items-center">
             <Button
+              ref={menuButtonRef}
               variant="ghost"
               size="icon"
-              onClick={() => setIsOpen(!isOpen)}
+              onClick={handleMenuButtonClick}
                 className="p-2 text-gray-900 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-lg transition-all duration-300 h-10 w-10 flex items-center justify-center"
               aria-label="Toggle navigation menu"
             >
@@ -267,43 +273,83 @@ const Navbar: React.FC = () => {
         {/* Mobile Navigation */}
         <div className={cn(
         "lg:hidden transition-all duration-300 ease-in-out px-4 sm:px-6",
-        isOpen ? "max-h-96 opacity-100 pointer-events-auto" : "max-h-0 opacity-0 pointer-events-none overflow-hidden"
+        isOpen ? "max-h-[500px] opacity-100 pointer-events-auto pb-4" : "max-h-0 opacity-0 pointer-events-none overflow-hidden"
         )}>
-        <div className="bg-white border border-gray-200 mx-auto max-w-7xl rounded-md shadow-lg p-6 space-y-4">
+        <div className="bg-white border border-gray-200 mx-auto max-w-7xl rounded-md shadow-lg p-0 flex flex-col" style={{height: 'calc(100vh - 64px)'}}>
+          <div className="flex-1 overflow-y-auto scrollbar-hide p-4 space-y-3">
             <Button
               variant="ghost"
               onClick={() => scrollToSection('engines')}
-            className="block w-full text-left justify-start px-4 py-3 text-gray-700 hover:text-gray-900 hover:bg-blue-50 rounded-lg font-medium transition-all duration-300 h-auto"
+              className="block w-full text-left justify-start px-4 py-3 text-gray-700 hover:text-gray-900 hover:bg-blue-50 rounded-lg font-medium text-base transition-all duration-300 h-auto"
             >
               Engines
             </Button>
-            <Button
-              variant="ghost"
-              onClick={() => scrollToSection('pricing')}
-            className="block w-full text-left justify-start px-4 py-3 text-gray-700 hover:text-gray-900 hover:bg-blue-50 rounded-lg font-medium transition-all duration-300 h-auto"
+            <Link
+              to="/pricing"
+              className="block w-full text-left justify-start px-4 py-3 text-gray-700 hover:text-gray-900 hover:bg-blue-50 rounded-lg font-medium text-base transition-all duration-300 h-auto"
+              onClick={handleMobileClose}
             >
               Pricing
-            </Button>
-            <Button
-              variant="ghost"
-              onClick={() => scrollToSection('about')}
-            className="block w-full text-left justify-start px-4 py-3 text-gray-700 hover:text-gray-900 hover:bg-blue-50 rounded-lg font-medium transition-all duration-300 h-auto"
+            </Link>
+            <Link
+              to="/about"
+              className="block w-full text-left justify-start px-4 py-3 text-gray-700 hover:text-gray-900 hover:bg-blue-50 rounded-lg font-medium text-base transition-all duration-300 h-auto"
+              onClick={handleMobileClose}
             >
               About
-            </Button>
-          <Link to="/product" className="block">
+            </Link>
+            {/* Mobile Product Dropdown */}
+            <div className="space-y-2">
               <Button
                 variant="ghost"
-              onClick={() => setIsOpen(false)}
-              className="block w-full text-left justify-start px-4 py-3 text-gray-700 hover:text-gray-900 hover:bg-blue-50 rounded-lg font-medium transition-all duration-300 h-auto"
+                onClick={() => setMobileProductOpen(!mobileProductOpen)}
+                className="flex w-full items-center justify-between px-4 py-3 text-gray-700 hover:text-gray-900 hover:bg-blue-50 rounded-lg font-medium text-base transition-all duration-300 h-auto"
               >
                 Product
+                <svg 
+                  className={cn("w-5 h-5 transition-transform duration-200", mobileProductOpen ? "rotate-180" : "")}
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
               </Button>
-          </Link>
-          <div className="pt-4 border-t border-gray-200">
+              {/* Mobile Product Submenu */}
+              <div className={cn(
+                "transition-all duration-300 ease-in-out space-y-2",
+                mobileProductOpen ? "max-h-full overflow-y-auto scrollbar-hide opacity-100" : "max-h-0 opacity-0 overflow-hidden"
+              )}>
+                {engines.map((engine) => (
+                  <Link
+                    key={engine.title}
+                    to={engine.route}
+                    className="flex items-start gap-3 p-3 rounded-lg bg-gray-50 hover:bg-blue-50 transition-all duration-200 group"
+                    onClick={handleMobileClose}
+                  >
+                    <span className="text-lg transition-transform duration-300 group-hover:scale-110">
+                      {engine.icon}
+                    </span>
+                    <div className="flex-1">
+                      <div className="font-semibold text-sm text-gray-900 group-hover:text-blue-700 transition-colors">
+                        {engine.title}
+                      </div>
+                      <div className="text-xs text-gray-600 mt-1">
+                        {engine.desc}
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="p-4 border-t border-gray-200 bg-white">
             <Button 
-              className="bg-blue-600 hover:bg-blue-700 text-white font-medium w-full py-3 rounded-md transition-all duration-300 hover:scale-105 shadow-lg"
-              onClick={openModal}
+              className="bg-blue-600 hover:bg-blue-700 text-white font-medium text-base w-full py-3 rounded-md transition-all duration-300 hover:scale-105 shadow-lg"
+              onClick={() => {
+                openModal()
+                handleMobileClose()
+              }}
             >
               <span className="relative z-10">Fix My Funnel</span>
             </Button>

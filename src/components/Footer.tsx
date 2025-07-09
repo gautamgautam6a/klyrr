@@ -59,11 +59,7 @@ const Footer: React.FC = () => {
           {/* Logo and Description */}
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center space-x-2 mb-6">
-              <svg className="w-8 h-8 text-blue-600" viewBox="0 0 32 32" fill="none">
-                <path d="M16 2L2 9L16 16L30 9L16 2Z" fill="currentColor" fillOpacity="0.2"/>
-                <path d="M2 23L16 30L30 23V9L16 16L2 9V23Z" fill="currentColor"/>
-              </svg>
-              <span className="text-xl font-bold text-gray-900">KLYRR</span>
+              <img src="/assets/mainlogo-withtagline.svg" alt="KLYRR logo" style={{ height: '200px' }} className="w-auto mb-2" />
             </div>
             <p className="text-gray-600 mb-6">
               Transforming go-to-market strategies with intelligent automation engines.

@@ -2,6 +2,7 @@ import React from 'react'
 import { FireIcon, CurrencyDollarIcon, UsersIcon } from '@heroicons/react/24/outline'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
+import { useFunnelModal } from '@/App';
 
 // Shared header component for consistent headers
 type HeaderSectionProps = { children: React.ReactNode; className?: string };
@@ -10,6 +11,7 @@ const HeaderSection = ({ children, className = '' }: HeaderSectionProps) => (
 );
 
 const WhatsAtStake: React.FC = () => {
+  const { openModal } = useFunnelModal();
   return (
     <section id="about" className="section-padding section-spacing">
       <div className="container mx-auto">
@@ -101,11 +103,11 @@ const WhatsAtStake: React.FC = () => {
               <p className="text-xl text-gray-700 mb-6">
                 So what's keeping you here?
               </p>
-              <Button className="btn-hero text-white px-8 py-4 text-lg group">
+              <Button className="btn-hero text-white px-8 py-4 text-lg group" onClick={openModal}>
                 <svg className="w-5 h-5 mr-2 transition-transform duration-200 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                <span className="relative z-10">Get Free Diagnosis</span>
+                <span className="relative z-10">Fix My Funnel</span>
               </Button>
             </div>
           </div>

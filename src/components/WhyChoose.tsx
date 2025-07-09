@@ -3,6 +3,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { BarChart2, TrendingUp, DollarSign, Award, AlertTriangle, UserX, Ban, CheckCircle, FileText, Clock, Gift } from 'lucide-react'
+import { useFunnelModal } from '@/App';
 
 const WhyChoose: React.FC = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0)
@@ -115,6 +116,8 @@ const WhyChoose: React.FC = () => {
     }
   ]
 
+  const { openModal } = useFunnelModal();
+
   // Testimonial rotation
   useEffect(() => {
     const interval = setInterval(() => {
@@ -152,7 +155,7 @@ const WhyChoose: React.FC = () => {
   }, [])
 
   return (
-    <section id="why-choose" className="section-padding section-spacing gradient-section animate-fade-in-up mb-20 pt-0">
+    <section id="why-choose" className="section-padding section-spacing gradient-section animate-fade-in-up mb-20 pt-0 pb-0">
       <div className="container mx-auto">
         <div className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 p-6 md:p-8 lg:p-10 max-w-7xl mx-auto border-2 border-blue-200 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
           {/* Section Header */}
@@ -354,11 +357,11 @@ const WhyChoose: React.FC = () => {
 
           {/* CTA */}
           <div className="text-center animate-fade-in-up" style={{ animationDelay: '1.4s' }}>
-            <Button className="btn-hero text-white px-8 py-4 text-lg group">
+            <Button className="btn-hero text-white px-8 py-4 text-lg group" onClick={openModal}>
               <svg className="w-5 h-5 mr-2 transition-transform duration-200 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              <span className="relative z-10">Get Free Diagnosis</span>
+              <span className="relative z-10">Fix My Funnel</span>
             </Button>
           </div>
         </div>

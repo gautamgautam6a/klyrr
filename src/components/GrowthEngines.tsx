@@ -3,6 +3,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { ClipboardCheck, Layout, Zap, BarChart2 } from 'lucide-react'
+import { useFunnelModal } from '@/App';
 
 interface Engine {
   id: string
@@ -16,6 +17,114 @@ interface Engine {
   timeline: string
 }
 
+// Completely rebuilt EngineCard with debugging
+const EngineCard = ({ engine, isOpen, onCardClick, index }: {
+  engine: Engine;
+  isOpen: boolean;
+  onCardClick: (engineId: string) => void;
+  index: number;
+}) => {
+  const handleCardClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    onCardClick(engine.id);
+  };
+
+  return (
+    <Card 
+      className={`group cursor-pointer transition-all duration-300 border border-blue-200 shadow-2xl rounded-3xl bg-white/60 backdrop-blur-lg animate-fade-in-up-engine hover:shadow-xl hover:scale-[1.02] h-full ${
+        isOpen ? 'ring-2 ring-blue-500 scale-105' : ''
+      }`}
+      onClick={handleCardClick}
+      style={{ animationDelay: `${index * 0.1}s` }}
+    >
+      <CardContent className="p-6 md:p-8">
+        {/* Icon container */}
+        <div className="glass-card relative w-14 h-14 rounded-2xl bg-white/80 border-2 border-blue-200 flex items-center justify-center mb-6 text-blue-700 transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-md">
+          {React.cloneElement(engine.icon as React.ReactElement, {
+            className: `w-10 h-10 drop-shadow ${
+              engine.id === 'zero-pipeline' ? 'text-blue-600' :
+              engine.id === 'conversion-killshot' ? 'text-emerald-600' :
+              engine.id === 'inbound-magnet' ? 'text-purple-600' :
+              engine.id === 'abm-fastlane' ? 'text-orange-600' :
+              engine.id === 'founder-signal' ? 'text-cyan-600' :
+              engine.id === 'land-expand' ? 'text-violet-600' :
+              'text-blue-700'
+            }`
+          })}
+        </div>
+        {/* Content */}
+        <div className="relative z-10">
+          <h3 className="text-lg font-bold text-foreground mb-3 group-hover:text-blue-700 transition-colors duration-300 leading-tight">
+            {engine.problem}
+          </h3>
+          <div className="flex items-start space-x-3 mb-4">
+            <div className="flex-shrink-0 mt-1">
+              <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </div>
+            <p className="text-foreground/80 font-semibold group-hover:text-foreground transition-colors duration-300 leading-relaxed">
+              You need the <span className="gradient-text">{engine.solution}</span>
+            </p>
+          </div>
+
+          {/* Expandable Details */}
+          <div className={`overflow-hidden transition-all duration-300 ${
+            isOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
+          }`}>
+            <div className="pt-4 border-t border-blue-200/50 space-y-3 md:space-y-4">
+              <div>
+                <h4 className="font-semibold text-foreground/80 mb-2">Results:</h4>
+                <p className="text-sm text-emerald-700 font-medium bg-emerald-50 px-3 py-2 rounded-lg">
+                  {engine.results}
+                </p>
+              </div>
+              <div>
+                <h4 className="font-semibold text-foreground/80 mb-2">Tools Used:</h4>
+                <div className="flex flex-wrap gap-2">
+                  {engine.tools.map((tool, toolIndex) => (
+                    <Badge key={toolIndex} className="text-xs bg-blue-50 text-blue-700 border border-blue-200">
+                      {tool}
+                    </Badge>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <h4 className="font-semibold text-foreground/80 mb-2">Timeline:</h4>
+                <p className="text-sm text-amber-700 font-medium bg-amber-50 px-3 py-2 rounded-lg">
+                  {engine.timeline}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        {/* Expand/Collapse indicator */}
+        <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <div className={`w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center transition-transform duration-300 ${
+            isOpen ? 'rotate-180' : ''
+          }`}>
+            <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+        </div>
+        
+        {/* Subtle pattern overlay */}
+        <div className="absolute top-0 right-0 w-32 h-32 opacity-10 group-hover:opacity-30 transition-opacity duration-700 overflow-hidden rounded-2xl pointer-events-none">
+          <svg className="w-full h-full transition-transform duration-1000 group-hover:scale-110 group-hover:rotate-6" viewBox="0 0 100 100" fill="none">
+            <pattern id={`pattern-${engine.id}`} x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+              <circle cx="2" cy="2" r="2" fill="#3B82F6"/>
+            </pattern>
+            <rect width="100" height="100" fill={`url(#pattern-${engine.id})`}/>
+          </svg>
+        </div>
+      </CardContent>
+    </Card>
+  );
+};
+
 // Shared header component for consistent headers
 type HeaderSectionProps = { children: React.ReactNode; className?: string };
 const HeaderSection = ({ children, className = '' }: HeaderSectionProps) => (
@@ -23,8 +132,20 @@ const HeaderSection = ({ children, className = '' }: HeaderSectionProps) => (
 );
 
 const GrowthEngines: React.FC = () => {
+  const { openModal } = useFunnelModal();
   const [selectedCategory, setSelectedCategory] = useState<'pipeline' | 'conversion' | 'expansion' | 'all'>('all')
-  const [selectedEngine, setSelectedEngine] = useState<string | null>(null)
+  const [openCardId, setOpenCardId] = useState<string | null>(null);
+  
+  // Handle card click with strict single card logic
+  const handleCardClick = (clickedEngineId: string) => {
+    // If the clicked card is already open, close it
+    if (openCardId === clickedEngineId) {
+      setOpenCardId(null);
+    } else {
+      // Otherwise, close any open card and open the clicked one
+      setOpenCardId(clickedEngineId);
+    }
+  };
 
   const engines: Engine[] = [
     {
@@ -119,6 +240,17 @@ const GrowthEngines: React.FC = () => {
     }
   ]
 
+  // Debug: Check for duplicate IDs
+  const idCounts = engines.reduce((acc, engine) => {
+    acc[engine.id] = (acc[engine.id] || 0) + 1;
+    return acc;
+  }, {} as Record<string, number>);
+  const duplicateIds = Object.entries(idCounts).filter(([id, count]) => count > 1);
+  if (duplicateIds.length > 0) {
+    console.warn('Duplicate engine IDs found:', duplicateIds.map(([id]) => id));
+  }
+  console.log('Engine ID counts:', idCounts);
+
   const categories = [
     { id: 'all', label: 'All Engines', count: engines.length },
     { id: 'pipeline', label: 'Pipeline', count: engines.filter(e => e.category === 'pipeline').length },
@@ -173,101 +305,21 @@ const GrowthEngines: React.FC = () => {
           </div>
 
           {/* Engines Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-6 mb-8 md:mb-10">
-            {filteredEngines.map((engine, index) => (
-              <Card 
-                key={engine.id}
-                className={`group cursor-pointer transition-all duration-300 border border-blue-200 shadow-2xl rounded-3xl bg-white/60 backdrop-blur-lg animate-fade-in-up-engine hover:shadow-xl hover:scale-[1.02] ${
-                  selectedEngine === engine.id ? 'ring-2 ring-blue-500 scale-105' : ''
-                }`}
-                onClick={() => setSelectedEngine(selectedEngine === engine.id ? null : engine.id)}
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <CardContent className="p-8">
-                  {/* Icon container */}
-                  <div className="glass-card relative w-14 h-14 rounded-2xl bg-white/80 border-2 border-blue-200 flex items-center justify-center mb-6 text-blue-700 transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-md">
-                    {React.cloneElement(engine.icon as React.ReactElement, {
-                      className: `w-10 h-10 drop-shadow ${
-                        engine.id === 'zero-pipeline' ? 'text-blue-600' :
-                        engine.id === 'conversion-killshot' ? 'text-emerald-600' :
-                        engine.id === 'inbound-magnet' ? 'text-purple-600' :
-                        engine.id === 'abm-fastlane' ? 'text-orange-600' :
-                        engine.id === 'founder-signal' ? 'text-cyan-600' :
-                        engine.id === 'land-expand' ? 'text-violet-600' :
-                        'text-blue-700'
-                      }`
-                    })}
-                  </div>
-                  {/* Content */}
-                  <div className="relative z-10">
-                    <h3 className="text-lg font-bold text-foreground mb-3 group-hover:text-blue-700 transition-colors duration-300 leading-tight">
-                      {engine.problem}
-                    </h3>
-                    <div className="flex items-start space-x-3 mb-4">
-                      <div className="flex-shrink-0 mt-1">
-                        <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                        </svg>
-                      </div>
-                      <p className="text-foreground/80 font-semibold group-hover:text-foreground transition-colors duration-300 leading-relaxed">
-                        You need the <span className="gradient-text">{engine.solution}</span>
-                      </p>
-                    </div>
-
-                    {/* Expandable Details */}
-                    <div className={`overflow-hidden transition-all duration-500 ${
-                      selectedEngine === engine.id ? 'max-h-[500px] md:max-h-96 opacity-100' : 'max-h-0 opacity-0'
-                    }`}>
-                      <div className="pt-4 border-t border-blue-200/50 space-y-4">
-                        <div>
-                          <h4 className="font-semibold text-foreground/80 mb-2">Results:</h4>
-                          <p className="text-sm text-emerald-700 font-medium bg-emerald-50 px-3 py-2 rounded-lg">
-                            {engine.results}
-                          </p>
-                        </div>
-                        <div>
-                          <h4 className="font-semibold text-foreground/80 mb-2">Tools Used:</h4>
-                          <div className="flex flex-wrap gap-2">
-                            {engine.tools.map((tool, toolIndex) => (
-                              <Badge key={toolIndex} className="text-xs bg-blue-50 text-blue-700 border border-blue-200">
-                                {tool}
-                              </Badge>
-                            ))}
-                          </div>
-                        </div>
-                        <div>
-                          <h4 className="font-semibold text-foreground/80 mb-2">Timeline:</h4>
-                          <p className="text-sm text-amber-700 font-medium bg-amber-50 px-3 py-2 rounded-lg">
-                            {engine.timeline}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Expand/Collapse indicator */}
-                  <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className={`w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center transition-transform duration-300 ${
-                      selectedEngine === engine.id ? 'rotate-180' : ''
-                    }`}>
-                      <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                      </svg>
-                    </div>
-                  </div>
-                  
-                  {/* Subtle pattern overlay */}
-                  <div className="absolute top-0 right-0 w-32 h-32 opacity-10 group-hover:opacity-30 transition-opacity duration-700 overflow-hidden rounded-2xl pointer-events-none">
-                    <svg className="w-full h-full transition-transform duration-1000 group-hover:scale-110 group-hover:rotate-6" viewBox="0 0 100 100" fill="none">
-                      <pattern id={`pattern-${engine.id}`} x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-                        <circle cx="2" cy="2" r="2" fill="#3B82F6"/>
-                      </pattern>
-                      <rect width="100" height="100" fill={`url(#pattern-${engine.id})`}/>
-                    </svg>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-8 mb-8 md:mb-10">
+            {filteredEngines.map((engine, index) => {
+              const isThisCardOpen = openCardId === engine.id;
+              
+              return (
+                <div key={engine.id} className="relative h-full">
+                  <EngineCard
+                    engine={engine}
+                    isOpen={isThisCardOpen}
+                    onCardClick={handleCardClick}
+                    index={index}
+                  />
+                </div>
+              );
+            })}
           </div>
 
           {/* Interactive Engine Flow Visualization */}
@@ -444,8 +496,8 @@ const GrowthEngines: React.FC = () => {
               <p className="text-foreground/70 mb-8">
                 Get a free GTM diagnosis to identify which engine will deliver the biggest impact for your business.
               </p>
-              <Button className="btn-hero text-white px-8 py-4 text-lg group">
-                <span className="relative z-10">Get Free Diagnosis</span>
+              <Button className="btn-hero text-white px-8 py-4 text-lg group" onClick={openModal}>
+                <span className="relative z-10">Fix My Funnel</span>
                 <svg className="w-5 h-5 ml-2 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>

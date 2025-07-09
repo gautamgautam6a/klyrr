@@ -2,8 +2,10 @@ import React from 'react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Search, Puzzle, ClipboardCheck, Repeat, TrendingUp } from 'lucide-react'
+import { useFunnelModal } from '@/App';
 
 const HowItWorks: React.FC = () => {
+  const { openModal } = useFunnelModal();
   const steps = [
     {
       number: 1,
@@ -118,8 +120,8 @@ const HowItWorks: React.FC = () => {
 
           {/* CTA */}
           <div className="text-center">
-            <Button className="inline-flex items-center justify-center gap-2 h-9 px-8 py-4 text-base rounded-md bg-blue-600 hover:bg-blue-700 text-white shadow-lg hover:shadow-xl transition-all duration-300 font-medium group">
-              Get Free Diagnosis
+            <Button className="inline-flex items-center justify-center gap-2 h-9 px-8 py-4 text-base rounded-md bg-blue-600 hover:bg-blue-700 text-white shadow-lg hover:shadow-xl transition-all duration-300 font-medium group" onClick={openModal}>
+              Fix My Funnel
               <svg className="w-5 h-5 ml-2 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>

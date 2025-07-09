@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
+import { useFunnelModal } from '../App';
 
 const Hero: React.FC = () => {
   const [typedText, setTypedText] = useState('')
@@ -27,12 +28,7 @@ const Hero: React.FC = () => {
     return () => clearInterval(typeInterval)
   }, [currentWordIndex])
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
+  const { openModal } = useFunnelModal();
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden gradient-hero animate-fade-in-up">
@@ -70,7 +66,7 @@ const Hero: React.FC = () => {
 
             {/* Main Headline */}
             <div className="space-y-4 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-              <h1 className="hero-text text-balance">
+              <h1 className="hero-text text-balance mb-4 leading-[1.1]">
                 What If Your Growth Has Already{' '}
                 <span className="inline-block min-w-[160px] md:min-w-[200px] text-left">
                   <span className="gradient-text">{typedText}</span>
@@ -83,7 +79,7 @@ const Hero: React.FC = () => {
             </div>
 
             {/* Subheadline */}
-            <p className="text-xl md:text-2xl text-foreground/70 max-w-2xl text-balance animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
+            <p className="text-lg md:text-xl text-foreground/70 max-w-2xl text-balance animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
               Leads look fine. Metrics look "okay." But deals keep slipping, buyers ghost, and your CAC quietly climbs.
             </p>
 
@@ -123,13 +119,13 @@ const Hero: React.FC = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in-up" style={{ animationDelay: '1s' }}>
-              <Button className="inline-flex items-center justify-center gap-2 h-9 px-8 py-4 text-base rounded-md bg-blue-600 hover:bg-blue-700 text-white shadow-lg hover:shadow-xl transition-all duration-300 font-medium group" onClick={() => scrollToSection('engines')}>
+              <Button className="inline-flex items-center justify-center gap-2 h-9 px-8 py-4 text-base rounded-md bg-blue-600 hover:bg-blue-700 text-white shadow-lg hover:shadow-xl transition-all duration-300 font-medium group" onClick={openModal}>
                 <span className="relative z-10">Fix My Funnel Now</span>
                 <svg className="w-5 h-5 ml-2 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
               </Button>
-              <Button className="inline-flex items-center justify-center gap-2 h-9 px-8 py-4 text-base rounded-md bg-white/50 backdrop-blur-sm hover:bg-white/70 border-2 border-blue-200 hover:border-blue-300 transition-all duration-300 font-medium group" onClick={() => scrollToSection('pricing')}>
+              <Button className="inline-flex items-center justify-center gap-2 h-9 px-8 py-4 text-base rounded-md bg-white/50 backdrop-blur-sm hover:bg-white/70 border-2 border-blue-200 hover:border-blue-300 transition-all duration-300 font-medium group" onClick={openModal}>
                 <svg className="w-5 h-5 mr-2 transition-transform duration-200 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>

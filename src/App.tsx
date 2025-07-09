@@ -20,6 +20,9 @@ import Philosophy from './components/Philosophy'
 import HowItWorks from './components/HowItWorks'
 import PricingTeaser from './components/PricingTeaser'
 import FunnelFormModal from './components/FunnelFormModal'
+import AboutUsPage from './components/AboutUsPage'
+import ScrollToTop from './components/ScrollToTop';
+import PricingPage from './components/PricingPage';
 
 // Create a context to allow any component to open the modal
 export const FunnelModalContext = createContext({ openModal: () => {} });
@@ -34,6 +37,7 @@ const App: React.FC = () => {
     <FunnelModalContext.Provider value={{ openModal }}>
       <StagewiseToolbar config={{ plugins: [ReactPlugin] }} />
       <Router>
+        <ScrollToTop />
         <Navbar />
         <Routes>
           <Route path="/" element={
@@ -41,12 +45,12 @@ const App: React.FC = () => {
               <Hero />
               <GrowthEngines />
               <WhyChoose />
-              <Philosophy />
               <HowItWorks />
               <PricingTeaser />
               <CTA />
             </>
           } />
+          <Route path="/about" element={<AboutUsPage />} />
           <Route path="/product" element={<ProductPage />} />
           <Route path="/engine/zero-to-pipeline" element={<ZeroToPipeline />} />
           <Route path="/engine/conversion-killshot" element={<ConversionKillshot />} />
@@ -54,6 +58,7 @@ const App: React.FC = () => {
           <Route path="/engine/abm-fastlane" element={<SalesOnboarding />} />
           <Route path="/engine/founder-signal" element={<FounderSignal />} />
           <Route path="/engine/land-expand" element={<LandExpand />} />
+          <Route path="/pricing" element={<PricingPage />} />
         </Routes>
         <Footer />
       </Router>

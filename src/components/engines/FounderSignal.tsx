@@ -1,178 +1,363 @@
-import React from 'react'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
+import { useState, useEffect } from 'react';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { CheckCircle, Target, Zap, TrendingUp, Users, Mail, Bot, BarChart3, ArrowRight, Play, Star, Quote, Download, Eye, Clock, DollarSign, MessageSquare } from 'lucide-react';
 
-const phases = [
-  {
-    title: 'Phase 1: Build the Signal',
-    quote: 'You don\'t need more noise. You need clarity.',
-    items: [
-      { label: 'Narrative Strategy Call', desc: 'Clarify your founder POV, category stance, and buyer magnetics.' },
-      { label: 'LinkedIn Bio Rewrite + Founder Banner', desc: 'Designed to stop scrolls and sharpen positioning in 10 seconds or less.' },
-      { label: 'Signature Founder Stories (x2)', desc: 'Posts built around your origin, vision, or pain - to trigger emotion, attention, and credibility.' },
-    ],
-  },
-  {
-    title: 'Phase 2: Create Weekly Compounding Trust',
-    quote: 'Most founders post. The best ones build a movement.',
-    items: [
-      { label: '4 Weekly Founder Posts', desc: 'Written in your voice. Designed to resonate with your ICP, not farm likes.' },
-      { label: 'ICP Comment & Trigger Plan', desc: 'Strategic engagement with buyer/investor circles to place you in every key conversation.' },
-      { label: 'Silent Funnel Follow-Up Assets', desc: 'Post-demo posts. Pain reactivation content. Asynchronous credibility builders.' },
-    ],
-  },
-  {
-    title: 'Phase 3: Expand Beyond LinkedIn',
-    quote: 'Your voice should be working - even when you\'re not.',
-    items: [
-      { label: '20+ Prompt-Driven Founder Content Ideas', desc: 'Never run dry. Use our bank or let us write them for you.' },
-      { label: 'Founder DM Flow Kit', desc: 'Open conversations without pitching. Convert profile views into pipeline.' },
-      { label: 'Podcast Booking & Strategy', desc: 'Get on 3–5 ICP-aligned podcasts with scripted CTAs and sequencing support.' },
-    ],
-  },
-  {
-    title: 'Phase 4: Distribute + Compound Your Signal',
-    quote: 'This is how real influence scales.',
-    items: [
-      { label: 'Shortform Video Kit (2–4 clips/month)', desc: 'Chop key ideas into high-signal snackable content for X, LinkedIn, YouTube.' },
-      { label: 'Newsletter Setup + Launch Plan', desc: 'Your founder letter, engineered for resonance. Not just a Substack.' },
-      { label: 'Investor GTM Asset', desc: 'Build confidence and raise faster - with a founder-led narrative investors feel.' },
-    ],
-  },
-]
+const FounderSignalPage = () => {
+  const [currentMetric, setCurrentMetric] = useState(0);
+  
+  const metrics = [
+    { number: "$190K", label: "ARR from single post", period: "post → DM → demo → close" },
+    { number: "44%", label: "Increase in deal velocity", period: "post-demo conversion" },
+    { number: "3", label: "Investor conversations", period: "from newsletter" },
+    { number: "5x", label: "Brand recognition", period: "mentions in discovery calls" }
+  ];
 
-const FounderSignal: React.FC = () => (
-  <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden gradient-hero">
-    {/* Background Elements */}
-    <div className="absolute inset-0 overflow-hidden">
-      <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-cyan-500/10 to-blue-600/20 rounded-full blur-xl animate-float"></div>
-      <div className="absolute top-40 right-20 w-24 h-24 bg-gradient-to-br from-blue-400/10 to-blue-500/20 rounded-full blur-xl animate-float" style={{ animationDelay: '2s' }}></div>
-      <div className="absolute bottom-40 left-20 w-40 h-40 bg-gradient-to-br from-purple-600/10 to-purple-700/20 rounded-full blur-xl animate-float" style={{ animationDelay: '4s' }}></div>
-      <div className="absolute inset-0 opacity-[0.02]">
-        <div className="w-full h-full" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.1'%3E%3Cpath d='M30 30h30v30H30V30zm15 15h15v15H45V45z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          backgroundSize: '60px 60px'
-        }}></div>
-      </div>
-    </div>
-    <div className="container relative z-10 max-w-5xl mx-auto">
+  const processPhases = [
+    {
+      phase: '01',
+      title: 'Build the Signal',
+      description: '"You don\'t need more noise. You need clarity."',
+      focus: 'Foundation of your founder narrative and positioning strategy',
+      deliverables: [
+        { name: 'Narrative Strategy Session', desc: 'Founder POV, category stance, buyer psychology' },
+        { name: 'LinkedIn Profile Optimization', desc: 'Bio + banner designed to stop scrolls in 10 seconds' },
+        { name: '2 Signature Founder Stories', desc: 'Origin/vision posts that build emotional connection' }
+      ]
+  },
+  {
+      phase: '02',
+      title: 'Create Weekly Trust',
+      description: '"Most founders post. The best ones build movements."',
+      focus: 'Consistent content system that builds credibility with your ICP',
+      deliverables: [
+        { name: '4 Weekly ICP-Focused Posts', desc: 'Written in your voice, designed for resonance' },
+        { name: 'Strategic Engagement Plan', desc: 'Comment strategy for buyer/investor circles' },
+        { name: 'Silent Funnel Assets', desc: 'Post-demo content that reactivates interest' }
+      ]
+  },
+  {
+      phase: '03',
+      title: 'Expand Your Reach',
+      description: '"Your voice should work even when you\'re not."',
+      focus: 'Multi-channel presence that compounds your authority',
+      deliverables: [
+        { name: '20+ Content Prompts', desc: 'Never run out of high-signal ideas' },
+        { name: 'DM Flow Templates', desc: 'Convert profile views into pipeline' },
+        { name: 'Podcast Strategy', desc: '3-5 ICP-aligned bookings with CTA scripts' }
+      ]
+  },
+  {
+      phase: '04',
+      title: 'Scale Your Signal',
+      description: '"This is how real influence scales."',
+      focus: 'Systematic distribution that amplifies your founder voice',
+      deliverables: [
+        { name: 'Video Content System', desc: '2-4 clips/month for multi-platform distribution' },
+        { name: 'Newsletter Launch', desc: 'Founder letter designed for engagement' },
+        { name: 'Investor Narrative', desc: 'Founder-led story that builds investor confidence' }
+      ]
+    }
+  ];
+
+  const problems = [
+    {
+      icon: <Eye className="w-6 h-6" />,
+      title: '🔍 Invisible Leadership',
+      description: 'Strategic buyers can\'t connect with your vision because they don\'t know who you are or what you stand for.'
+    },
+    {
+      icon: <Clock className="w-6 h-6" />,
+      title: '⏰ Slow Deal Velocity',
+      description: 'Prospects take weeks to convert because they\'re researching you personally, not just your product.'
+    },
+    {
+      icon: <DollarSign className="w-6 h-6" />,
+      title: '💰 Missed Opportunities',
+      description: 'Investors and key partnerships slip away because your narrative feels generic, not founder-driven.'
+    },
+    {
+      icon: <MessageSquare className="w-6 h-6" />,
+      title: '📉 Declining Engagement',
+      description: 'Demo no-shows increase when prospects can\'t feel the human leadership behind the brand.'
+    }
+  ];
+
+  const results = [
+    { number: "$190K", description: "ARR from single founder post → DM → demo → close" },
+    { number: "44%", description: "Increase in post-demo deal velocity" },
+    { number: "3", description: "Inbound investor conversations from newsletter" },
+    { number: "5x", description: "\"You're everywhere\" mentions in discovery calls" }
+  ];
+
+  const howItWorks = [
+    {
+      step: '01',
+      title: 'Diagnose Your Signal Gap',
+      description: 'We analyze your current founder presence, narrative clarity, and ICP alignment to identify exactly what\'s missing from your trust equation.'
+    },
+    {
+      step: '02',
+      title: 'Install the System',
+      description: 'We build and implement your founder signal engine—from content strategy to engagement flows to distribution systems.'
+    },
+    {
+      step: '03',
+      title: 'Watch It Compound',
+      description: 'Your founder presence starts working 24/7, generating trust, credibility, and pipeline while you focus on running your business.'
+    }
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentMetric((prev) => (prev + 1) % metrics.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-purple-50">
       {/* Hero Section */}
-      <div className="pt-32 pb-16 text-center animate-fade-in-up">
-        <Badge className="inline-flex items-center rounded-md text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-0 bg-cyan-600 text-white shadow-lg glow-badge px-4 py-2 mb-6">
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-600/5 to-indigo-600/5" />
+        <div className="absolute top-20 left-10 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-20 right-10 w-40 h-40 bg-indigo-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+        
+        <div className="relative container mx-auto px-6 py-20 lg:py-32">
+          <div className="max-w-4xl mx-auto text-center">
+            <Badge className="mb-6 bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 text-sm font-medium">
           Founder Signal Engine
         </Badge>
-        <h1 className="text-4xl md:text-5xl font-extrabold text-cyan-600 mb-6 text-center heading-gradient text-balance mb-4">
-          If They Don't Trust You, They Won't Buy From You.
+            
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+              If They Don't Trust You,<br />
+              <span className="text-purple-600">They Won't Buy From You</span>
         </h1>
-        <h2 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-cyan-600 text-balance mb-6">
-          KLYRR installs a founder-led trust engine that turns silence into sales, thought into traction, and presence into predictable pipeline.
-        </h2>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-          <Button className="btn-hero text-white px-8 py-4 text-lg group">
-            <span className="relative z-10">🧠 Book a Founder Signal Audit</span>
+            
+            <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+              We build founder-led trust systems that turn your expertise into predictable pipeline
+            </p>
+            
+            {/* Rotating Metrics */}
+            <div className="mb-10 p-6 bg-white/60 backdrop-blur-sm rounded-2xl border border-purple-100 max-w-md mx-auto">
+              <div className="text-3xl font-bold text-purple-600 mb-1">
+                {metrics[currentMetric].number}
+              </div>
+              <div className="text-gray-700 font-medium mb-1">
+                {metrics[currentMetric].label}
+              </div>
+              <div className="text-sm text-gray-500">
+                {metrics[currentMetric].period}
+              </div>
+            </div>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 text-lg font-medium rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group">
+                <span className="mr-2">🧠</span>
+                Get Your Free Founder Signal Audit
+                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Button>
-          <Button className="px-8 py-4 text-lg group bg-white/50 backdrop-blur-sm hover:bg-white/70 border-2 border-cyan-200 hover:border-cyan-300">
-            <span className="relative z-10">📣 See Founder-Led Growth Systems</span>
+              <Button variant="outline" className="border-2 border-purple-200 hover:border-purple-300 px-8 py-4 text-lg font-medium rounded-xl bg-white/50 backdrop-blur-sm">
+                <Play className="mr-2 w-5 h-5" />
+                Watch Demo
           </Button>
         </div>
       </div>
+        </div>
+      </section>
+
       {/* Problem Section */}
-      <div className="mb-16 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-        <h3 className="text-2xl md:text-3xl font-bold text-red-600 mb-4 text-center">❌ The Problem You're Tolerating</h3>
-        <p className="text-center text-lg text-foreground/70 mb-4 max-w-2xl mx-auto">
-          Your product is good.<br/>
-          Your GTM might even be working.<br/>
-          But if you - the founder - aren't showing up with clarity and consistency, here's what you're silently bleeding:
-        </p>
-        <div className="max-w-2xl mx-auto mb-4">
-          <ul className="list-disc list-inside text-lg text-foreground/80 space-y-2 text-left">
-            <li>Strategic buyers ghosting because they don't feel leadership confidence</li>
-            <li>Demo attendance dropping because there's no face behind the brand</li>
-            <li>Investors feeling uncertain because your narrative feels... rehearsed</li>
-            <li>Cold leads taking weeks to convert because they're still trying to figure out "who you are"</li>
-          </ul>
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                The Silent Revenue Killer
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Your product works. Your team delivers. But something's missing in your growth equation.
+              </p>
+            </div>
+            
+            <div className="grid md:grid-cols-2 gap-8 mb-12">
+              {problems.map((problem, idx) => (
+                <Card key={idx} className="bg-white border-l-4 border-l-red-500 shadow-lg hover:shadow-xl transition-all duration-300">
+                  <CardContent className="p-6">
+                    <div className="flex items-start gap-3">
+                      <div className="p-2 bg-red-100 rounded-lg text-red-600">
+                        {problem.icon}
+                      </div>
+                      <div>
+                        <h3 className="text-lg font-bold text-red-600 mb-2">{problem.title}</h3>
+                        <p className="text-gray-600 leading-relaxed">{problem.description}</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+            
+            <div className="bg-gray-800 p-8 rounded-2xl text-white text-center">
+              <Quote className="w-8 h-8 text-purple-400 mb-4 mx-auto" />
+              <p className="text-xl font-medium mb-4">
+                "People buy from people" isn't marketing fluff—it's your strongest competitive advantage waiting to be activated.
+              </p>
+            </div>
+          </div>
         </div>
-        <blockquote className="italic text-center text-foreground/70 max-w-2xl mx-auto border-l-4 border-cyan-500 pl-4 py-2">
-          "People buy from people" isn't a cliché. It's a funnel. And right now, yours is missing its strongest lever.
-        </blockquote>
+      </section>
+
+      {/* Solution Overview */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto text-center mb-16">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">The Founder Signal Engine</h3>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              A systematic approach to building founder-led trust that converts prospects before they even book a demo. 
+              Not content marketing—strategic influence engineering.
+            </p>
+          </div>
+          
+          {/* Process Table */}
+          <div className="max-w-6xl mx-auto">
+            <Card className="shadow-xl">
+              <CardHeader className="bg-purple-600 text-white">
+                <CardTitle className="text-xl">Process Overview</CardTitle>
+              </CardHeader>
+              <CardContent className="p-0">
+                <div className="overflow-x-auto">
+                  <table className="w-full">
+                    <thead className="bg-purple-50">
+                      <tr>
+                        <th className="p-4 text-left font-semibold text-gray-900">Phase</th>
+                        <th className="p-4 text-left font-semibold text-gray-900">What We Build</th>
+                        <th className="p-4 text-left font-semibold text-gray-900">Key Deliverables</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {processPhases.map((phase, idx) => (
+                        <tr key={idx} className="border-b border-gray-100 last:border-b-0">
+                          <td className="p-6">
+                            <div className="flex items-center gap-4 mb-3">
+                              <div className="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold text-sm">
+                                {phase.phase}
+                              </div>
+                              <div>
+                                <h4 className="font-bold text-gray-900">{phase.title}</h4>
+                                <p className="text-sm text-gray-600 italic">{phase.description}</p>
+                              </div>
+                            </div>
+                          </td>
+                          <td className="p-6">
+                            <p className="text-gray-700">{phase.focus}</p>
+                          </td>
+                          <td className="p-6">
+                            <ul className="space-y-3">
+                              {phase.deliverables.map((deliverable, deliverableIdx) => (
+                                <li key={deliverableIdx} className="flex items-start gap-2">
+                                  <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+                                  <div>
+                                    <div className="font-semibold text-gray-900">{deliverable.name}</div>
+                                    <div className="text-sm text-gray-600">{deliverable.desc}</div>
       </div>
-      {/* What It Does Section */}
-      <div className="mb-16 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-        <h3 className="text-2xl md:text-3xl font-bold text-cyan-600 mb-4 text-center">🧱 The Founder Signal Engine - What It Actually Does</h3>
-        <h4 className="text-xl font-semibold text-center mb-6">This isn't a ghostwritten content package.</h4>
-        <p className="text-center text-lg text-foreground/70 mb-8 max-w-2xl mx-auto">
-          It's a modular system that helps your market recognize, remember, and trust you - before the demo, during the deal, and long after onboarding.
-        </p>
-        {phases.map((phase) => (
-          <div key={phase.title} className="mb-10">
-            <h4 className="text-lg md:text-xl font-bold text-cyan-700 mb-2">{phase.title}</h4>
-            <blockquote className="italic text-foreground/70 border-l-4 border-cyan-400 pl-4 py-2 mb-2">{phase.quote}</blockquote>
-            <ul className="list-disc list-inside text-lg text-foreground/80 space-y-2 ml-4">
-              {phase.items.map((item, i) => (
-                <li key={i}>
-                  <span className="font-semibold text-cyan-700">{item.label}</span> - {item.desc}
                 </li>
               ))}
             </ul>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </CardContent>
+            </Card>
           </div>
+        </div>
+      </section>
+
+      {/* Results Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                Real Results from Real Founders
+              </h2>
+              <p className="text-xl text-gray-600">
+                When founders show up consistently, the numbers follow
+              </p>
+            </div>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {results.map((result, idx) => (
+                <Card key={idx} className="text-center shadow-lg hover:shadow-xl transition-all duration-300">
+                  <CardContent className="p-8">
+                    <div className="text-3xl font-bold text-green-600 mb-2">{result.number}</div>
+                    <div className="text-gray-600">{result.description}</div>
+                  </CardContent>
+                </Card>
         ))}
       </div>
-      {/* Not for Everyone Section */}
-      <div className="mb-16 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-        <h3 className="text-2xl md:text-3xl font-bold text-cyan-600 mb-4 text-center">🧩 Not for Everyone</h3>
-        <ul className="list-disc list-inside text-lg text-foreground/80 space-y-2 max-w-2xl mx-auto text-left mb-4">
-          <li>Still lead sales, but know they're becoming a bottleneck</li>
-          <li>Can't afford to stay invisible, inconsistent, or generic</li>
-          <li>Know their product is strong - but their presence isn't pulling its weight</li>
-          <li>Want to build something that feels inevitable, not optional</li>
-        </ul>
       </div>
-      {/* Real Results Section */}
-      <div className="mb-16 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
-        <h3 className="text-2xl md:text-3xl font-bold text-cyan-600 mb-4 text-center">📊 Real Results</h3>
-        <ul className="list-disc list-inside text-lg text-foreground/80 space-y-2 max-w-2xl mx-auto text-left mb-4">
-          <li>$190K ARR sourced from a single founder post → DM → demo → close</li>
-          <li>3 inbound investor convos triggered by LinkedIn newsletter replies</li>
-          <li>44% post-demo increase in deal velocity when founder content was active</li>
-          <li>"You're everywhere" mentioned 5x in one discovery call</li>
-        </ul>
-        <blockquote className="italic text-center text-foreground/70 max-w-2xl mx-auto border-l-4 border-cyan-500 pl-4 py-2">
-          Founder-led GTM doesn't just get noticed. It closes deals.
-        </blockquote>
       </div>
+      </section>
+
       {/* How It Works Section */}
-      <div className="mb-16 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
-        <h3 className="text-2xl md:text-3xl font-bold text-cyan-600 mb-4 text-center">⚙ How It Works (Simple 3-Step)</h3>
-        <ol className="list-decimal list-inside text-lg text-foreground/80 space-y-4 max-w-2xl mx-auto text-left mb-4">
-          <li><span className="font-bold">Diagnose the Signal Gap</span><br/><span className="text-foreground/70">→ Narrative, posture, platform, ICP alignment</span></li>
-          <li><span className="font-bold">Install the System</span><br/><span className="text-foreground/70">→ Posts, flows, visuals, strategy, motion</span></li>
-          <li><span className="font-bold">Watch It Compound</span><br/><span className="text-foreground/70">→ More replies, more reach, more trust → more revenue</span></li>
-        </ol>
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                How It Works
+              </h2>
+              <p className="text-xl text-gray-600">
+                Simple 3-step process that builds systematic founder presence
+              </p>
+            </div>
+            
+            <div className="grid md:grid-cols-3 gap-8">
+              {howItWorks.map((step, idx) => (
+                <Card key={idx} className="text-center shadow-lg hover:shadow-xl transition-all duration-300">
+                  <CardContent className="p-8">
+                    <div className="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold text-lg mx-auto mb-6">
+                      {step.step}
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-4">{step.title}</h3>
+                    <p className="text-gray-600 leading-relaxed">{step.description}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
       </div>
+      </section>
+
       {/* Final CTA Section */}
-      <div className="text-center animate-fade-in-up mb-24" style={{ animationDelay: '0.7s' }}>
-        <h3 className="text-2xl font-bold text-foreground mb-4">
-          If your company's brand feels invisible...<br/>ask yourself: is your founder signal doing any heavy lifting at all?
-        </h3>
-        <p className="text-foreground/70 mb-8">
-          Buyers follow founders.<br/>
-          Founders who show up win.<br/>
-          Founders who hesitate fall behind - silently, but surely.
+      <section className="py-20 bg-gradient-to-r from-purple-600 to-indigo-600 text-white">
+        <div className="container mx-auto px-6 text-center">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              Ready to Turn Your Founder Voice Into Revenue?
+            </h2>
+            <p className="text-xl mb-8 text-purple-100">
+              Stop being the best-kept secret in your industry. Let's build a founder signal that works.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button className="btn-hero text-white px-8 py-4 text-lg group">
-            <span className="relative z-10">🧠 Book My Founder Audit</span>
+              <Button className="bg-white text-purple-600 hover:bg-purple-50 px-8 py-4 text-lg font-medium rounded-xl shadow-lg">
+                <span className="mr-2">🧠</span>
+                Get Your Free Founder Signal Audit
           </Button>
-          <Button className="px-8 py-4 text-lg group bg-white/50 backdrop-blur-sm hover:bg-white/70 border-2 border-cyan-200 hover:border-cyan-300">
-            <span className="relative z-10">📣 See Real Signal Systems</span>
-          </Button>
-          <Button className="px-8 py-4 text-lg group bg-white/50 backdrop-blur-sm hover:bg-white/70 border-2 border-cyan-200 hover:border-cyan-300">
-            <span className="relative z-10">⚙ Build My Engine</span>
+              <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-purple-600 px-8 py-4 text-lg font-medium rounded-xl">
+                <span className="mr-2">📞</span>
+                Schedule Strategy Call
           </Button>
         </div>
       </div>
     </div>
   </section>
-)
+    </div>
+  );
+};
 
-export default FounderSignal 
+export default FounderSignalPage; 

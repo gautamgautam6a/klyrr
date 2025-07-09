@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button'
 import { Slider } from '@/components/ui/slider'
 import { Badge } from '@/components/ui/badge'
 import { Users, UserPlus, Clock, FileText, CheckCircle } from 'lucide-react'
+import { useFunnelModal } from '@/App';
 
 // Shared header component for consistent headers
 type HeaderSectionProps = { children: React.ReactNode; className?: string };
@@ -11,6 +12,7 @@ const HeaderSection = ({ children, className = '' }: HeaderSectionProps) => (
 );
 
 const PricingTeaser: React.FC = () => {
+  const { openModal } = useFunnelModal();
   const [monthlyRevenue, setMonthlyRevenue] = useState([100000])
   const [currentConversionRate, setCurrentConversionRate] = useState([5])
   const [targetGrowth, setTargetGrowth] = useState([50])
@@ -198,12 +200,12 @@ const PricingTeaser: React.FC = () => {
 
               {/* ROI Results */}
               <div className="animate-fade-in-up h-full" style={{ animationDelay: '0.4s' }}>
-                <div className="bg-white rounded-2xl border-2 border-blue-200 shadow-md p-8 h-full transition-all duration-300 hover:shadow-xl">
+                <div className="bg-white rounded-2xl border-2 border-blue-200 shadow-md p-4 sm:p-8 h-full transition-all duration-300 hover:shadow-xl">
                   <div className="text-center mb-8">
                     <h3 className="text-2xl font-bold text-gray-900 mb-2">Projected Impact</h3>
                     <p className="text-gray-600">See your real-time impact metrics</p>
                   </div>
-                  <div className="grid grid-cols-2 gap-6 h-[calc(100%-8rem)]">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                     <div className="p-6 bg-emerald-50 rounded-xl">
                       <div className="text-sm text-gray-600 mb-2">Additional Monthly Revenue</div>
                       <div className="text-2xl font-bold text-emerald-600">{formatCurrency(roiData.additionalRevenue)}</div>
@@ -248,8 +250,8 @@ const PricingTeaser: React.FC = () => {
 
           {/* CTA Button */}
           <div className="text-center mt-8">
-            <Button className="inline-flex items-center justify-center gap-2 h-9 px-8 py-4 text-base rounded-md bg-blue-600 hover:bg-blue-700 text-white shadow-lg hover:shadow-xl transition-all duration-300 font-medium group animate-fade-in-up" style={{ animationDelay: '0.8s' }}>
-              Get Free Diagnosis
+            <Button className="inline-flex items-center justify-center gap-2 h-9 px-8 py-4 text-base rounded-md bg-blue-600 hover:bg-blue-700 text-white shadow-lg hover:shadow-xl transition-all duration-300 font-medium group animate-fade-in-up" style={{ animationDelay: '0.8s' }} onClick={openModal}>
+              Fix My Funnel
               <svg className="w-5 h-5 ml-2 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>

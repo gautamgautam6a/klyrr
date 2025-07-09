@@ -61,7 +61,7 @@ const Philosophy: React.FC = () => {
   ];
 
   return (
-    <section id="about" className="section-padding section-spacing relative overflow-hidden bg-gradient-to-br from-slate-50 to-blue-50 mb-12 pt-0 pb-0">
+    <section id="about" className="section-padding section-spacing relative overflow-hidden bg-gradient-to-br from-slate-50 to-blue-50 mb-4 pt-0 pb-0">
       {/* Enhanced Background Elements */}
       <div className="absolute inset-0 -z-10">
         <motion.div 
@@ -150,7 +150,7 @@ const Philosophy: React.FC = () => {
           </motion.div>
           
           <motion.h2 
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-4 sm:mb-6 px-4 sm:px-0"
             animate={{
               backgroundPosition: ["0%", "100%", "0%"],
             }}
@@ -164,7 +164,7 @@ const Philosophy: React.FC = () => {
           </motion.h2>
           
           <motion.p 
-            className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"
+            className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed px-4 sm:px-0"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -176,14 +176,14 @@ const Philosophy: React.FC = () => {
 
         {/* Enhanced Interactive Timeline */}
         <motion.div 
-          className="relative max-w-6xl mx-auto mb-16 min-h-[800px]"
+          className="relative max-w-6xl mx-auto mb-16 min-h-[600px] sm:min-h-[800px] px-4 sm:px-0"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.3 }}
         >
           {/* Animated Timeline Line */}
           <motion.div 
-            className="absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-blue-200 via-blue-400 to-blue-600 rounded-full z-0"
+            className="absolute left-6 sm:left-1/2 transform sm:-translate-x-1/2 w-1 bg-gradient-to-b from-blue-200 via-blue-400 to-blue-600 rounded-full z-0"
             initial={{ height: 0 }}
             whileInView={{ height: "100%" }}
             viewport={{ once: true, margin: "-100px" }}
@@ -207,23 +207,23 @@ const Philosophy: React.FC = () => {
                 delay: index * 0.1,
                 ease: "easeOut"
               }}
-              className={`relative flex items-center mb-12 ${
-                index % 2 === 0 ? 'flex-row-reverse' : 'flex-row'
-              }`}
+              className={`relative flex items-center mb-8 sm:mb-12 ${
+                index % 2 === 0 ? 'sm:flex-row-reverse' : 'sm:flex-row'
+              } flex-col sm:flex-row`}
             >
               {/* Timeline Node */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 z-20">
+              <div className="absolute left-6 sm:left-1/2 transform -translate-x-1/2 sm:-translate-x-1/2 z-20 sm:relative sm:left-auto sm:transform-none">
                 <motion.div
                   whileHover={{ 
                     scale: 1.1,
                     transition: { duration: 0.2 }
                   }}
-                  className={`w-16 h-16 rounded-full bg-gradient-to-r ${event.color} shadow-lg flex items-center justify-center cursor-pointer relative z-20`}
+                  className={`w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-to-r ${event.color} shadow-lg flex items-center justify-center cursor-pointer relative z-20`}
                   onMouseEnter={() => setActiveTimeline(index)}
                   onMouseLeave={() => setActiveTimeline(null)}
                 >
                   <motion.span 
-                    className="text-2xl"
+                    className="text-lg sm:text-2xl"
                     animate={{
                       scale: activeTimeline === index ? 1.1 : 1
                     }}
@@ -284,13 +284,13 @@ const Philosophy: React.FC = () => {
               </div>
 
               {/* Content Card */}
-              <div className={`w-5/12 ${index % 2 === 0 ? 'pr-8' : 'pl-8'} relative z-10`}>
+              <div className={`w-full sm:w-5/12 ${index % 2 === 0 ? 'sm:pr-8' : 'sm:pl-8'} pl-16 sm:pl-0 relative z-10 mt-4 sm:mt-0`}>
                 <motion.div
                   whileHover={{ 
                     y: -5,
                     transition: { duration: 0.3, ease: "easeOut" }
                   }}
-                  className={`bg-blue-50 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 border-2 relative overflow-hidden ${
+                  className={`bg-blue-50 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-4 sm:p-6 border-2 relative overflow-hidden ${
                     activeTimeline === index ? 'border-blue-300' : 'border-blue-200'
                   }`}
                 >
@@ -308,11 +308,11 @@ const Philosophy: React.FC = () => {
                       <Badge variant="outline" className="mr-3 bg-white text-blue-900 border-2 border-blue-500">
                         {event.year}
                       </Badge>
-                      <h3 className="text-2xl font-bold text-blue-900">
+                      <h3 className="text-lg sm:text-2xl font-bold text-blue-900">
                         {event.title}
                       </h3>
                     </div>
-                    <p className="text-blue-700 leading-relaxed">
+                    <p className="text-sm sm:text-base text-blue-700 leading-relaxed">
                       {event.description}
                     </p>
                   </div>
@@ -330,17 +330,17 @@ const Philosophy: React.FC = () => {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="mb-16"
         >
-          <div className="text-center mb-12">
-            <h3 className="text-4xl md:text-5xl font-bold text-black mb-6">
+          <div className="text-center mb-8 sm:mb-12 px-4 sm:px-0">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-4 sm:mb-6">
               KLYRR is the System We <span className="text-blue-600">Wish We Had</span>
             </h3>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
               Built by founders, for founders. No more duct tape solutions.
             </p>
           </div>
 
           {/* Feature Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 px-4 sm:px-0">
             {[
               {
                 title: "Fast",
@@ -373,12 +373,12 @@ const Philosophy: React.FC = () => {
                   absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500
                   bg-gradient-to-r ${feature.gradient} rounded-2xl blur-xl
                 `}></div>
-                <div className="relative bg-white text-gray-900 border-2 border-blue-200 rounded-2xl p-8 h-full shadow-lg
+                <div className="relative bg-white text-gray-900 border-2 border-blue-200 rounded-2xl p-6 sm:p-8 h-full shadow-lg
                   hover:border-blue-300 transition-all duration-500 group-hover:transform group-hover:-translate-y-2 group-hover:shadow-xl">
                   <div className="text-center">
-                    <div className="text-5xl mb-6">{feature.icon}</div>
-                    <h4 className="text-2xl font-bold mb-4 text-gray-900">{feature.title}</h4>
-                    <p className="text-gray-600 text-lg">{feature.description}</p>
+                    <div className="text-4xl sm:text-5xl mb-4 sm:mb-6">{feature.icon}</div>
+                    <h4 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-gray-900">{feature.title}</h4>
+                    <p className="text-gray-600 text-base sm:text-lg">{feature.description}</p>
                   </div>
                 </div>
               </motion.div>
@@ -394,36 +394,37 @@ const Philosophy: React.FC = () => {
           transition={{ duration: 0.8 }}
           className="text-center"
         >
-          <motion.div
-            whileHover={{ scale: 1.02, y: -5 }}
-            className="bg-blue-600 backdrop-blur-sm rounded-2xl shadow-lg p-8 mx-auto border-2 border-blue-500 relative overflow-hidden"
-          >
-            {/* Animated Background */}
+          <div className="px-4 sm:px-0">
             <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-indigo-500/5 to-purple-500/5"
-              animate={{
-                backgroundPosition: ["0%", "100%", "0%"],
-              }}
-              transition={{
-                duration: 8,
-                repeat: Infinity,
-                repeatType: "loop"
-              }}
-            />
-            
-            <div className="relative z-10">
-              <h3 className="text-3xl font-bold text-white mb-4">
-                Ready to transform your go-to-market strategy?
-              </h3>
-              <motion.p 
-                className="text-lg text-blue-100 mb-6"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1, delay: 0.3 }}
-              >
-                Join the founders who've already engineered their success with KLYRR.
-              </motion.p>
+              whileHover={{ scale: 1.02, y: -5 }}
+              className="bg-blue-600 backdrop-blur-sm rounded-2xl shadow-lg p-6 sm:p-8 mx-auto border-2 border-blue-500 relative overflow-hidden"
+            >
+              {/* Animated Background */}
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-indigo-500/5 to-purple-500/5"
+                animate={{
+                  backgroundPosition: ["0%", "100%", "0%"],
+                }}
+                transition={{
+                  duration: 8,
+                  repeat: Infinity,
+                  repeatType: "loop"
+                }}
+              />
+              
+              <div className="relative z-10">
+                <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3 sm:mb-4">
+                  Ready to transform your go-to-market strategy?
+                </h3>
+                <motion.p 
+                  className="text-base sm:text-lg text-blue-100 mb-4 sm:mb-6"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1, delay: 0.3 }}
+                >
+                  Join the founders who've already engineered their success with KLYRR.
+                </motion.p>
               <motion.button
                 whileHover={{ 
                   scale: 1.1,
@@ -441,7 +442,7 @@ const Philosophy: React.FC = () => {
                     repeatType: "loop"
                   }
                 }}
-                className="bg-white text-blue-600 px-8 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden"
+                className="bg-white text-blue-600 px-6 sm:px-8 py-2 sm:py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden text-sm sm:text-base"
                 style={{
                   backgroundSize: "200% 100%"
                 }}
@@ -459,8 +460,9 @@ const Philosophy: React.FC = () => {
                   Get Started Today
                 </motion.span>
               </motion.button>
-            </div>
-          </motion.div>
+              </div>
+            </motion.div>
+          </div>
         </motion.div>
       </div>
     </section>
