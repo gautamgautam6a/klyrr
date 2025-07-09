@@ -5,8 +5,6 @@ import { Card, CardContent } from '@/components/ui/card';
 import { useFunnelModal } from '../App';
 
 const AboutUsPage: React.FC = () => {
-  const { openModal } = useFunnelModal();
-
   const values = [
     {
       icon: "🎯",

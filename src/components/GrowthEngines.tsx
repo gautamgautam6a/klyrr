@@ -245,11 +245,6 @@ const GrowthEngines: React.FC = () => {
     acc[engine.id] = (acc[engine.id] || 0) + 1;
     return acc;
   }, {} as Record<string, number>);
-  const duplicateIds = Object.entries(idCounts).filter(([id, count]) => count > 1);
-  if (duplicateIds.length > 0) {
-    console.warn('Duplicate engine IDs found:', duplicateIds.map(([id]) => id));
-  }
-  console.log('Engine ID counts:', idCounts);
 
   const categories = [
     { id: 'all', label: 'All Engines', count: engines.length },
