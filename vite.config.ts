@@ -21,7 +21,6 @@ export default defineConfig({
       '/api': 'http://localhost:4000'
     }
   },
-  assetsInclude: ['**/*.html'],
   build: {
     outDir: 'dist',
     sourcemap: true,
