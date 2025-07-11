@@ -1,2 +1,7 @@
 node_modules
+dist/
+*.log
+sheets-writer-465510-042cd552014c.json
 
+# Local Netlify folder
+.netlify

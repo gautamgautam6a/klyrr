@@ -1,0 +1,8 @@
+[33m⠋[39m Waiting for framework dev server to be ready on port 3000
+[1G[33m⠙[39m Waiting for framework dev server to be ready on port 3000
+[1G[33m⠹[39m Waiting for framework dev server to be ready on port 3000
+[1G[33m⠸[39m Waiting for framework dev server to be ready on port 3000
+[1G[33m⠼[39m Waiting for framework dev server to be ready on port 3000
+[32m✔[39m framework dev server ready on port 3000
+(node:18244) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)

@@ -19,6 +19,7 @@ const FunnelFormModal: React.FC<FunnelFormModalProps> = ({ isOpen, onClose, onSu
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [formData, setFormData] = useState<typeof initialFormData>(initialFormData);
   const [error, setError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -29,14 +30,41 @@ const FunnelFormModal: React.FC<FunnelFormModalProps> = ({ isOpen, onClose, onSu
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setError('');
+    console.log("Form submitted", formData); // Debug log
+    setError("");
+    setIsSubmitting(true);
+    
     try {
-      const res = await fetch('/api/funnel-form', {
+      // Use the Netlify function instead of direct Firebase
+      const response = await fetch('/.netlify/functions/submit-form', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       });
-      if (!res.ok) throw new Error('Failed to submit');
+      
+      if (!response.ok) {
+        let errorMessage = 'Form submission failed';
+        try {
+          const errorData = await response.json();
+          errorMessage = errorData.message || errorMessage;
+        } catch (jsonError) {
+          // If JSON parsing fails, use the response status text
+          errorMessage = response.statusText || errorMessage;
+        }
+        throw new Error(errorMessage);
+      }
+      
+      // Parse the success response
+      let result;
+      try {
+        result = await response.json();
+        console.log("Success response:", result);
+      } catch (jsonError) {
+        console.log("Response parsing error, but submission was successful");
+      }
+      
       setIsSubmitted(true);
       if (onSuccess) onSuccess();
       setTimeout(() => {
@@ -44,8 +72,11 @@ const FunnelFormModal: React.FC<FunnelFormModalProps> = ({ isOpen, onClose, onSu
         onClose();
         setFormData(initialFormData);
       }, 3000);
-    } catch (err) {
-      setError('Submission failed. Please try again.');
+    } catch (err: any) {
+      console.error("Submission error:", err);
+      setError(err.message || "Submission failed. Please try again.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -161,9 +192,10 @@ const FunnelFormModal: React.FC<FunnelFormModalProps> = ({ isOpen, onClose, onSu
               {/* Submit Button */}
               <button
                 type="submit"
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-lg font-semibold transform hover:scale-105 transition-all duration-200 shadow-lg"
+                disabled={isSubmitting}
+                className={`w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-lg font-semibold transform transition-all duration-200 shadow-lg ${isSubmitting ? 'opacity-70 cursor-not-allowed' : 'hover:scale-105'}`}
               >
-                Get My Funnel Analysis
+                {isSubmitting ? 'Submitting...' : 'Get My Funnel Analysis'}
               </button>
               {/* Privacy Note */}
               <p className="text-xs text-gray-500 text-center">
