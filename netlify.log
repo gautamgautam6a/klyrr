@@ -1,0 +1,30 @@
+⬥ Injecting environment variable values for all scopes
+⬥ Ignored general context env var: LANG (defined in process)
+⬥ Setting up local dev server
+
+⬥ Starting framework dev server
+
+> klyrr-website@0.0.0 dev
+> vite
+
+
+  VITE v7.0.3  ready in 262 ms
+
+  ➜  Local:   http://localhost:3000/
+  ➜  Network: http://26.26.157.25:3000/
+  ➜  Network: http://192.168.1.2:3000/
+  ➜  Network: http://172.29.32.1:3000/
+
+   ╭─────────────────────── ⬥  ────────────────────────╮
+   │                                                   │
+   │   Local dev server ready: http://localhost:8888   │
+   │                                                   │
+   ╰───────────────────────────────────────────────────╯
+
+⬥ Loaded function submit-form
+⬥ Rewrote URL to /index.html
+⬥ Rewrote URL to /index.html
+⬥ Rewrote URL to /index.html
+⬥ Rewrote URL to /index.html
+⬥ Rewrote URL to /index.html
+⬥ Rewrote URL to /index.html
