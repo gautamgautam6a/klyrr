@@ -1,18 +1,15 @@
 // Netlify serverless function to handle form submissions with Google Sheets
 import { google } from 'googleapis';
-import fs from 'fs';
-import path from 'path';
 
-// Path to your service account key file
-const SERVICE_ACCOUNT_FILE = path.join(process.cwd(), 'sheets-writer-465510-042cd552014c.json');
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets'];
 const SPREADSHEET_ID = '15G-c-QYAfZeKfwYlOhhiBzQMUqOo7yktdjKpX75ugjw';
 const SHEET_NAME = 'Sheet1'; // Change if your sheet name is different
 
 // Helper to get Google Sheets client
 async function getSheetsClient() {
+  const key = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_JSON);
   const auth = new google.auth.GoogleAuth({
-    keyFile: SERVICE_ACCOUNT_FILE,
+    credentials: key,
     scopes: SCOPES,
   });
   const authClient = await auth.getClient();
